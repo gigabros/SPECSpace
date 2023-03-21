@@ -10,7 +10,7 @@ date_default_timezone_set("Asia/Manila");
 set_time_limit(1000);
 
 define("SERVER", "localhost");
-define("DBASE", "rtg");
+define("DBASE", "specspace");
 define("USER", "root");
 define("PASSWORD", "");
 
