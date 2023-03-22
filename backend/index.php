@@ -30,6 +30,20 @@
                 case 'account':
                     echo json_encode($get->get_accounts());
                 break;
+
+                case 'profile':
+                    if(count($req)>1){
+                        echo json_encode($get->get_profile($req[1]));
+                    }
+                break;
+
+                case 'lb_points':
+                    echo json_encode($get->get_lb_points());
+                break;
+
+                case 'lb_lvl':
+                    echo json_encode($get->get_lb_lvl());
+                break;
             }
         
         break;
