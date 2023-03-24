@@ -2,13 +2,15 @@
     require_once "./config/Connection.php";
     require_once "./Modules/Global.php";
     require_once "./Modules/Get.php";
-
+    require_once "./Modules/Post.php";
 
     $db = new Connection;
     $pdo = $db->connect();
 
     $get = new Get($pdo);
+    $post = new Post($pdo);
 
+    $data = json_decode(file_get_contents("php://input"));
 
     if(isset($_REQUEST['request'])){
         $req = explode('/', rtrim($_REQUEST['request'], '/') );
@@ -44,14 +46,40 @@
                 case 'lb_lvl':
                     echo json_encode($get->get_lb_lvl());
                 break;
+
+                case 'activity':
+                    echo json_encode($get->get_activity()); 
+                break;
+                
+                case "date":
+                    echo date("h:i a/ d-m-Y");
+                break;
             }
         
         break;
 
         case 'POST':
-            echo "Post";
+            switch($req[0]){
+                case "add_activity":
+                    echo json_encode($post->add_activity($data));
+                break;
+
+                case "add_post":
+                    echo json_encode($post->add_post($data));
+                break;
+
+                case "add_account":
+                    echo json_encode($post->add_account($data));
+                break;
+
+                case "login":
+                    echo json_encode($post->login($data));
+                break;
+
+            }
         
         break;
+        
 
         case 'PATCH':
             echo 'Patch';

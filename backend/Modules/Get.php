@@ -10,6 +10,7 @@ class Get{
 
     }
 
+
     public function get_accounts($id=null){
         $sql = "SELECT * FROM accounts";
 
@@ -19,16 +20,18 @@ class Get{
     }
 
     public function get_profile($id=null){
-        $sql = "SELECT * FROM profiles where stud_num=$id";
-
-        $result=$this->gm->exec_query($sql);
-
-        if($result['code']==200){
-            return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
+        try{
+            $sql = "SELECT * from profiles where stud_num = $id";
+            $data = $this->gm->exec_query($sql);
+            if($data['code']==200){
+                return $data['data'][0];
+            }
         }
-        else{
-            return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
+        catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Fail to get profile Information",200);
         }
+        
+        
     }
 
     public function get_lb_points(){
@@ -57,4 +60,16 @@ class Get{
         }
     }
 
+    public function get_activity(){
+        $sql = "SELECT * from activity ORDER BY deadline DESC";
+
+        $result = $this->gm->exec_query($sql);
+
+        if($result['code']==200){
+            return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
+        }
+        else{
+            return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
+        }
+    }
 }
