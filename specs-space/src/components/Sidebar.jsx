@@ -2,6 +2,7 @@ import React from 'react'
 import SideProfile from './SideProfile'
 import { NavLink } from 'react-router-dom';
 import { FaClipboardList, FaTrophy, FaChartBar} from 'react-icons/fa'
+import { MdLogout } from 'react-icons/md'
 import './compstyle.scss'
 
 const SidebarData = [
@@ -52,6 +53,9 @@ const Sidebar = () => {
 
           </div>
         </section>
+        <div className="logout-container">
+          <MdLogout size={50} className='logout-btn'/>
+        </div>
       </div>
 
     </>
