@@ -1,0 +1,22 @@
+//pages
+.page-container {
+    display: flex;
+    flex-direction: row;
+    border: black 1px solid;
+    width: 100%;
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        background-color: #2B4521;
+        // border: red 1px solid;
+        width: 10%;
+
+    }
+
+    .right-side {
+        // border: blue 1px solid;
+        background-color: #FFE6C8;
+        width: 90%;
+    }
+}

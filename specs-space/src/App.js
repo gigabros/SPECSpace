@@ -3,22 +3,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './pages/Profile';
 import Achievements from './pages/Achievements'
 import Guild from './pages/Guild';
+import UserMain from './components/UserMain';
+import Login from './components/login/Login'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>App main</h1>
+        {/* <h1>App main</h1> */}
         <Router>
           <Routes>
-            <Route path="/" element={<Profile />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/Achievements" element={<Achievements />} />
-            <Route path="/Guild" element={<Guild />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/*" element={<UserMain />} />
           </Routes>
         </Router>
 
-      </header>
     </div>
   );
 }

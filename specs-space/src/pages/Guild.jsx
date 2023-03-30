@@ -1,11 +1,18 @@
 import React from 'react'
+import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
 
 export default function Guild() {
   return (
     <>
-    <h1>Guild</h1>
-    <Sidebar/>
+      <div className="page-container">
+        <div className="left-side">
+          <Sidebar />
+        </div>
+        <div className="right-side">
+          <h1>Guild Quest</h1>
+        </div>
+      </div>
     </>
   )
 }
