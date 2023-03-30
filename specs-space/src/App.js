@@ -1,22 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Profile from './pages/Profile';
+import Achievements from './pages/Achievements'
+import Guild from './pages/Guild';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>App main</h1>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Profile />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Achievements" element={<Achievements />} />
+            <Route path="/Guild" element={<Guild />} />
+          </Routes>
+        </Router>
+
       </header>
     </div>
   );
