@@ -54,7 +54,7 @@ const Sidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-          <MdLogout size={50} className='logout-btn'/>
+          <MdLogout size={30} className='logout-btn'/>
         </div>
       </div>
 
