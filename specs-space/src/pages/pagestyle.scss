@@ -227,8 +227,17 @@
                 flex-direction: column;
                 justify-content: space-around;
 
-                .cls-btn {
-                    color: #D7DCEA;
+                .del-btn {
+                    color: #B71103;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                    }
+                }
+                .fin-btn {
+                    color: #02854F;
                     cursor: pointer;
                     transition: all 0.2s ease;
 

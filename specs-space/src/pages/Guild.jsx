@@ -65,8 +65,8 @@ export default function Guild() {
                         <div className="task-btn">
                           {/* <GiTrashCan onClick={() => deleteTask(task.questID)} size={30} className='cls-btn' />
                           <MdOutlineCheckCircleOutline onClick={() => finishtask(task.questID)} size={30} className='cls-btn' /> */}
-                          <GiTrashCan size={30} className='cls-btn' />
-                          <MdOutlineCheckCircleOutline size={30} className='cls-btn' />
+                          <GiTrashCan size={30} className='del-btn' />
+                          <MdOutlineCheckCircleOutline size={30} className='fin-btn' />
                         </div>
                       </div>
                     )
