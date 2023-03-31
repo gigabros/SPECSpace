@@ -1,0 +1,286 @@
+//pages
+.page-container {
+    display: flex;
+    flex-direction: row;
+    // border: black 1px solid;
+    width: 100%;
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        background-color: #2B4521;
+        // border: red 1px solid;
+        width: 10%;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+    }
+
+    .right-side {
+        display: flex;
+        // border: blue 1px solid;
+        background-color: #D7DCEA;
+        width: 90%;
+        padding: 2%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+//profile
+.profile-container {
+    // border: red 1px solid;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .avatar-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+
+    }
+
+    .profile-details-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 60%;
+
+        .profile-info {
+            display: flex;
+            flex-direction: row;
+            height: 50%;
+            // border: blue 1px solid;
+            border-radius: 50px;
+            background-color: #C1C7C9;
+
+            .label {
+                display: flex;
+                flex-direction: column;
+                width: 60%;
+                padding: 5%;
+
+                .prof-holder {
+                    margin-bottom: 5%;
+
+                    .prof-title {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                        font-size: 20px;
+                        font-style: italic;
+                        color: #373D3F;
+                    }
+
+                    .prof-info {
+                        margin: 0;
+                        padding: 0;
+                        padding-left: 10%;
+                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                        font-size: 50px;
+                        font-weight: 700;
+                        color: #373D3F;
+                    }
+
+                    .prof-lvl {
+                        margin: 0;
+                        padding: 0;
+                        padding-left: 10%;
+                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                        font-size: 30px;
+                        font-weight: 700;
+                        color: #373D3F;
+                    }
+                }
+
+                .stats-content {
+                    display: flex;
+                    justify-content: space-around;
+                    width: 70%;
+
+                    .stats-holder {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        // border: 2px solid #774D29;
+
+                        .stats-title {
+                            font-style: italic;
+                            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                            font-size: 20px;
+                            font-weight: 500;
+                            margin: 0;
+                            padding: 0;
+                            color: #373D3F;
+                        }
+
+                        .stats-cnt {
+                            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                            font-size: 80px;
+                            font-weight: 1000;
+                            margin: 0;
+                            padding: 0;
+                            color: #373D3F;
+                        }
+                    }
+                }
+            }
+
+            .icon {
+                // border: blue 1px solid;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 40%;
+                color: #373D3F;
+            }
+        }
+
+        .profile-badges {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            // border: blue 1px solid;
+            border-radius: 50px;
+            background-color: #C1C7C9;
+            height: 40%;
+            width: 100%;
+
+            .badge-dsply {
+                height: 80%;
+            }
+        }
+    }
+}
+
+//guild
+.quest-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // border: blue 1px solid;
+
+    .quest-title {
+        color: #2B4521;
+        font-size: 50px;
+    }
+
+    .task-list {
+        margin-right: 10px;
+
+        .task-content {
+            // border: solid #774D29;
+            background-color: #FA9E46;
+            border-width: 6px;
+            border-radius: 25px;
+            margin: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: row;
+
+            .task-holder {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                .task-title {
+                    font-family: sans-serif;
+                    font-size: 25px;
+                    font-weight: 800;
+                    text-align: left;
+                    color: #D7DCEA;
+                    margin: 0;
+                }
+
+                .task-des {
+                    font-family: sans-serif;
+                    font-size: 15px;
+                    font-style: italic;
+                    text-align: left;
+                    color: #D7DCEA;
+                    margin: 0;
+
+                }
+
+            }
+
+            .task-exp {
+                width: 25%;
+                font-family: sans-serif;
+                font-size: 15px;
+                font-style: italic;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                color: #D7DCEA;
+                margin: 0;
+                padding-right: 15px;
+            }
+
+            .task-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                .del-btn {
+                    color: #B71103;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                    }
+                }
+
+                .fin-btn {
+                    color: #02854F;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//achievments
+.achievement-page {
+    padding: 50px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FFE6C8;
+
+    .achievement-title {
+        color: #2B4521;
+        font-size: 50px;
+    }
+
+    .card {
+        height: auto;
+        width: 20%;
+        padding: 10px;
+        margin: 0;
+
+        .card-img {
+            max-width: 100%;
+
+        }
+
+        .card-title {
+            font-family: sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: #774D29;
+        }
+    }
+}
