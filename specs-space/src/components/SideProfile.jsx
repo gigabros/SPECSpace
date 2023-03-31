@@ -10,9 +10,9 @@ export default function SideProfile() {
           <div className="profilebtn-content">
             <div className='icon'><CgProfile size={100} /></div>
             <div className="label">
-              <span id='Profile'>Username</span>
-              <span>Title</span>
-              <span>Level</span>
+              <span id='Profile'>weeewooo</span>
+              <span>Challenger</span>
+              <span>Level 9000+</span>
             </div>
 
           </div>
