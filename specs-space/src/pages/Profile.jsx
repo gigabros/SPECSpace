@@ -2,7 +2,7 @@ import React from 'react'
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
 import { CgProfile } from 'react-icons/cg';
-import logo from '../data/logo-placeholder.png'
+import badge from '../data/badge-placeholder.png'
 import avatar from '../data/avatar-placeholder.png'
 
 export default function Profile() {
@@ -50,9 +50,9 @@ export default function Profile() {
               </div>
 
               <div className='profile-badges'>
-                <img src={logo} className="badge-dsply" />
-                <img src={logo} className="badge-dsply" />
-                <img src={logo} className="badge-dsply" />
+                <img src={badge} className="badge-dsply" />
+                <img src={badge} className="badge-dsply" />
+                <img src={badge} className="badge-dsply" />
               </div>
 
             </div>

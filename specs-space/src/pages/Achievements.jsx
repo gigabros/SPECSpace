@@ -1,6 +1,15 @@
 import React from 'react'
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
+import badge from '../data/badge-placeholder.png'
+
+const carddata = [
+
+  {
+    img: badge,
+    title: "Title",
+  },
+]
 
 export default function Achievements() {
   return (
@@ -10,10 +19,24 @@ export default function Achievements() {
           <Sidebar />
         </div>
         <div className="right-side">
-          <h1>Achievements</h1>
+          <div className='achievement-page'>
+            <h1 className='achievement-title'>Achievements</h1>
+            {carddata.map((value, index) => {
+              return (
+                <div className="card" key={index}>
+                  <div>
+                    <img src={value.img} className="card-img" />
+                  </div>
+                  <div>
+                    <p className="card-title">{value.title}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </>
-    
+
   )
 }

@@ -22,7 +22,7 @@
         background-color: #D7DCEA;
         width: 90%;
         padding: 2%;
-        overflow-y:auto;
+        overflow-y: auto;
         overflow-x: hidden;
     }
 }
@@ -167,6 +167,7 @@
         color: #2B4521;
         font-size: 50px;
     }
+
     .task-list {
         margin-right: 10px;
 
@@ -236,6 +237,7 @@
                         transform: translateY(-3px);
                     }
                 }
+
                 .fin-btn {
                     color: #02854F;
                     cursor: pointer;
@@ -246,6 +248,39 @@
                     }
                 }
             }
+        }
+    }
+}
+
+//achievments
+.achievement-page {
+    padding: 50px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FFE6C8;
+
+    .achievement-title {
+        color: #2B4521;
+        font-size: 50px;
+    }
+
+    .card {
+        height: auto;
+        width: 20%;
+        padding: 10px;
+        margin: 0;
+
+        .card-img {
+            max-width: 100%;
+
+        }
+
+        .card-title {
+            font-family: sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: #774D29;
         }
     }
 }
