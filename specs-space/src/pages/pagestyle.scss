@@ -20,6 +20,7 @@
         display: flex;
         // border: blue 1px solid;
         background-color: #D7DCEA;
+        // background-color: white;
         width: 90%;
         padding: 2%;
         overflow-y: auto;
@@ -253,35 +254,6 @@
 }
 
 //achievments
-
-// .acheivement-page {
-//     padding: 50px;
-//     margin: 0;
-//     display: flex;
-//     flex-wrap: wrap;
-//     background-color: #FFE6C8;
-
-//     .card {
-//         height: auto;
-//         width: 20%;
-//         padding: 10px;
-//         margin: 0;
-
-//         .card-img {
-//             max-width: 100%;
-
-//         }
-
-//         .card-title {
-//             font-family: sans-serif;
-//             font-size: 15px;
-//             font-weight: 800;
-//             color: #774D29;
-//         }
-
-//     }
-// }
-
 .achievement-page {
     // border: red 1px solid;
     display: flex;
@@ -323,6 +295,138 @@
                 font-size: 25px;
                 font-weight: 800;
                 color: #373D3F;
+            }
+
+        }
+    }
+}
+
+//leaderboards
+.lboard-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // border: red 1px solid;
+
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        // border: blue 1px solid;
+
+        .lboard-title {
+            color: #2B4521;
+            font-size: 50px;
+        }
+
+        .graphic-holder {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+
+            .lboard-graphic {
+                text-align: center;
+                color: #FA9E46;
+            }
+        }
+    }
+
+    .lboard-container {
+        display: flex;
+        flex-direction: column;
+        // border: blue 1px solid;
+        margin-top: 2%;
+        background-color: #C1C7C9;
+        padding-left: 3%;
+        padding-right: 3%;
+        border-radius: 50px;
+
+        .label-content {
+            display: flex;
+            flex-direction: row;
+            // justify-content: space-around;
+            // align-items: center;
+            padding: 2%;
+            // border: green 1px solid;
+            // border-bottom: #373D3F 2px solid;
+            border-bottom-width: 4px;
+            border-bottom-style: solid;
+            border-image: linear-gradient(to right, #C1C7C9, #373D3F, #C1C7C9) 1;
+
+            .lboard-label {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 20px;
+                font-weight: 1000;
+                margin: 0;
+                padding: 0;
+                color: #373D3F;
+            }
+
+            .lbrank {
+                width: 20%;
+            }
+
+            .lbusername {
+                width: 40%;
+
+            }
+
+            .lbtitle {
+                width: 20%;
+
+            }
+
+            .lbpoints {
+                width: 20%;
+
+            }
+        }
+
+        .lboard-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            // align-items: center;
+            padding: 2%;
+            // border: green 1px solid;
+            // border-top-width: #373D3F 2px solid;
+            border-top-width: 4px;
+            border-top-style: solid;
+            border-image: linear-gradient(to right, #C1C7C9, #373D3F, #C1C7C9) 1;
+
+            .lboard-rank,
+            .lboard-username,
+            .lboard-title,
+            .lboard-points {
+                // border: #B71103 1px solid;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 20px;
+                font-weight: 500;
+                margin: 0;
+                padding: 0;
+                color: #373D3F;
+            }
+
+            .lboard-rank {
+                width: 20%;
+                font-weight: 900;
+
+            }
+
+            .lboard-username {
+                width: 40%;
+                font-size: 30px;
+
+            }
+
+            .lboard-title {
+                width: 20%;
+
+            }
+
+            .lboard-points {
+                width: 20%;
+
             }
 
         }
