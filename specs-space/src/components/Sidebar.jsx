@@ -1,7 +1,7 @@
 import React from 'react'
 import SideProfile from './SideProfile'
 import { NavLink } from 'react-router-dom';
-import { FaClipboardList, FaTrophy, FaChartBar } from 'react-icons/fa'
+import { FaClipboardList, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 import './compstyle.scss'
 
@@ -25,7 +25,7 @@ const SidebarData = [
   {
     title: "Announcements",
     path: "/announcements",
-    icon: <FaChartBar size={20} />,
+    icon: <FaRegFlag size={20} />,
   },
 ]
 
