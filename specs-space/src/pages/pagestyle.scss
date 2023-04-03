@@ -19,8 +19,9 @@
     .right-side {
         display: flex;
         // border: blue 1px solid;
-        background-color: #D7DCEA;
-        // background-color: white;
+        // background-color: #D7DCEA;
+        background-color: white;
+        // background-image: linear-gradient(to bottom right, #D7DCEA, #373D3F);
         width: 90%;
         padding: 2%;
         overflow-y: auto;
@@ -55,12 +56,12 @@
             height: 50%;
             width: 100%;
             // border: blue 1px solid;
-            // border-radius: 50px;
-            // background-color: #C1C7C9;
-            background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
-            border-width: 10px;
-            border-style: solid;
-            border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
+            border-radius: 50px;
+            background-color: #D7DCEA;
+            // background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
+            // border-width: 10px;
+            // border-style: solid;
+            // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
 
             .label {
                 display: flex;
@@ -134,13 +135,19 @@
                 }
             }
 
-            .icon {
-                // border: blue 1px solid;
+            .dp {
+                border: #FA8125 10px solid;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 40%;
-                color: #373D3F;
+                margin: 5%;
+                border-radius: 50%;
+                overflow: hidden;
+
+                .dp-img {
+                    max-width: 100%;
+                }
             }
         }
 
@@ -150,14 +157,14 @@
             justify-content: space-around;
             align-items: center;
             // border: blue 1px solid;
-            // border-radius: 50px;
-            // background-color: #C1C7C9;
-            background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
+            border-radius: 50px;
+            background-color: #D7DCEA;
+            // background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
             height: 40%;
             width: 100%;
-            border-width: 10px;
-            border-style: solid;
-            border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
+            // border-width: 10px;
+            // border-style: solid;
+            // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
 
             .badge-dsply {
                 height: 80%;
@@ -179,7 +186,7 @@
         width: 100%;
         border-bottom-width: 4px;
         border-bottom-style: solid;
-        border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+        border-image: linear-gradient(to right, #2B4521, white) 1;
 
     }
 
@@ -188,17 +195,19 @@
 
         .task-content {
             // border: solid #774D29;
-            // background-color: #FA9E46;
-            background-image: linear-gradient(to top left, #fac696, #FA9E46);
-            border-width: 4px;
-            border-style: solid;
-            border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
+            background-color: #FA9E46;
+            // background-image: linear-gradient(to top left, #fac696, #FA9E46);
+            // border-width: 4px;
+            // border-style: solid;
+            // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
             margin: 10px;
             // padding-left: 20px;
             // padding-right: 20px;
             padding: 20px;
             display: flex;
             flex-direction: row;
+            border-radius: 50px;
+            margin-bottom: 35px;
 
             .task-holder {
                 display: flex;
@@ -283,7 +292,7 @@
         width: 100%;
         border-bottom-width: 4px;
         border-bottom-style: solid;
-        border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+        border-image: linear-gradient(to right, #2B4521, white) 1;
 
 
     }
@@ -295,11 +304,12 @@
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
-        // background-color: #C1C7C9;
-        background-image: linear-gradient(to left, #FA9E46, #fac696, #FA9E46);
-        border-width: 10px;
-        border-style: solid;
-        border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
+        border-radius: 50px;
+        background-color: #D7DCEA;
+        // background-image: linear-gradient(to left, #FA9E46, #fac696, #FA9E46);
+        // border-width: 10px;
+        // border-style: solid;
+        // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
         // border-radius: 50px;
 
         .card {
@@ -367,7 +377,7 @@
         flex-direction: column;
         // border: blue 1px solid;
         margin-top: 2%;
-        background-color: #C1C7C9;
+        background-color: #D7DCEA;
         padding-left: 3%;
         padding-right: 3%;
         border-radius: 50px;
@@ -476,7 +486,7 @@
         width: 100%;
         border-bottom-width: 4px;
         border-bottom-style: solid;
-        border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+        border-image: linear-gradient(to right, #2B4521, white) 1;
 
     }
 
@@ -493,25 +503,27 @@
             height: auto;
             width: 40%;
             padding: 2%;
-            background-color: #373D3F;
+            background-color: #D7DCEA;
             margin-bottom: 3%;
+            border-radius: 50px;
 
             .announce-img {
                 max-width: 100%;
+                border-radius: 30px;
             }
 
             .announce-title {
                 font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
                 font-size: 30px;
                 font-weight: 800;
-                color: #D7DCEA;
+                color: #373D3F;
             }
 
             .announce-desc {
                 font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
                 font-size: 20px;
                 font-weight: 800;
-                color: #D7DCEA;
+                color: #373D3F;
             }
         }
     }

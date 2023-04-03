@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar'
 import { CgProfile } from 'react-icons/cg';
 import badge from '../data/badge-placeholder.png'
 import avatar from '../data/avatar-placeholder.png'
+import dp from '../data/dp.jpg'
 
 export default function Profile() {
   return (
@@ -46,7 +47,7 @@ export default function Profile() {
                   </div>
                 </div>
                 
-                <div className='icon'><CgProfile size={300} /></div>
+                <div className='dp'><img src={dp} className="dp-img" /></div>
               </div>
 
               <div className='profile-badges'>

@@ -31,6 +31,21 @@
                 font-size: 100%;
                 font-weight: 800;
 
+                .icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 50%;
+                    border: #FA8125 5px solid;
+                    overflow: hidden;
+
+                    .icon-img {
+                        max-width: 100%;
+                    }
+                }
+
                 .label {
                     display: flex;
                     flex-direction: column;
