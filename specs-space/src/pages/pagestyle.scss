@@ -53,10 +53,14 @@
             display: flex;
             flex-direction: row;
             height: 50%;
+            width: 100%;
             // border: blue 1px solid;
-            border-radius: 50px;
+            // border-radius: 50px;
             // background-color: #C1C7C9;
-            background-image: linear-gradient(to left, #D7DCEA, #FA9E46);
+            background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
+            border-width: 10px;
+            border-style: solid;
+            border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
 
             .label {
                 display: flex;
@@ -146,11 +150,14 @@
             justify-content: space-around;
             align-items: center;
             // border: blue 1px solid;
-            border-radius: 50px;
+            // border-radius: 50px;
             // background-color: #C1C7C9;
-            background-image: linear-gradient(to left, #D7DCEA, #FA9E46);
+            background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
             height: 40%;
             width: 100%;
+            border-width: 10px;
+            border-style: solid;
+            border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
 
             .badge-dsply {
                 height: 80%;
@@ -169,6 +176,11 @@
     .quest-title {
         color: #2B4521;
         font-size: 50px;
+        width: 100%;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+
     }
 
     .task-list {
@@ -177,9 +189,10 @@
         .task-content {
             // border: solid #774D29;
             // background-color: #FA9E46;
-            background-image: linear-gradient(to right, #FA9E46, #FA8125, #FA9E46);
-            border-width: 6px;
-            border-radius: 25px;
+            background-image: linear-gradient(to top left, #fac696, #FA9E46);
+            border-width: 4px;
+            border-style: solid;
+            border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
             margin: 10px;
             // padding-left: 20px;
             // padding-right: 20px;
@@ -267,6 +280,11 @@
     .achievement-title {
         color: #2B4521;
         font-size: 50px;
+        width: 100%;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+
 
     }
 
@@ -278,8 +296,11 @@
         justify-content: space-around;
         flex-wrap: wrap;
         // background-color: #C1C7C9;
-        background-image: linear-gradient(#373D3F, #C1C7C9, #C1C7C9, #373D3F);
-        border-radius: 50px;
+        background-image: linear-gradient(to left, #FA9E46, #fac696, #FA9E46);
+        border-width: 10px;
+        border-style: solid;
+        border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
+        // border-radius: 50px;
 
         .card {
             display: flex;
@@ -321,6 +342,11 @@
         .lboard-title {
             color: #2B4521;
             font-size: 50px;
+            width: 100%;
+            border-bottom-width: 4px;
+            border-bottom-style: solid;
+            border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+
         }
 
         .graphic-holder {
@@ -434,6 +460,59 @@
 
             }
 
+        }
+    }
+}
+
+//Announcements
+.announcement-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .announcement-title {
+        color: #2B4521;
+        font-size: 50px;
+        width: 100%;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        border-image: linear-gradient(to right, #2B4521, #D7DCEA) 1;
+
+    }
+
+    .announce-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .announce-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            width: 40%;
+            padding: 2%;
+            background-color: #373D3F;
+            margin-bottom: 3%;
+
+            .announce-img {
+                max-width: 100%;
+            }
+
+            .announce-title {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 30px;
+                font-weight: 800;
+                color: #D7DCEA;
+            }
+
+            .announce-desc {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 20px;
+                font-weight: 800;
+                color: #D7DCEA;
+            }
         }
     }
 }

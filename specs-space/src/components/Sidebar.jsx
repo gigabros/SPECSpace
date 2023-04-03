@@ -1,7 +1,7 @@
 import React from 'react'
 import SideProfile from './SideProfile'
 import { NavLink } from 'react-router-dom';
-import { FaClipboardList, FaTrophy, FaChartBar} from 'react-icons/fa'
+import { FaClipboardList, FaTrophy, FaChartBar } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 import './compstyle.scss'
 
@@ -22,6 +22,11 @@ const SidebarData = [
     path: "/leaderboards",
     icon: <FaChartBar size={20} />,
   },
+  {
+    title: "Announcements",
+    path: "/announcements",
+    icon: <FaChartBar size={20} />,
+  },
 ]
 
 const Sidebar = () => {
@@ -31,7 +36,7 @@ const Sidebar = () => {
         <div className="profilesidebar-container">
           <SideProfile />
         </div>
-        
+
         <section>
           <div className="sidebar-content">
             {SidebarData.map((item, index) => {
@@ -54,7 +59,7 @@ const Sidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-          <MdLogout size={30} className='logout-btn'/>
+          <MdLogout size={30} className='logout-btn' />
         </div>
       </div>
 
