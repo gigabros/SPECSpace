@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
 import img from '../data/img1.jpg'
-const carddata = [
+const announcedata = [
 
     {
       img: img,
@@ -36,7 +36,7 @@ export default function Announcements() {
           <div className='announcement-page'>
             <h1 className='announcement-title'>Announcements</h1>
             <div className="announce-container">
-              {carddata.map((value, index) => {
+              {announcedata.map((value, index) => {
                 return (
                   <div className="announce-card" key={index}>
                     <div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './pagestyle.scss';
-import Sidebar from '../components/Sidebar'
 import { GiTrophy } from 'react-icons/gi'
+import AdSidebar from '../components/AdSidebar';
 
 const lboarddata = [
   {
@@ -69,12 +69,12 @@ const lboarddata = [
   },
 ]
 
-export default function Leaderboards() {
+export default function AdLeaderboards() {
   return (
     <>
       <div className="page-container">
         <div className="left-side">
-          <Sidebar />
+          <AdSidebar />
         </div>
 
         <div className="right-side">
