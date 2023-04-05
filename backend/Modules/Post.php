@@ -148,7 +148,26 @@ class Post{
         }
     }
     public function submit_activity($data){
-        
+        try{
+            $date = date("Y-m-d");
+            $activity = $this->get->select_activity($data->id);
+            if($activity['payload']['data']['0']['deadline'] >= $date){
+                $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `attachment`) VALUES 
+                (?,?,?)";
+                $stmt= $this->pdo->prepare($sql);
+                $stmt->execute([$activity['payload']['data'][0]['id'],$data->stud_num,$data->attachement]);
+                return $this->gm->response_payload(null,"Success","Activity Submitted",200); 
+            }
+            else{
+                return $this->gm->response_payload(null,"Fail","Deadline Overdue",200);
+            }
+            // $activity_data = $activity['payload']['data'][0]['id'];
+            // return $activity_data;
+
+        }
+        catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Fail Submission",200);
+        }
     }
 
 }

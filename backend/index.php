@@ -50,6 +50,10 @@
                 case 'activity':
                     echo json_encode($get->get_activity()); 
                 break;
+
+                case 'select_activity':
+                    echo json_encode($get->select_activity($req[1])); 
+                break;
                 
                 case "date":
                     echo date("h:i a/ d-m-Y");
@@ -77,7 +81,7 @@
                 break;
 
                 case "submit":
-                    
+                    echo json_encode($post->submit_activity($data));
                 break;
 
             }

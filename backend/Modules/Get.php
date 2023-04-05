@@ -72,4 +72,22 @@ class Get{
             return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
         }
     }
+
+    public function select_activity($id){
+        try{
+            $sql = "SELECT * FROM activity where id='$id'";
+            $result = $this->gm->exec_query($sql);
+
+            if($result['code']==200){
+                return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
+            }
+            else{
+                return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
+            }
+        }
+        catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
+
+    }
 }
