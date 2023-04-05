@@ -1,16 +1,17 @@
 import React from 'react'
 import SideProfile from './SideProfile'
 import { NavLink } from 'react-router-dom';
-import { FaClipboardList, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
+import { FaTasks, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
+import { BsMegaphoneFill } from 'react-icons/bs'
 import { MdLogout } from 'react-icons/md'
 import './compstyle.scss'
 
 const SidebarData = [
 
   {
-    title: "Quest",
+    title: "Activity",
     path: "/guild",
-    icon: <FaClipboardList size={20} />,
+    icon: <FaTasks size={20} />,
   },
   {
     title: "Achievements",
@@ -25,7 +26,7 @@ const SidebarData = [
   {
     title: "Announcements",
     path: "/announcements",
-    icon: <FaRegFlag size={20} />,
+    icon: <BsMegaphoneFill size={20} />,
   },
 ]
 

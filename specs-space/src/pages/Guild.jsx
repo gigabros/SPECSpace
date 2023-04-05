@@ -134,7 +134,7 @@ export default function Guild() {
         <div className="right-side">
 
           <div className='quest-page'>
-            <h1 className='quest-title'>CSS Quest</h1>
+            <h1 className='quest-title'>Activities</h1>
 
             <div className="quest-page-container">
               <div className="task-list">
@@ -146,33 +146,33 @@ export default function Guild() {
                         <>
                           <div className="task-card-holder">
                             <div className="task-card" key={task.questID}>
-                              <input type="checkbox" id={task.questID} className='hide' />
+                              {/* <input type="checkbox" id={task.questID} className='hide' /> */}
 
                               <div className="task-header">
                                 <p className='task-title'>{task.title} </p>
                                 <div className="task-container">
                                   <div className="task-des-holder">
-                                    <p className='task-des'>+{task.exp} exp</p>
-                                    <p className='task-des'>+{task.pts} points</p>
+                                    <p className='task-des'>+{task.exp} EXP</p>
+                                    <p className='task-des'>+{task.pts} PTS</p>
                                     <p className='task-des'>{task.deadline}</p>
 
                                   </div>
-                                  <div className="task-exp">
+                                  {/* <div className="task-btn-drpdwn">
                                     <label htmlFor={task.questID} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
-                                  </div>
+                                  </div> */}
                                 </div>
 
                               </div>
 
-                              <div className="task-info">
+                              {/* <div className="task-info">
                                 <p className='task-des'>{task.description}</p>
-                              </div>
+                              </div> */}
 
 
                             </div>
 
                             <div className="task-btn">
-
+                              <button className='entr-btn'>Enter</button>
                             </div>
 
                           </div>

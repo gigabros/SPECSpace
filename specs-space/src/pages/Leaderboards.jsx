@@ -1,7 +1,6 @@
 import React from 'react'
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
-import { GiTrophy } from 'react-icons/gi'
 
 const lboarddata = [
   {
@@ -16,56 +15,56 @@ const lboarddata = [
     top: "two",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 8000,
   },
   {
     rank: "3",
     top: "three",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 6000,
   },
   {
     rank: "4",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 2000,
   },
   {
     rank: "5",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 1000,
   },
   {
     rank: "6",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 900,
   },
   {
     rank: "7",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 500,
   },
   {
     rank: "8",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 100,
   },
   {
     rank: "9",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 60,
   },
   {
     rank: "10",
     username: "John Wick",
     title: "Challenger",
-    points: 9000,
+    points: 10,
   },
 ]
 
@@ -83,32 +82,36 @@ export default function Leaderboards() {
 
             <div className="logo-container">
               <h1 className='lboard-title'>Leaderboards</h1>
-              <div className="graphic-holder">
-                <GiTrophy size={100} className='lboard-graphic' />
-                <GiTrophy size={150} className='lboard-graphic' />
-                <GiTrophy size={100} className='lboard-graphic' />
-              </div>
             </div>
 
             <div className="lboard-container">
-              <div className="label-content">
-                <p className='lboard-label lbrank'>Rank</p>
-                <p className='lboard-label lbusername'>Username</p>
-                <p className='lboard-label lbtitle'>Title</p>
-                <p className='lboard-label lbpoints'>Points</p>
-              </div>
-              {lboarddata.map((item, index) => {
-                return (
-                  <div className="lboard-content" key={index} id={item.top}>
-                    <p className='lboard-rank'>{item.rank} </p>
-                    <p className='lboard-username'>{item.username}</p>
-                    <p className='lboard-title'>{item.title}</p>
-                    <p className='lboard-points'>{item.points}</p>
-                  </div>
-                )
-              })}
-            </div>
 
+              <div className="lboard-content-holder">
+                <h1 className="lboard-title">Ranking by Points</h1>
+                {lboarddata.map((item, index) => {
+                  return (
+                    <div className="lboard-content" key={index} id={item.top}>
+                      <p className='lboard-rank'>Rank {item.rank} </p>
+                      <p className='lboard-username'>{item.username}</p>
+                      <p className='lboard-points'>{item.points} pts</p>
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="lboard-content-holder">
+                <h1 className="lboard-title">Ranking by Level</h1>
+                {lboarddata.map((item, index) => {
+                  return (
+                    <div className="lboard-content" key={index} id={item.top}>
+                      <p className='lboard-rank'>Rank {item.rank} </p>
+                      <p className='lboard-username'>{item.username}</p>
+                      <p className='lboard-points'>level {item.points}</p>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
