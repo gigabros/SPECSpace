@@ -147,4 +147,10 @@ class Post{
             return $this->gm->response_payload($e,"fail","Posting Failed",409);
         }
     }
+    public function submit_activity($data){
+        
+    }
+
 }
+
+    

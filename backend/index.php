@@ -76,6 +76,10 @@
                     echo json_encode($post->login($data));
                 break;
 
+                case "submit":
+                    
+                break;
+
             }
         
         break;
