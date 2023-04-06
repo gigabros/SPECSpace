@@ -30,146 +30,215 @@
 }
 
 //profile
-.profile-container {
-    // border: red 1px solid;
+.profile-page {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
 
-    .avatar-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40%;
 
+    .profile-header {
+        // border: red 1px solid;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        height: min-content;
+        border-bottom-right-radius: 500px;
+        border-top-right-radius: 500px;
+        border-left: #FA8125 50px solid;
+        background-color: #D7DCEA;
+        padding: 2%;
+        width: 70%;
+        margin-bottom: 2%;
+        box-shadow: 0px 10px 20px 5px #888888;
+
+        .prof-header-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+            padding: 0 5%;
+
+            // border: blue 1px solid;
+
+            .prof-name {
+                color: #373D3F;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 5rem;
+                border-bottom: #373D3F 5px double;
+                padding: 2% 0;
+                margin: 0;
+                text-align: end;
+            }
+
+            .prof-lvl {
+                color: #373D3F;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 2rem;
+                font-style: italic;
+                padding-top: 2%;
+                margin: 0;
+                text-align: end;
+            }
+
+            .prof-pts {
+                color: #373D3F;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 2rem;
+                font-style: italic;
+                margin: 0;
+                text-align: end;
+            }
+        }
+
+        .prof-dp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 250px;
+            // height: 10rem;
+            border: #FA8125 10px solid;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0px 10px 20px 5px #888888;
+
+            .prof-dp-img {
+                max-width: 100%;
+            }
+        }
     }
 
-    .profile-details-container {
+    .profile-details {
+        // border: red 1px solid;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 60%;
+        flex-direction: row;
+        height: min-content;
 
-        .profile-info {
+        .stats-badge-container {
             display: flex;
-            flex-direction: row;
-            height: 50%;
-            width: 100%;
+            flex-direction: column;
+            width: 40%;
             // border: blue 1px solid;
-            border-radius: 50px;
-            background-color: #D7DCEA;
-            // background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
-            // border-width: 10px;
-            // border-style: solid;
-            // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
 
-            .label {
+            .stats-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 100%;
+                background-color: #D7DCEA;
+                padding: 2% 0;
+                border-bottom-right-radius: 15px;
+                border-top-right-radius: 15px;
+                border-left: #FA8125 50px solid;
+                margin: 2% 0;
+                box-shadow: 0px 10px 20px 5px #888888;
+
+                .stats-holder {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .stats-title {
+                        color: #373D3F;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 1.5rem;
+                        font-style: italic;
+                        margin: 0;
+                        border-bottom: #373D3F 2px solid;
+                        padding-bottom: 5%;
+
+                    }
+
+                    .stats-cnt {
+                        color: #373D3F;
+                        font-family: 'Times New Roman', Times, serif;
+                        font-size: 3rem;
+                        // font-style: italic;
+                        margin: 0;
+                        padding-top: 5%;
+
+                    }
+                }
+
+            }
+
+            .profile-badges {
                 display: flex;
                 flex-direction: column;
-                width: 60%;
-                padding: 5%;
+                // border: blue 1px solid;
+                // height: 50%;
+                width: 100%;
 
-                .prof-holder {
-                    margin-bottom: 5%;
-
-                    .prof-title {
-                        margin: 0;
-                        padding: 0;
-                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                        font-size: 20px;
-                        font-style: italic;
-                        color: #373D3F;
-                    }
-
-                    .prof-info {
-                        margin: 0;
-                        padding: 0;
-                        padding-left: 10%;
-                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                        font-size: 50px;
-                        font-weight: 700;
-                        color: #373D3F;
-                    }
-
-                    .prof-lvl {
-                        margin: 0;
-                        padding: 0;
-                        padding-left: 10%;
-                        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                        font-size: 30px;
-                        font-weight: 700;
-                        color: #373D3F;
-                    }
-                }
-
-                .stats-content {
+                .badge-container {
                     display: flex;
-                    justify-content: space-around;
-                    width: 70%;
+                    flex-direction: row-reverse;
+                    justify-content: flex-start;
+                    // border: green 1px solid;
+                    // height: 20%;
+                    // width: 90%;
+                    padding: 2%;
+                    margin: 2% 0;
+                    border-bottom-right-radius: 15px;
+                    border-top-right-radius: 15px;
+                    border-left: #02854F 50px solid;
+                    background-color: #D7DCEA;
+                    box-shadow: 0px 10px 20px 5px #888888;
 
-                    .stats-holder {
+                    .badge-img-holder {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 30%;
+                        margin: 0 2%;
+
+                        .badge-img {
+                            width: 100%;
+                        }
+                    }
+
+                    .badge-label {
                         display: flex;
                         flex-direction: column;
-                        align-items: center;
-                        // border: 2px solid #774D29;
+                        justify-content: center;
+                        margin: 0 2%;
 
-                        .stats-title {
-                            font-style: italic;
-                            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                            font-size: 20px;
-                            font-weight: 500;
-                            margin: 0;
-                            padding: 0;
+                        .badge-title {
                             color: #373D3F;
+                            font-family: 'Times New Roman', Times, serif;
+                            font-size: 2rem;
+                            // font-style: italic;
+                            margin: 0;
+                            border-bottom: #373D3F 2px solid;
+                            padding-bottom: 5%;
+                            font-weight: bold;
+                            text-align: end;
+
                         }
 
-                        .stats-cnt {
-                            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                            font-size: 80px;
-                            font-weight: 1000;
-                            margin: 0;
-                            padding: 0;
+                        .badge-cond {
                             color: #373D3F;
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-size: 1.5rem;
+                            font-style: italic;
+                            margin: 0;
+                            // border-bottom: #373D3F 2px solid;
+                            padding-top: 5%;
+                            text-align: end;
+
                         }
                     }
                 }
             }
-
-            .dp {
-                border: #FA8125 10px solid;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 40%;
-                margin: 5%;
-                border-radius: 50%;
-                overflow: hidden;
-
-                .dp-img {
-                    max-width: 100%;
-                }
-            }
         }
 
-        .profile-badges {
+        .avatar-container {
+            // border: red 1px solid;
             display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            // border: blue 1px solid;
-            border-radius: 50px;
-            background-color: #D7DCEA;
-            // background-image: linear-gradient(to top left, #D7DCEA, #FA9E46);
-            height: 40%;
-            width: 100%;
-            // border-width: 10px;
-            // border-style: solid;
-            // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
-
-            .badge-dsply {
-                height: 80%;
-            }
+            justify-content: flex-end;
+            width: 50%;
         }
+
     }
 }
 
@@ -440,42 +509,69 @@
 
     }
 
-    .card-holder {
-        // border: red 1px solid;
-        padding: 50px;
-        margin: 0;
+    .awrd-card-holder {
         display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        border-radius: 50px;
-        background-color: #D7DCEA;
-        // background-image: linear-gradient(to left, #FA9E46, #fac696, #FA9E46);
-        // border-width: 10px;
-        // border-style: solid;
-        // border-image: linear-gradient(to right, #FA8125, #fac696, #FA8125) 1;
-        // border-radius: 50px;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        // border: red 1px solid;
 
-        .card {
+        .awrd-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: auto;
-            width: 20%;
-            padding: 10px;
-            margin: 0;
+            flex-direction: row;
+            background-color: #D7DCEA;
+            margin: 2% 0;
+            padding: 2% 5%;
+            width: 60%;
+            border-bottom-left-radius: 50px;
+            border-top-left-radius: 50px;
+            border-right: #02854F 50px solid;
+            box-shadow: 0px 10px 20px 5px #888888;
 
-            .card-img {
-                max-width: 100%;
 
+            .awrd-img-holder {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 30%;
+                // border: blue 1px solid;
+
+                .awrd-img {
+                    max-width: 100%;
+                    filter: drop-shadow(0px 10px 5px #888888);
+                    -webkit-filter: drop-shadow(0px 10px 5px  #888888);
+                }
             }
 
-            .card-title {
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                font-size: 25px;
-                font-weight: 800;
-                color: #373D3F;
-            }
+            .awrd-label {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 2%;
 
+                .awrd-title {
+                    color: #373D3F;
+                    font-family: 'Times New Roman', Times, serif;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: 3rem;
+                    padding-bottom: 5%;
+                    margin: 0;
+                    border-bottom: #373D3F 2px solid;
+                }
+
+                .awrd-cond {
+                    color: #373D3F;
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-transform: capitalize;
+                    // font-weight: bold;
+                    font-style: italic;
+                    font-size: 2rem;
+                    padding-top: 5%;
+                    margin: 2% 0;
+                    border-top: #373D3F 2px solid;
+                }
+            }
         }
     }
 }
@@ -545,7 +641,7 @@
                 justify-content: space-between;
                 // align-items: center;
                 padding: 2% 0;
-                margin-bottom: 5%;
+                margin-bottom: 3%;
                 width: 95%;
                 background-color: #D7DCEA;
                 // border-bottom: #373D3F 1px solid;
@@ -570,14 +666,21 @@
                 .lboard-level,
                 .lboard-points {
                     // border: #B71103 1px solid;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 25px;
+                    font-family: 'Times New Roman', Times, serif;
+                    font-size: 1.5rem;
                     font-weight: 500;
                     margin: 0;
                     padding: 0;
                     color: #373D3F;
                     text-align: center;
                     width: 50%;
+                }
+
+                .lboard-username {
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-family: Arial, Helvetica, sans-serif;
                 }
 
                 .lboard-rank {
