@@ -1,15 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { FaClipboardList, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
-import { MdLogout } from 'react-icons/md'
+import { FaTasks, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
+import { MdLogout, MdVerified } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg';
+import { RiFlag2Fill } from 'react-icons/ri'
 
 const SidebarData = [
 
   {
-    title: "Quest",
+    title: "Announcements",
+    path: "/Adannouncements",
+    icon: <RiFlag2Fill size={20} />,
+  },
+  {
+    title: "Activity",
     path: "/Adquest",
-    icon: <FaClipboardList size={20} />,
+    icon: <FaTasks size={20} />,
   },
   {
     title: "Accounts",
@@ -17,14 +23,14 @@ const SidebarData = [
     icon: <CgProfile size={20} />,
   },
   {
+    title: "Requests",
+    path: "/Requests",
+    icon: <MdVerified size={20} />,
+  },
+  {
     title: "Leaderboards",
     path: "/Adleaderboards",
     icon: <FaChartBar size={20} />,
-  },
-  {
-    title: "Announcements",
-    path: "/Adannouncements",
-    icon: <FaRegFlag size={20} />,
   },
 ]
 const AdSidebar = () => {

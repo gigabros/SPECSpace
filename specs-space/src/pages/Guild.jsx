@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
 import { GiTrashCan } from "react-icons/gi";
@@ -146,8 +147,6 @@ export default function Guild() {
                         <>
                           <div className="task-card-holder">
                             <div className="task-card" key={task.questID}>
-                              {/* <input type="checkbox" id={task.questID} className='hide' /> */}
-
                               <div className="task-header">
                                 <p className='task-title'>{task.title} </p>
                                 <div className="task-container">
@@ -155,24 +154,15 @@ export default function Guild() {
                                     <p className='task-des'>+{task.exp} EXP</p>
                                     <p className='task-des'>+{task.pts} PTS</p>
                                     <p className='task-des'>{task.deadline}</p>
-
                                   </div>
-                                  {/* <div className="task-btn-drpdwn">
-                                    <label htmlFor={task.questID} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
-                                  </div> */}
                                 </div>
-
                               </div>
-
-                              {/* <div className="task-info">
-                                <p className='task-des'>{task.description}</p>
-                              </div> */}
-
-
                             </div>
 
                             <div className="task-btn">
-                              <button className='entr-btn'>Enter</button>
+                              <Link to="/ViewActivity" className='link-btn'>
+                                <button className='entr-btn'>Enter</button>
+                              </Link>
                             </div>
 
                           </div>
@@ -190,8 +180,8 @@ export default function Guild() {
                 {submittedact.map((task, index) => {
                   return (
                     <div className="sub-holder" key={index}>
-                        <p className="sub-title">{task.title}</p>
-                        <p className="sub-file">{task.file}</p>
+                      <p className="sub-title">{task.title}</p>
+                      <p className="sub-file">{task.file}</p>
                     </div>
                   )
                 })}

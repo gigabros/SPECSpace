@@ -66,12 +66,6 @@ const lboarddata = [
     lvl: 10,
     points: 10,
   },
-  {
-    rank: "10",
-    username: "John Wick",
-    lvl: 10,
-    points: 10,
-  },
 
 ]
 
@@ -106,7 +100,6 @@ export default function Leaderboards() {
                 {lboarddata.map((item, index) => {
                   return (
                     <div className="lboard-content" key={index} id={item.top}>
-                      
                       <p className='lboard-rank'>RANK {index+1}</p>
                       <p className='lboard-username'>{item.username}</p>
                       <p className='lboard-points'>{item.points} pts</p>

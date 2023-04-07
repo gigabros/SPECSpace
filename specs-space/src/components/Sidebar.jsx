@@ -9,8 +9,13 @@ import './compstyle.scss'
 const SidebarData = [
 
   {
+    title: "Announcements",
+    path: "/announcements",
+    icon: <BsMegaphoneFill size={20} />,
+  },
+  {
     title: "Activity",
-    path: "/guild",
+    path: "/activity",
     icon: <FaTasks size={20} />,
   },
   {
@@ -22,11 +27,6 @@ const SidebarData = [
     title: "Leaderboards",
     path: "/leaderboards",
     icon: <FaChartBar size={20} />,
-  },
-  {
-    title: "Announcements",
-    path: "/announcements",
-    icon: <BsMegaphoneFill size={20} />,
   },
 ]
 
