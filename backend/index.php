@@ -84,6 +84,10 @@
                     echo json_encode($post->submit_activity($data));
                 break;
 
+                case "verify":
+                    echo json_encode($post->verify_account($data));
+                break;
+
             }
         
         break;

@@ -11,8 +11,20 @@ class Post{
 
     }
     
-    public function user_exists($data){
+    public function user_exists_account($data){
         $sql="SELECT * FROM accounts WHERE id=?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$data]);
+
+        if($stmt->rowCount()>0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    public function user_exists_unverified($data){
+        $sql="SELECT * FROM unverified WHERE id=?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$data]);
 
@@ -60,9 +72,9 @@ class Post{
 
     public function add_account($data){
         try{
-            $sql = "INSERT INTO accounts (id,email,password,role) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO unverified (id,email,password,role) VALUES (?,?,?,?)";
 
-            if($this->user_exists($data->id)){
+            if($this->user_exists_account($data->id) && $this->user_exists_unverified($data->id)){
                 if(strlen($data->password) >= 6 && $data->password == $data->conpass){
                     try{
                         
@@ -86,6 +98,35 @@ class Post{
         }
         catch(\PDOException $e){
             return $this->gm->response_payload($e,"Fail","Something went wrong",200);
+        }
+    }
+
+    public function delete_unverified($id){
+        try{
+            $delete = "DELETE FROM unverified where id=?";
+            $stmt_delete = $this->pdo->prepare($delete);
+            $stmt_delete->execute([$id]);
+            return true;
+        }catch(\PDOException){
+            return false;
+        }
+    }
+
+    public function verify_account($data){
+        try{
+            if($this->user_exists_unverified($data->id)){
+                return "Account does not exist";
+            }
+            else{
+                $sql = "INSERT INTO `accounts`(`id`, `email`, `password`, `role`) SELECT * FROM unverified where id=?";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([$data->id]);
+                $delete = $this->delete_unverified($data->id);    
+                return "Account succesfuly verified";    
+            }
+            
+        }catch(\PDOException $e){
+            return $e;
         }
     }
 
