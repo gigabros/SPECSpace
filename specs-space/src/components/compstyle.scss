@@ -53,7 +53,7 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            transition: all 0.2s ease;
+            transition: all 1s ease;
             // text-decoration: none;
 
             .link {
@@ -81,6 +81,10 @@
                 // color: #FA8125;
                 background-color: #5A6E3A;
             }
+        }
+        .active {
+            
+            background-color: #5A6E3A;
         }
     }
 
