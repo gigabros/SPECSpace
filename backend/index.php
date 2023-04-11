@@ -3,13 +3,15 @@
     require_once "./Modules/Global.php";
     require_once "./Modules/Get.php";
     require_once "./Modules/Post.php";
+    require_once "./Modules/Lvl.php";
+
 
     $db = new Connection;
     $pdo = $db->connect();
 
     $get = new Get($pdo);
     $post = new Post($pdo);
-
+    $add_lvl = new addlvl();
     $data = json_decode(file_get_contents("php://input"));
 
     if(isset($_REQUEST['request'])){
@@ -86,6 +88,13 @@
 
                 case "verify":
                     echo json_encode($post->verify_account($data));
+                break;
+
+                case "finish":
+                    echo json_encode($post->finish_activity($data));
+                break;
+                case "update_exp_lvl":
+                    echo json_encode($post->add_exp_points($req[1],$req[2],$req[3]));
                 break;
 
             }
