@@ -73,7 +73,7 @@ class Post{
 
     public function add_account($data){
         try{
-            $sql = "INSERT INTO unverified (id,email,password,role) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO unverified (name,id,email,password,role) VALUES (?,?,?,?,?)";
 
             if($this->user_exists_account($data->id) && $this->user_exists_unverified($data->id)){
                 if(strlen($data->password) >= 6 && $data->password == $data->conpass){
@@ -81,8 +81,7 @@ class Post{
                         
                         $stmt = $this->pdo->prepare($sql);
                         $enc_pass= $this->encrypt_password($data->password);
-                        $stmt->execute([$data->id,$data->email,$enc_pass,"Student"]);
-                        $this->add_profile($data->id,$data->name);
+                        $stmt->execute([$data->name,$data->id,$data->email,$enc_pass,"Student"]);
                         return $this->gm->response_payload($data,"Success","Account Successfuly made",200);
                     }
                     catch(\PDOException $e){
@@ -119,10 +118,11 @@ class Post{
                 return "Account does not exist";
             }
             else{
-                $sql = "INSERT INTO `accounts`(`id`, `email`, `password`, `role`) SELECT * FROM unverified where id=?";
+                $sql = "INSERT INTO `accounts`(`name`,`id`, `email`, `password`, `role`) SELECT * FROM unverified where id=?";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute([$data->id]);
-                $delete = $this->delete_unverified($data->id);    
+                $delete = $this->delete_unverified($data->id);
+                $this->add_profile($data->id,$data->name);    
                 return "Account succesfuly verified";    
             }
             
