@@ -44,11 +44,11 @@ function Register() {
             alert("Account sucessfully added");
             
         }else{
-          alert("Acasdfas");
+          alert("Incorrect input of credentials");
         }
     }
     ).catch(error => {
-        
+        alert("Server Error Please Try Again");
     });
 
   }
