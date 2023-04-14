@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useReducer,useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
 import { GiTrashCan } from "react-icons/gi";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { BsChevronExpand } from 'react-icons/bs'
-
+import axios from '../api/axios'
 
 const submittedact = [
   {
@@ -126,6 +126,19 @@ const quest = [
 
 export default function Guild() {
   // const [readMore, setReadMore] = useState(false);
+  const [activity,setActivity]=useState([]);
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+  const posted_activity=axios.get('/activity')
+    .then(res=>{
+      setActivity(res.data.payload.data);
+      forceUpdate()
+    })
+
+  const get_id = async (id)=>{
+    sessionStorage.setItem('act_id',id)
+  }
+
   return (
     <>
       <div className="page-container">
@@ -140,19 +153,19 @@ export default function Guild() {
             <div className="quest-page-container">
               <div className="task-list">
                 {
-                  quest != null
+                  activity != null
                     ?
-                    quest.map((task) => {
+                    activity.map((task) => {
                       return (
                         <>
                           <div className="task-card-holder">
-                            <div className="task-card" key={task.questID}>
+                            <div className="task-card" key={task.id}>
                               <div className="task-header">
-                                <p className='task-title'>{task.title} </p>
+                                <p className='task-title'>{task.subject} </p>
                                 <div className="task-container">
                                   <div className="task-des-holder">
                                     <p className='task-des'>+{task.exp} EXP</p>
-                                    <p className='task-des'>+{task.pts} PTS</p>
+                                    <p className='task-des'>+{task.points} PTS</p>
                                     <p className='task-des'>{task.deadline}</p>
                                   </div>
                                 </div>
@@ -161,7 +174,8 @@ export default function Guild() {
 
                             <div className="task-btn">
                               <Link to="/ViewActivity" className='link-btn'>
-                                <button className='entr-btn'>Enter</button>
+                                <button className='entr-btn'
+                                onClick={()=> get_id(task.id)}>Enter</button>
                               </Link>
                             </div>
 

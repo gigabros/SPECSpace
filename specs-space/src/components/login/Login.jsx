@@ -49,8 +49,6 @@ function Login() {
           )
           console.log(response['data']['stud_num'])
           sessionStorage.setItem('stud_num',response['data']['stud_num']);
-          sessionStorage.setItem('name',response['data']['name']);
-          sessionStorage.setItem('lvl',response['data']['lvl']);
           setSuccess(true);
     }
     catch(err){

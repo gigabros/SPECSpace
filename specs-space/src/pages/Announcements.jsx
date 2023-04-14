@@ -2,7 +2,8 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import img from '../data/img1.jpg'
 import { BsChevronExpand } from 'react-icons/bs'
-
+import axios from '../api/axios'
+import { useState,useReducer,useEffect } from 'react'
 const announcedata = [
 
   {
@@ -43,6 +44,28 @@ const announcedata = [
   },
 ]
 export default function Announcements() {
+  const [poster,setPoster]=useState([]);
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  
+  // useEffect(()=>{
+  //   posted_activity()
+    
+  
+  // },[])
+  // useEffect(()=>{
+  //   forceUpdate()
+  // },[])
+  
+  const posted_activity=axios.get('/get_posts')
+    .then(res=>{
+      setPoster(res.data.payload.data);
+      forceUpdate()
+    })
+  // useEffect(()=>{
+  //   console.log(poster)
+  // },[])
+    
+
   return (
     <>
       <div className="page-container">
@@ -54,23 +77,29 @@ export default function Announcements() {
           <div className='announcement-page'>
             <h1 className='announcement-title'>Announcements</h1>
             <div className="announce-container">
-              {announcedata.map((value, index) => {
+              {
+                poster !=null
+                ?
+                poster.map((task,index) => {
                 return (
-                  <div className="announce-card" key={index}>
-                    <input type="checkbox" id={value.id} className='hide' />
+                  <div className="announce-card" key={task.index}>
+                    <input type="checkbox" id={task.post_id} className='hide' />
                     <div className='announce-header'>
-                      <img src={value.img} className="announce-img" />
+                      <img src={task.post_id} className="announce-img" />
                       <div className="announce-title-holder">
-                        <p className="announce-title">{value.title}</p>
-                        <label htmlFor={value.id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
+                        <p className="announce-title">{task.title}</p>
+                        <label htmlFor={task.post_id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
                       </div>
                     </div>
                     <div className='announce-desc-container'>
-                      <p className="announce-desc">{value.desc}</p>
+                      <p className="announce-desc">{task.message}</p>
                     </div>
                   </div>
                 )
-              })}
+              })
+              :
+              <h1>No Quest!</h1>
+            }
             </div>
           </div>
         </div>

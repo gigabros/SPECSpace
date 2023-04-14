@@ -60,6 +60,9 @@
                 case "date":
                     echo date("h:i a/ d-m-Y");
                 break;
+                case "get_posts":
+                    echo json_encode(($get->get_posts()));
+                break;
             }
         
         break;

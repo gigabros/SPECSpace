@@ -3,6 +3,8 @@ import Sidebar from '../components/Sidebar'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { GoPlus } from 'react-icons/go'
 import { Link } from 'react-router-dom';
+import axios from '../api/axios';
+import { useState,useReducer } from 'react'
 
 export default function ViewActivity() {
 
@@ -15,6 +17,28 @@ export default function ViewActivity() {
         const fileUploaded = event.target.files[0];
         // props.handleFile(fileUploaded);
     };
+
+    const [id,setId]=useState()
+    const [subject,setSubject]=useState()
+    const [description,setDescription]=useState()
+    const [attachment,setAtteachment]=useState()
+    const [deadline,setDeadline]=useState()
+    const [points,setPoints]=useState()
+    const [exp,setExp]=useState()
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+    const get_activity = axios.get('/select_activity/'+sessionStorage.getItem('act_id'))
+    .then(res=>{
+        setId(res.data.payload.data[0].id)
+        setSubject(res.data.payload.data[0].subject)
+        setDescription(res.data.payload.data[0].description)
+        setDeadline(res.data.payload.data[0].deadline)
+        setPoints(res.data.payload.data[0].points)
+        setExp(res.data.payload.data[0].exp)
+        forceUpdate()
+        console.log(res.data.payload.data[0].description)
+
+    })
 
     return (
         <>
@@ -38,13 +62,13 @@ export default function ViewActivity() {
                                             <MdArrowBackIosNew size={30} className='bck-btn' />
                                         </Link>
                                     </div>
-
+                                    
                                     <div className="view-act-info">
-                                        <p className='task-title'>Do Homework</p>
-                                        <p className='task-info'>+100 EXP</p>
-                                        <p className='task-info'>+50 PTS</p>
-                                        <p className='task-info'>3/31/2023</p>
-                                        <p className='task-des'>   Ea velit quis ipsum cupidatat duis consectetur dolore commodo incididunt quis elit id ullamco excepteur. Voluptate do anim nostrud id reprehenderit irure. Quis aliqua incididunt aliquip ut amet labore velit laborum nisi esse dolor nulla. Commodo dolore pariatur tempor aliqua. Duis ullamco mollit ea commodo duis labore labore laboris do nisi. Excepteur cupidatat cupidatat cillum proident dolor dolor reprehenderit consectetur labore enim. Nostrud aliqua sunt ipsum commodo minim incididunt nulla ea duis non ullamco duis ex.</p>
+                                        <p className='task-title'>{subject}</p>
+                                        <p className='task-info'>{exp}</p>
+                                        <p className='task-info'>{points} PTS</p>
+                                        <p className='task-info'>{deadline}</p>
+                                        <p className='task-des'>{description}</p>
                                     </div>
 
                                     <form className="view-file-form">

@@ -5,8 +5,30 @@ import { CgProfile } from 'react-icons/cg';
 import badge from '../data/badge-placeholder.png'
 import avatar from '../data/avatar-placeholder.png'
 import dp from '../data/dp.jpg'
+import { useReducer,useEffect } from 'react';
+import axios from '../api/axios'
+
 
 export default function Profile() {
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  useEffect(()=>{
+    profdata()
+    
+  
+  },[])
+  useEffect(()=>{
+    forceUpdate()
+  },[])
+
+  const profdata =()=>{
+    axios.get('/profile/'+sessionStorage.getItem('stud_num'))
+    .then(res=>{
+      console.log(res.data)
+      sessionStorage.setItem('name',res.data.name)
+      sessionStorage.setItem('lvl',res.data.lvl)
+      sessionStorage.setItem('points',res.data.points)
+    })
+  }
   return (
     <>
       <div className="page-container">
@@ -19,9 +41,9 @@ export default function Profile() {
           <div className="profile-page">
             <div className="profile-header">
               <div className="prof-header-info">
-                <p className="prof-name">{sessionStorage.getItem('username')} ANYA FORGER</p>
-                <p className='prof-lvl'>LEVEL{sessionStorage.getItem('lvl')} 97</p>
-                <p className="prof-pts">{sessionStorage.getItem('pts')} 9000 POINTS</p>
+                <p className="prof-name">{sessionStorage.getItem('name')}</p>
+                <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}</p>
+                <p className="prof-pts">{sessionStorage.getItem('points')}</p>
               </div>
 
               <div className='prof-dp'>
@@ -83,3 +105,4 @@ export default function Profile() {
     </>
   )
 }
+
