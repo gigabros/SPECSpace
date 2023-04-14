@@ -1,23 +1,44 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UserMain from './components/UserMain';
+import { Routes, Route } from 'react-router-dom';
 import Login from './components/login/Login';
-import Register from './components/register/Register';
 
+import Profile from './pages/Profile';
+import Achievements from './pages/Achievements'
+import Guild from './pages/Guild';
+import ViewActivity from './pages/ViewActivity';
+import Leaderboards from './pages/Leaderboards';
+import Announcements from './pages/Announcements';
+
+import Adquest from './pages/Adquest.jsx';
+import Adaccounts from './pages/Adaccounts.jsx';
+import Submits from './pages/Submits';
+import Requests from './pages/Requests';
+import AdLeaderboards from './pages/AdLeaderboards';
+import Adannouncements from './pages/Adannouncements.jsx';
+
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
-        {/* <h1>App main</h1> */}
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/*" element={<UserMain />} />
-            <Route path="/Register" element={<Register/>} />
-          </Routes>
-        </Router>
+    <Routes >
+      <Route path='/' element={<Layout />}>
+        <Route path='/' element={<Login/>}/>
 
-    </div>
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Achievements" element={<Achievements />} />
+        <Route path="/Activity" element={<Guild />} />
+        <Route path="/ViewActivity" element={<ViewActivity />} />
+        <Route path="/Leaderboards" element={<Leaderboards />} />
+        <Route path="/Announcements" element={<Announcements />} />
+
+        <Route path="/Adquest" element={<Adquest />} />
+        <Route path="/Adaccounts" element={<Adaccounts />} />
+        <Route path="/Submits" element={<Submits />} />
+        <Route path="/Requests" element={<Requests />} />
+        <Route path="/Adleaderboards" element={<AdLeaderboards />} />
+        <Route path="/Adannouncements" element={<Adannouncements />} />
+      </Route>
+    </Routes>
   );
 }
 

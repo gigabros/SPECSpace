@@ -1,41 +1,45 @@
 import React from 'react'
-import SideProfile from './SideProfile'
 import { NavLink } from 'react-router-dom';
 import { FaTasks, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
-import { BsMegaphoneFill } from 'react-icons/bs'
-import { MdLogout } from 'react-icons/md'
-import './compstyle.scss'
+import { MdLogout, MdVerified } from 'react-icons/md'
+import { CgProfile } from 'react-icons/cg';
+import { RiFlag2Fill } from 'react-icons/ri'
 
 const SidebarData = [
 
   {
     title: "Announcements",
-    path: "/announcements",
-    icon: <BsMegaphoneFill size={20} />,
+    path: "/Adannouncements",
+    icon: <RiFlag2Fill size={20} />,
   },
   {
     title: "Activity",
-    path: "/activity",
+    path: "/Adquest",
     icon: <FaTasks size={20} />,
   },
   {
-    title: "Achievements",
-    path: "/achievements",
-    icon: <FaTrophy size={20} />,
+    title: "Accounts",
+    path: "/Adaccounts",
+    icon: <CgProfile size={20} />,
+  },
+  {
+    title: "Requests",
+    path: "/Requests",
+    icon: <MdVerified size={20} />,
   },
   {
     title: "Leaderboards",
-    path: "/leaderboards",
+    path: "/Adleaderboards",
     icon: <FaChartBar size={20} />,
   },
 ]
-
-const Sidebar = () => {
+const AdSidebar = () => {
   return (
     <>
       <div className="sidebar-container">
         <div className="profilesidebar-container">
-          <SideProfile />
+          <CgProfile size={120} className='admin-icon'/>
+          <p className='admin-label'>Admin</p>
         </div>
 
         <section>
@@ -68,4 +72,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default AdSidebar

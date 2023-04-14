@@ -1,26 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import './pagestyle.scss';
-import Sidebar from '../components/Sidebar'
+import AdSidebar from '../components/AdSidebar'
 import { GiTrashCan } from "react-icons/gi";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
-import { BsChevronExpand } from 'react-icons/bs'
-
-
-const submittedact = [
-  {
-    title: "Do Homework",
-    file: "Submitted-activity.pdf"
-  },
-  {
-    title: "Do Homework",
-    file: "Submitted-activity.pdf"
-  },
-  {
-    title: "Do Homework",
-    file: "Submitted-activity.pdf"
-  },
-]
 
 const quest = [
 
@@ -122,15 +105,12 @@ const quest = [
   },
 ]
 
-
-
-export default function Guild() {
-  // const [readMore, setReadMore] = useState(false);
+export default function Adquest() {
   return (
     <>
       <div className="page-container">
         <div className="left-side">
-          <Sidebar />
+          <AdSidebar />
         </div>
         <div className="right-side">
 
@@ -160,7 +140,7 @@ export default function Guild() {
                             </div>
 
                             <div className="task-btn">
-                              <Link to="/ViewActivity" className='link-btn'>
+                              <Link to="/Submits" className='link-btn'>
                                 <button className='entr-btn'>Enter</button>
                               </Link>
                             </div>
@@ -174,22 +154,34 @@ export default function Guild() {
                 }
               </div>
 
-              <div className="submitted-act">
-                <h1 className='submitted-act-title'>Submitted Activities</h1>
-
-                {submittedact.map((task, index) => {
-                  return (
-                    <div className="sub-holder" key={index}>
-                      <p className="sub-title">{task.title}</p>
-                      <p className="sub-file">{task.file}</p>
+              <div className="add-act-holder">
+                <h1 className='add-act-title'>Add Activity</h1>
+                <form className='add-act-form'>
+                  <label htmlFor="title" className='add-act-label'>actitivty title:</label>
+                  <input type="text" id='title' />
+                  <label htmlFor="deadline" className='add-act-label'>actitivty deadline:</label>
+                  <input type="date" id='deadline' />
+                  <div className="exp-pts-input">
+                    <div className="exp-pts-holder">
+                      <label htmlFor="exp" className='add-act-label'>exp:</label>
+                      <input type="text" id='exp' />
                     </div>
-                  )
-                })}
+                    <div className="exp-pts-holder">
+                      <label htmlFor="pts" className='add-act-label'>points:</label>
+                      <input type="number" id='pts' />
+                    </div>
+                  </div>
+                  <label htmlFor="description" className='add-act-label'>actitivty description:</label>
+                  <input type="text" id='description' />
+                  <div className='btn-holder'>
+                    <button id="submit" className='submit-btn'>Add</button>
+                    <button className='cancel-btn'>Cancel</button>
+                  </div>
+
+                </form>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     </>

@@ -7,35 +7,23 @@ const carddata = [
 
   {
     img: badge,
-    title: "Title",
+    title: "Burning Legend",
+    cond: "finish 100 quests"
   },
   {
     img: badge,
-    title: "Title",
+    title: "Phoenix's Flame",
+    cond: "Earned 1st Place at leaderboard"
   },
   {
     img: badge,
-    title: "Title",
+    title: "Legendary Scorer",
+    cond: "Reached score 5,000 points"
   },
   {
     img: badge,
-    title: "Title",
-  },
-  {
-    img: badge,
-    title: "Title",
-  },
-  {
-    img: badge,
-    title: "Title",
-  },
-  {
-    img: badge,
-    title: "Title",
-  },
-  {
-    img: badge,
-    title: "Title",
+    title: "Phoenix Master",
+    cond: "Reached level 50"
   },
 ]
 
@@ -50,15 +38,16 @@ export default function Achievements() {
         <div className="right-side">
           <div className='achievement-page'>
             <h1 className='achievement-title'>Achievements</h1>
-            <div className="card-holder">
+            <div className="awrd-card-holder">
               {carddata.map((value, index) => {
                 return (
-                  <div className="card" key={index}>
-                    <div>
-                      <img src={value.img} className="card-img" />
+                  <div className="awrd-container" key={index}>
+                    <div className='awrd-img-holder'>
+                      <img src={value.img} className="awrd-img" />
                     </div>
-                    <div>
-                      <p className="card-title">{value.title}</p>
+                    <div className='awrd-label'>
+                      <p className="awrd-title">{value.title}</p>
+                      <p className="awrd-cond">{value.cond}</p>
                     </div>
                   </div>
                 )

@@ -1,7 +1,10 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar'
+import './pagestyle.scss';
+import AdSidebar from '../components/AdSidebar'
 import img from '../data/img1.jpg'
 import { BsChevronExpand } from 'react-icons/bs'
+import { MdDeleteForever, MdUpload } from "react-icons/md";
+import { FaFileUpload } from 'react-icons/fa'
 
 const announcedata = [
 
@@ -42,35 +45,73 @@ const announcedata = [
     desc: "Qui sint veniam laboris anim officia amet ea non. Aliqua exercitation labore quis ut quis excepteur proident in esse sunt. Elit laboris mollit Lorem minim dolor in ex labore. Sit pariatur labore irure laborum fugiat ad irure ipsum laborum ullamco do aliqua. Duis dolor sunt sit adipisicing enim velit elit eiusmod qui nulla."
   },
 ]
-export default function Announcements() {
+export default function AdAnnouncements() {
+  const hiddenFileInput = React.useRef(null);
+
+  const handleClick = event => {
+    hiddenFileInput.current.click();
+  };
+  const handleChange = event => {
+    const fileUploaded = event.target.files[0];
+    // props.handleFile(fileUploaded);
+  };
+
   return (
     <>
       <div className="page-container">
         <div className="left-side">
-          <Sidebar />
+          <AdSidebar />
         </div>
 
         <div className="right-side">
           <div className='announcement-page'>
             <h1 className='announcement-title'>Announcements</h1>
             <div className="announce-container">
-              {announcedata.map((value, index) => {
-                return (
-                  <div className="announce-card" key={index}>
-                    <input type="checkbox" id={value.id} className='hide' />
-                    <div className='announce-header'>
-                      <img src={value.img} className="announce-img" />
-                      <div className="announce-title-holder">
-                        <p className="announce-title">{value.title}</p>
-                        <label htmlFor={value.id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
+              <div className="announce-list">
+                {announcedata.map((value, index) => {
+                  return (
+                    <div className="announce-card" key={index}>
+                      <input type="checkbox" id={value.id} className='hide' />
+                      <div className='announce-header'>
+                        <img src={value.img} className="announce-img" />
+                        <div className="announce-title-holder">
+                          <label htmlFor={value.id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
+                          <p className="announce-title">{value.title}</p>
+                          <MdDeleteForever size={30} className='del-btn' />
+                        </div>
+                      </div>
+                      <div className='announce-desc-container'>
+                        <p className="announce-desc">{value.desc}</p>
                       </div>
                     </div>
-                    <div className='announce-desc-container'>
-                      <p className="announce-desc">{value.desc}</p>
-                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="add-announce-holder">
+                <h1 className='add-ann-title'>Add Announcement</h1>
+                <form className='add-ann-form'>
+                  <label htmlFor="title" className='add-aan-label'>announcement title:</label>
+                  <div className="title-file-container">
+                    <input type="text" id='title' />
+
+                    <button onClick={handleClick} className='file-btn-holder'><MdUpload size={30} className='file-btn' /></button>
+                    <input type="file"
+                      ref={hiddenFileInput}
+                      onChange={handleChange}
+                      style={{ display: 'none' }}
+                    />
                   </div>
-                )
-              })}
+
+                  <label htmlFor="description" className='add-ann-label'>announcement description:</label>
+                  <input type="text" id='description' />
+                  {/* <input type="file" id="img" className='announe-img' /> */}
+                  <div className='btn-holder'>
+                    <button id="submit" className='submit-btn'>Add</button>
+                    <button className='cancel-btn'>Cancel</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
