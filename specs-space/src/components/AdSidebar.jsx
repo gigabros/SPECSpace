@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FaTasks, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
 import { MdLogout, MdVerified } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg';
@@ -38,7 +38,7 @@ const AdSidebar = () => {
     <>
       <div className="sidebar-container">
         <div className="profilesidebar-container">
-          <CgProfile size={120} className='admin-icon'/>
+          <CgProfile size={120} className='admin-icon' />
           <p className='admin-label'>Admin</p>
         </div>
 
@@ -64,7 +64,9 @@ const AdSidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-          <MdLogout size={30} className='logout-btn' />
+          <Link to="/" className='logout-link'>
+            <MdLogout size={30} className='logout-btn' />
+          </Link>
         </div>
       </div>
 

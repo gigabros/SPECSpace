@@ -36,6 +36,21 @@ export default function Profile() {
           <Sidebar />
         </div>
 
+        <div className="area">
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
         <div className="right-side">
           {/* <h1>Profile</h1> */}
           <div className="profile-page">

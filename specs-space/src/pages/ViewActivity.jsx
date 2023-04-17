@@ -4,7 +4,7 @@ import { MdArrowBackIosNew } from 'react-icons/md'
 import { GoPlus } from 'react-icons/go'
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
-import { useState,useReducer } from 'react'
+import { useState, useReducer } from 'react'
 
 export default function ViewActivity() {
 
@@ -18,33 +18,48 @@ export default function ViewActivity() {
         // props.handleFile(fileUploaded);
     };
 
-    const [id,setId]=useState()
-    const [subject,setSubject]=useState()
-    const [description,setDescription]=useState()
-    const [attachment,setAtteachment]=useState()
-    const [deadline,setDeadline]=useState()
-    const [points,setPoints]=useState()
-    const [exp,setExp]=useState()
+    const [id, setId] = useState()
+    const [subject, setSubject] = useState()
+    const [description, setDescription] = useState()
+    const [attachment, setAtteachment] = useState()
+    const [deadline, setDeadline] = useState()
+    const [points, setPoints] = useState()
+    const [exp, setExp] = useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-    const get_activity = axios.get('/select_activity/'+sessionStorage.getItem('act_id'))
-    .then(res=>{
-        setId(res.data.payload.data[0].id)
-        setSubject(res.data.payload.data[0].subject)
-        setDescription(res.data.payload.data[0].description)
-        setDeadline(res.data.payload.data[0].deadline)
-        setPoints(res.data.payload.data[0].points)
-        setExp(res.data.payload.data[0].exp)
-        forceUpdate()
-        console.log(res.data.payload.data[0].description)
+    const get_activity = axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
+        .then(res => {
+            setId(res.data.payload.data[0].id)
+            setSubject(res.data.payload.data[0].subject)
+            setDescription(res.data.payload.data[0].description)
+            setDeadline(res.data.payload.data[0].deadline)
+            setPoints(res.data.payload.data[0].points)
+            setExp(res.data.payload.data[0].exp)
+            forceUpdate()
+            console.log(res.data.payload.data[0].description)
 
-    })
+        })
 
     return (
         <>
             <div className="page-container">
                 <div className="left-side">
                     <Sidebar />
+                </div>
+
+                <div className="area">
+                    <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
 
                 <div className="right-side">
@@ -62,17 +77,17 @@ export default function ViewActivity() {
                                             <MdArrowBackIosNew size={30} className='bck-btn' />
                                         </Link>
                                     </div>
-                                    
+
                                     <div className="view-act-info">
                                         <p className='task-title'>{subject}</p>
-                                        <p className='task-info'>{exp}</p>
+                                        <p className='task-info'>{exp} EXP</p>
                                         <p className='task-info'>{points} PTS</p>
                                         <p className='task-info'>{deadline}</p>
                                         <p className='task-des'>{description}</p>
                                     </div>
 
                                     <form className="view-file-form">
-                                        <button onClick={handleClick} className='file-btn'><GoPlus/>Attach File</button>
+                                        <button onClick={handleClick} className='file-btn'><GoPlus />Attach File</button>
                                         <input type="file"
                                             ref={hiddenFileInput}
                                             onChange={handleChange}

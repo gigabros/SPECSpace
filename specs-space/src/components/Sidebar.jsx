@@ -1,6 +1,6 @@
 import React from 'react'
 import SideProfile from './SideProfile'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FaTasks, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
 import { BsMegaphoneFill } from 'react-icons/bs'
 import { MdLogout } from 'react-icons/md'
@@ -60,7 +60,9 @@ const Sidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-          <MdLogout size={30} className='logout-btn' />
+        <Link to="/" className='logout-link'>
+          <MdLogout size={30} className='logout-btn'/>
+        </Link>
         </div>
       </div>
 

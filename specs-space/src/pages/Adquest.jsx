@@ -95,14 +95,14 @@ const quest = [
     exp: 100,
     pts: 50,
   },
-  {
-    questID: "12",
-    title: "Do Homework",
-    deadline: "3/31/2023",
-    description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-    exp: 100,
-    pts: 50,
-  },
+  // {
+  //   questID: "12",
+  //   title: "Do Homework",
+  //   deadline: "3/31/2023",
+  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
+  //   exp: 100,
+  //   pts: 50,
+  // },
 ]
 
 export default function Adquest() {
@@ -112,6 +112,7 @@ export default function Adquest() {
         <div className="left-side">
           <AdSidebar />
         </div>
+
         <div className="right-side">
 
           <div className='quest-page'>

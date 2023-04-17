@@ -71,7 +71,7 @@ export default function AdAnnouncements() {
                 {announcedata.map((value, index) => {
                   return (
                     <div className="announce-card" key={index}>
-                      <input type="checkbox" id={value.id} className='hide' />
+                      <input type="checkbox" id={value.id} className='chbx' />
                       <div className='announce-header'>
                         <img src={value.img} className="announce-img" />
                         <div className="announce-title-holder">

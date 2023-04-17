@@ -26,7 +26,7 @@ const quest = [
 
   {
     questID: "1",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Minim excepteur mollit laborum dolore sit excepteur consequat. Reprehenderit non reprehenderit occaecat culpa aliquip amet. Non duis voluptate quis ex. Dolore quis labore quis sunt sunt magna dolor commodo est nisi sint sint commodo. Pariatur enim ea magna ad exercitation pariatur dolor aute pariatur. Reprehenderit mollit quis cupidatat in consequat officia voluptate fugiat. Nostrud incididunt deserunt velit anim nostrud eiusmod est minim amet nisi veniam.",
     exp: 100,
@@ -34,7 +34,7 @@ const quest = [
   },
   {
     questID: "2",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
     exp: 100,
@@ -42,7 +42,7 @@ const quest = [
   },
   {
     questID: "3",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
     exp: 100,
@@ -50,7 +50,7 @@ const quest = [
   },
   {
     questID: "4",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Minim excepteur mollit laborum dolore sit excepteur consequat. Reprehenderit non reprehenderit occaecat culpa aliquip amet. Non duis voluptate quis ex. Dolore quis labore quis sunt sunt magna dolor commodo est nisi sint sint commodo. Pariatur enim ea magna ad exercitation pariatur dolor aute pariatur. Reprehenderit mollit quis cupidatat in consequat officia voluptate fugiat. Nostrud incididunt deserunt velit anim nostrud eiusmod est minim amet nisi veniam.",
     exp: 100,
@@ -58,7 +58,7 @@ const quest = [
   },
   {
     questID: "5",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
     exp: 100,
@@ -66,7 +66,7 @@ const quest = [
   },
   {
     questID: "6",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
     exp: 100,
@@ -74,7 +74,7 @@ const quest = [
   },
   {
     questID: "7",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
     exp: 100,
@@ -82,44 +82,36 @@ const quest = [
   },
   {
     questID: "8",
-    title: "Do Homework",
+    subject: "Do Homework",
     deadline: "3/31/2023",
     description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
     exp: 100,
     pts: 50,
   },
-  {
-    questID: "9",
-    title: "Do Homework",
-    deadline: "3/31/2023",
-    description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-    exp: 100,
-    pts: 50,
-  },
-  {
-    questID: "10",
-    title: "Do Homework",
-    deadline: "3/31/2023",
-    description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-    exp: 100,
-    pts: 50,
-  },
-  {
-    questID: "11",
-    title: "Do Homework",
-    deadline: "3/31/2023",
-    description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-    exp: 100,
-    pts: 50,
-  },
-  {
-    questID: "12",
-    title: "Do Homework",
-    deadline: "3/31/2023",
-    description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-    exp: 100,
-    pts: 50,
-  },
+  // {
+  //   questID: "9",
+  //   subject: "Do Homework",
+  //   deadline: "3/31/2023",
+  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
+  //   exp: 100,
+  //   pts: 50,
+  // },
+  // {
+  //   questID: "10",
+  //   subject: "Do Homework",
+  //   deadline: "3/31/2023",
+  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
+  //   exp: 100,
+  //   pts: 50,
+  // },
+  // {
+  //   questID: "11",
+  //   subject: "Do Homework",
+  //   deadline: "3/31/2023",
+  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
+  //   exp: 100,
+  //   pts: 50,
+  // },
 ]
 
 
@@ -145,6 +137,22 @@ export default function Guild() {
         <div className="left-side">
           <Sidebar />
         </div>
+        
+        <div className="area">
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
         <div className="right-side">
 
           <div className='quest-page'>
