@@ -72,7 +72,7 @@ export default function Announcements() {
         <div className="left-side">
           <Sidebar />
         </div>
-        
+
         <div className="area">
           <ul class="circles">
             <li></li>
@@ -89,7 +89,9 @@ export default function Announcements() {
         </div>
 
         <div className="right-side">
+
           <div className='announcement-page'>
+            
             <h1 className='announcement-title'>Announcements</h1>
             <div className="announce-container">
               {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { CgProfile } from 'react-icons/cg';
 import dp from '../data/dp.jpg'
 
 export default function SideProfile() {
@@ -12,8 +11,7 @@ export default function SideProfile() {
             <div className='icon'><img src={dp} className="icon-img" /></div>
             <div className="label">
               <span id='Profile'>Anya Forger</span>
-              <span>Challenger</span>
-              <span>Level 9000+</span>
+              <span>Level 99</span>
             </div>
 
           </div>
