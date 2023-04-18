@@ -103,4 +103,33 @@ class Get{
         }
 
     }
+
+    public function get_finished_submits($id){
+        try{
+            $sql="select count(*) from submits where status=0";
+            $result = $this->gm->exec_query($sql);
+            if($result['code']=200){
+                return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
+            }
+            else{
+                return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
+            }
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
+    }
+    public function get_submitted_submits($id){
+        try{
+            $sql="select count(*) from submits where status=1";
+            $result = $this->gm->exec_query($sql);
+            if($result['code']=200){
+                return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
+            }
+            else{
+                return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
+            }
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
+    }
 }

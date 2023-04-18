@@ -4,7 +4,7 @@ import { MdArrowBackIosNew } from 'react-icons/md'
 import { GoPlus } from 'react-icons/go'
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
-import { useState, useReducer } from 'react'
+import { useState, useReducer,useEffect } from 'react'
 
 export default function ViewActivity() {
 
@@ -27,7 +27,8 @@ export default function ViewActivity() {
     const [exp, setExp] = useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-    const get_activity = axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
+    const get_activity = ()=>{
+        axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
         .then(res => {
             setId(res.data.payload.data[0].id)
             setSubject(res.data.payload.data[0].subject)
@@ -39,7 +40,24 @@ export default function ViewActivity() {
             console.log(res.data.payload.data[0].description)
 
         })
-
+    }
+    useEffect(()=>{
+        get_activity()
+    },[])
+    const check_submit=()=>{
+        
+    }
+    const submit = async(e)=>{
+        e.preventDefault();
+        const submitting = await axios.post('/submit',{
+            id: sessionStorage.getItem('act_id'),
+            stud_num: sessionStorage.getItem('stud_num'),
+            attachment:null
+        })
+        .then(res=>{
+            console.log(res)
+        })
+    }
     return (
         <>
             <div className="page-container">
@@ -93,7 +111,7 @@ export default function ViewActivity() {
                                             onChange={handleChange}
                                             style={{ display: 'none' }}
                                         />
-                                        <button id='submit' className='submit-btn'>Submit</button>
+                                        <button onClick={submit} id='submit' className='submit-btn'>Submit</button>
                                     </form>
 
                                 </div>

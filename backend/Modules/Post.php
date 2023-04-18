@@ -89,10 +89,10 @@ class Post{
                     }
                 }
                 else{
-                    return $this->gm->response_payload(null,"Fail","Password is either too short or does not match",200);
+                    return $this->gm->response_payload(null,"Password","Password is either too short or does not match",200);
                 }
             }else{
-                return $this->gm->response_payload(null,"Fail","Account Already exists",200);
+                return $this->gm->response_payload(null,"Account","Account Already exists",200);
             }
 
         }
@@ -143,19 +143,19 @@ class Post{
             $stmt->execute([$email]);
             if($stmt->rowCount()>0){
                 $res = $stmt->fetchAll()[0];
-                
+                $id = $this->get->get_profile($res['id']);
                 if($this->checkPassword($password,$res['password'])){
-                    return $this->get->get_profile($res['id']);
+                    return $this->gm->response_payload($id,"Success","Login Sucessfuly",200);
                 }else{
-                    return $this->gm->response_payload(null,"Fail","Incorrect password",200);
+                    return $this->gm->response_payload(null,"Password","Incorrect password",200);
                 }
                     
             }else{
-                return $this->gm->response_payload(null,"Fail","Account does not exists", 200);
+                return $this->gm->response_payload(null,"Account","Account does not exists", 200);
             }
         }
         catch (\PDOException $e){
-            return $this->gm->response_payload(null,"Fail","fail to login",200);
+            return $this->gm->response_payload(null,"Fail","fail to login",400);
         }
     }
     public function add_activity($data){

@@ -10,16 +10,6 @@ import axios from '../api/axios'
 
 
 export default function Profile() {
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  useEffect(()=>{
-    profdata()
-    
-  
-  },[])
-  useEffect(()=>{
-    forceUpdate()
-  },[])
-
   const profdata =()=>{
     axios.get('/profile/'+sessionStorage.getItem('stud_num'))
     .then(res=>{
@@ -28,7 +18,29 @@ export default function Profile() {
       sessionStorage.setItem('lvl',res.data.lvl)
       sessionStorage.setItem('points',res.data.points)
     })
+    axios.get('/get_finished/'+sessionStorage.getItem('stud_num'))
+    .then(finished=>{
+      console.log(finished['data']['payload']['data'][0]['count(*)'])
+      sessionStorage.setItem('finished',finished['data']['payload']['data'][0]['count(*)'])
+    })
+    axios.get('/get_submitted/'+sessionStorage.getItem('stud_num'))
+    .then(finished=>{
+      console.log(finished['data']['payload']['data'][0]['count(*)'])
+      sessionStorage.setItem('submitted',finished['data']['payload']['data'][0]['count(*)'])
+    })
   }
+  useEffect(()=>{
+    profdata()
+  },[])
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  useEffect(()=>{
+    profdata()
+  },[])
+  useEffect(()=>{
+    forceUpdate()
+  },[])
+
+  
   return (
     <>
       <div className="page-container">
@@ -75,7 +87,7 @@ export default function Profile() {
                   </div>
                   <div className="stats-holder">
                     <p className="stats-title">FINISHED ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('')}10</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('finished')}</p>
                   </div>
                 </div>
 

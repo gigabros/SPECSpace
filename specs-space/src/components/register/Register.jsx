@@ -27,7 +27,16 @@ function Register() {
     conpass: ""
   })
 
+  function Pop(){
+    return(
+      <div className={popupStyle}>
 
+            <MdCheckCircle color="green" size={100} />
+            <h3>message</h3>
+
+    </div>
+    );
+  }
 
   function submit(e) {
     e.preventDefault();
@@ -43,8 +52,10 @@ function Register() {
       if (res['data']['status']['remarks'] == "Success") {
         alert("Account sucessfully added");
 
-      } else {
-        alert("Incorrect input of credentials");
+      } else if(res['data']['status']['remarks'] == "Password"){
+        alert(res['data']['status']['message'])
+      } else if(res['data']['status']['remarks'] == "Account"){
+        alert(res['data']['status']['message'])
       }
     }
     ).catch(error => {
@@ -56,7 +67,6 @@ function Register() {
     const newdata = { ...data }
     newdata[e.target.id] = e.target.value
     setData(newdata)
-    console.log(newdata)
   }
 
   return (

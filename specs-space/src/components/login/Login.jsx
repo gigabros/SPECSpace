@@ -47,13 +47,19 @@ function Login() {
           withCredentials: true
         }
       )
-      console.log(response['data']['stud_num'])
-      sessionStorage.setItem('stud_num', response['data']['stud_num']);
-      setSuccess(true);
-    }
-    catch (err) {
+        if(response['data']['status']['remarks']=="Password"){
+          alert(response['data']['status']['message'])
+        }
+        else if(response['data']['status']['remarks']=="Account"){
+          alert(response['data']['status']['message'])
+        }else{
+          console.log(response['data']['payload']['stud_num'])
+          sessionStorage.setItem('stud_num', response['data']['payload']['stud_num']);
+          setSuccess(true);
+        }
+    }catch (err) {
       if (!err?.response) {
-        alert('No Server Response');
+        console.log(err)
       }
       errRef.current.focus();
     }

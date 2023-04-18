@@ -88,30 +88,7 @@ const quest = [
     exp: 100,
     pts: 50,
   },
-  // {
-  //   questID: "9",
-  //   subject: "Do Homework",
-  //   deadline: "3/31/2023",
-  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-  //   exp: 100,
-  //   pts: 50,
-  // },
-  // {
-  //   questID: "10",
-  //   subject: "Do Homework",
-  //   deadline: "3/31/2023",
-  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-  //   exp: 100,
-  //   pts: 50,
-  // },
-  // {
-  //   questID: "11",
-  //   subject: "Do Homework",
-  //   deadline: "3/31/2023",
-  //   description: "Lorem cupidatat elit mollit esse quis ut excepteur aute nulla. Cillum voluptate duis esse minim amet voluptate nulla laborum ex voluptate do labore minim. Eu proident anim culpa veniam nulla ut culpa dolore pariatur pariatur est exercitation proident. Exercitation aute eiusmod culpa reprehenderit dolor aliqua nostrud id eiusmod ex. In ex id labore ex ut id eu excepteur incididunt duis eu consequat.",
-  //   exp: 100,
-  //   pts: 50,
-  // },
+
 ]
 
 
@@ -121,16 +98,20 @@ export default function Guild() {
   const [activity,setActivity]=useState([]);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-  const posted_activity=axios.get('/activity')
+  const posted_activity=()=>{
+    axios.get('/activity')
     .then(res=>{
       setActivity(res.data.payload.data);
       forceUpdate()
     })
-
+  }
+  useEffect(()=>{
+    posted_activity()
+  },[])
   const get_id = async (id)=>{
     sessionStorage.setItem('act_id',id)
   }
-
+  
   return (
     <>
       <div className="page-container">
