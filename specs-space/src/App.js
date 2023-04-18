@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 import Profile from './pages/Profile';
 import Achievements from './pages/Achievements'
@@ -23,6 +24,7 @@ function App() {
     <Routes >
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<Login/>}/>
+        <Route path='/Register' element={<Register/>}/>
 
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Achievements" element={<Achievements />} />

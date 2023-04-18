@@ -54,16 +54,16 @@ const Accounts = [
         username: "John Wick",
         email: "babayaga@gmail.com",
     },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
+    // {
+    //     img: dp,
+    //     username: "John Wick",
+    //     email: "babayaga@gmail.com",
+    // },
+    // {
+    //     img: dp,
+    //     username: "John Wick",
+    //     email: "babayaga@gmail.com",
+    // },
 ]
 export default function Requests() {
     return (
@@ -93,8 +93,8 @@ export default function Requests() {
 
                                             <div className="req-btn">
                                                 <button className='verify-btn'>Verify User</button>
-                                                <MdOutlineNotInterested size={30} className='reject-btn'/>
-                                                
+                                                <MdOutlineNotInterested size={30} className='reject-btn' />
+
                                             </div>
 
                                         </div>

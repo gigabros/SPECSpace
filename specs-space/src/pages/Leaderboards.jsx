@@ -85,6 +85,21 @@ export default function Leaderboards() {
           <Sidebar />
         </div>
 
+        <div className="area">
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
         <div className="right-side">
 
           <div className="lboard-page">

@@ -35,6 +35,21 @@ export default function Achievements() {
           <Sidebar />
         </div>
 
+        <div className="area">
+          <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
         <div className="right-side">
           <div className='achievement-page'>
             <h1 className='achievement-title'>Achievements</h1>
