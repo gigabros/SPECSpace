@@ -5,42 +5,40 @@ import { CgProfile } from 'react-icons/cg';
 import badge from '../data/badge-placeholder.png'
 import avatar from '../data/avatar-placeholder.png'
 import dp from '../data/dp.jpg'
-import { useReducer,useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import axios from '../api/axios'
 
 
 export default function Profile() {
-  const profdata =()=>{
-    axios.get('/profile/'+sessionStorage.getItem('stud_num'))
-    .then(res=>{
-      console.log(res.data)
-      sessionStorage.setItem('name',res.data.name)
-      sessionStorage.setItem('lvl',res.data.lvl)
-      sessionStorage.setItem('points',res.data.points)
-    })
-    axios.get('/get_finished/'+sessionStorage.getItem('stud_num'))
-    .then(finished=>{
-      console.log(finished['data']['payload']['data'][0]['count(*)'])
-      sessionStorage.setItem('finished',finished['data']['payload']['data'][0]['count(*)'])
-    })
-    axios.get('/get_submitted/'+sessionStorage.getItem('stud_num'))
-    .then(finished=>{
-      console.log(finished['data']['payload']['data'][0]['count(*)'])
-      sessionStorage.setItem('submitted',finished['data']['payload']['data'][0]['count(*)'])
-    })
+  const profdata = () => {
+    axios.get('/profile/' + sessionStorage.getItem('stud_num'))
+      .then(res => {
+        console.log(res.data)
+        sessionStorage.setItem('name', res.data.name)
+        sessionStorage.setItem('lvl', res.data.lvl)
+        sessionStorage.setItem('points', res.data.points)
+      })
+    axios.get('/get_finished/' + sessionStorage.getItem('stud_num'))
+      .then(finished => {
+        console.log(finished['data']['data'][0]['count(*)'])
+        sessionStorage.setItem('finished', finished['data']['data'][0]['count(*)'])
+      })
+    axios.get('/get_submitted/' + sessionStorage.getItem('stud_num'))
+      .then(submitted => {
+        console.log(submitted['data']['payload']['data'][0]['count(*)'])
+        sessionStorage.setItem('submitted', submitted['data']['payload']['data'][0]['count(*)'])
+      })
   }
-  useEffect(()=>{
-    profdata()
-  },[])
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  useEffect(()=>{
-    profdata()
-  },[])
-  useEffect(()=>{
-    forceUpdate()
-  },[])
 
-  
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  useEffect(() => {
+    profdata()
+  }, [])
+  useEffect(() => {
+    forceUpdate()
+  }, [])
+
+
   return (
     <>
       <div className="page-container">

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MdOutlineError } from 'react-icons/md';
-import { json, Link, Navigate } from 'react-router-dom';
+import { json, Link, Navigate, useNavigate } from 'react-router-dom';
 import SpecsLogo from '../specs_logo.png';
 import axios from "../../api/axios";
+import get_data from "../../api/profdata";
 
 import './login.scss';
 
@@ -37,6 +38,10 @@ function Login() {
   const userRef = useRef();
   const errRef = useRef();
 
+  const navi = useNavigate();
+  const nav_prof = () => navi('/Profile')
+  const nav_admin = () => navi('/Adannouncements')
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -47,17 +52,35 @@ function Login() {
           withCredentials: true
         }
       )
-        if(response['data']['status']['remarks']=="Password"){
-          alert(response['data']['status']['message'])
-        }
-        else if(response['data']['status']['remarks']=="Account"){
-          alert(response['data']['status']['message'])
-        }else{
-          console.log(response['data']['payload']['stud_num'])
-          sessionStorage.setItem('stud_num', response['data']['payload']['stud_num']);
-          setSuccess(true);
-        }
-    }catch (err) {
+      if (response['data']['status']['remarks'] == "Password") {
+        alert(response['data']['status']['message'])
+      }
+      else if (response['data']['status']['remarks'] == "Account") {
+        alert(response['data']['status']['message'])
+      } else {
+        const role = await axios.get('/get_status/' + email).then
+          (result => {
+            // console.log(result['data']['payload']['data'][0]['role'])
+            if (result['data']['payload']['data'][0]['role'] == "Admin") {
+              nav_admin()
+            }
+            else if (result['data']['payload']['data'][0]['role'] == "Student") {
+              // console.log(response['data']['payload']['stud_num'])
+              sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
+              // console.log()
+              // sessionStorage.setItem('name', response['data']['payload']['name'])
+              // sessionStorage.setItem('lvl', response['data']['payload']['lvl'])
+              // sessionStorage.setItem('points', response['data']['payload']['points'])
+              
+              get_data(response['data']['payload']['stud_num'])
+              nav_prof()
+            }
+
+          })
+
+
+      }
+    } catch (err) {
       if (!err?.response) {
         console.log(err)
       }

@@ -162,10 +162,10 @@ class Post{
 
        try{
             $gen_id = uniqid("GC_");
-            $sql ="INSERT INTO activity (`id`, `subject`, `description`, `attachment`, `deadline`, `points`,`exp`)
-                VALUES (?,?,?,?,?,?,?)";
+            $sql ="INSERT INTO activity (`id`, `subject`, `description`, `deadline`, `points`,`exp`)
+                VALUES (?,?,?,?,?,?)";
             $stmt =$this->pdo->prepare($sql);
-            $stmt->execute([$gen_id,$data->subject,$data->description,$data->attachment,$data->deadline,$data->points,$data->exp]);
+            $stmt->execute([$gen_id,$data->subject,$data->description,$data->deadline,$data->points,$data->exp]);
             return $this->gm->response_payload(null,"Success", "Activity Posted",200);
             
        }
@@ -177,7 +177,7 @@ class Post{
 
     public function add_post($data){
         try{
-            $date = date("h:i a/ d-m-Y");
+            $date = date("d-m-Y");
             $gen_id = uniqid("GC_post_");
             $sql= "INSERT INTO `posts`(`post_id`, `title`, `message`,`date`) VALUES (?,?,?,?)";
             $stmt = $this->pdo->prepare($sql);

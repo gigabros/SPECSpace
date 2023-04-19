@@ -67,7 +67,10 @@
                     echo json_encode(($get->get_finished_submits($req[1])));
                 break;
                 case "get_submitted":
-                    echo json_encode(($get->get_submitted_submits($req[1])));
+                    echo json_encode($get->get_submitted_submits($req[1]));
+                break;
+                case "get_status":
+                    echo json_encode($get->get_role($req[1]));
                 break;
             }
         

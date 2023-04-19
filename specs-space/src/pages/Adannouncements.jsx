@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState,useEffect,useReducer } from 'react'
 import './pagestyle.scss';
 import AdSidebar from '../components/AdSidebar'
 import img from '../data/img1.jpg'
 import { BsChevronExpand } from 'react-icons/bs'
 import { MdDeleteForever, MdUpload } from "react-icons/md";
 import { FaFileUpload } from 'react-icons/fa'
+import axios from '../api/axios';
 
 const announcedata = [
 
@@ -56,6 +57,49 @@ export default function AdAnnouncements() {
     // props.handleFile(fileUploaded);
   };
 
+  const [data,setData] = useState({
+    title:"",
+    description:""
+  });
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+  const post =async(e)=>{
+    e.preventDefault();
+    const posting = await axios.post('/add_post',{
+      title: data.title,
+      message: data.description
+    }).then(res=>{
+      console.log(res)
+      alert("Posted Successfuly")
+
+      posted_activty()
+    }).catch(error=>{
+      console.log(error)
+    })
+    
+  }
+  
+  function handle(e) {
+    const newdata = { ...data }
+    newdata[e.target.id] = e.target.value
+    setData(newdata)
+  }
+  const [posts,setPosts]= useState([]);
+  
+
+  const posted_activty=()=>{
+    axios.get('/get_posts')
+    .then(res => {
+      setPosts(res.data.payload.data);
+      console.log(res.data.payload.data)
+      console.log(data)
+      forceUpdate()
+    })
+  }
+  useEffect(()=>{
+    posted_activty()
+  },[])
+
   return (
     <>
       <div className="page-container">
@@ -68,20 +112,22 @@ export default function AdAnnouncements() {
             <h1 className='announcement-title'>Announcements</h1>
             <div className="announce-container">
               <div className="announce-list">
-                {announcedata.map((value, index) => {
+                {posts.map((task, index) => {
                   return (
                     <div className="announce-card" key={index}>
-                      <input type="checkbox" id={value.id} className='chbx' />
+                      <input type="checkbox" id={index} className='chbx' />
                       <div className='announce-header'>
-                        <img src={value.img} className="announce-img" />
+                        <img src={task.img} className="announce-img" />
                         <div className="announce-title-holder">
-                          <label htmlFor={value.id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
-                          <p className="announce-title">{value.title}</p>
+                          <label htmlFor={index} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
+                          <p className="announce-title">{task.title}</p>
                           <MdDeleteForever size={30} className='del-btn' />
                         </div>
                       </div>
                       <div className='announce-desc-container'>
-                        <p className="announce-desc">{value.desc}</p>
+                        <p className="announce-desc">{task.message}</p>
+                        <br></br>
+                        <p className="announce-desc">{task.date}</p>
                       </div>
                     </div>
                   )
@@ -93,7 +139,7 @@ export default function AdAnnouncements() {
                 <form className='add-ann-form'>
                   <label htmlFor="title" className='add-aan-label'>announcement title:</label>
                   <div className="title-file-container">
-                    <input type="text" id='title' />
+                    <input onChange={(e)=>handle(e)} value={data.title} type="text" id='title' />
 
                     <button onClick={handleClick} className='file-btn-holder'><MdUpload size={30} className='file-btn' /></button>
                     <input type="file"
@@ -104,10 +150,10 @@ export default function AdAnnouncements() {
                   </div>
 
                   <label htmlFor="description" className='add-ann-label'>announcement description:</label>
-                  <input type="text" id='description' />
+                  <input onChange={(e)=>handle(e)} value={data.description} type="text" id='description' />
                   {/* <input type="file" id="img" className='announe-img' /> */}
                   <div className='btn-holder'>
-                    <button id="submit" className='submit-btn'>Add</button>
+                    <button onClick={post} id="submit" className='submit-btn'>Add</button>
                     <button className='cancel-btn'>Cancel</button>
                   </div>
                 </form>

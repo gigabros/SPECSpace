@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './pagestyle.scss';
 import AdSidebar from '../components/AdSidebar'
 import { GiTrashCan } from "react-icons/gi";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
+import axios from '../api/axios';
 
 const quest = [
 
@@ -106,6 +107,38 @@ const quest = [
 ]
 
 export default function Adquest() {
+
+  const [data,setData] =useState({
+    title:"",
+    deadline:null,
+    exp: null,
+    pts:null,
+    description:""
+  
+  });
+  const pact =async (e)=>{
+    e.preventDefault();
+    const posting = await axios.post('/add_activity',{
+      subject: data.title,
+      description: data.description,
+      deadline: data.deadline,
+      points: data.pts,
+      exp: data.exp
+    }).then(res=>{
+      alert("Activity Successfully Added")
+    }).catch(error=>{
+      alert("error")
+    })
+  }
+
+  function handle(e) {
+    const newdata = { ...data }
+    newdata[e.target.id] = e.target.value
+    setData(newdata)
+    console.log(newdata)
+  }
+
+  
   return (
     <>
       <div className="page-container">
@@ -159,24 +192,24 @@ export default function Adquest() {
                 <h1 className='add-act-title'>Add Activity</h1>
                 <form className='add-act-form'>
                   <label htmlFor="title" className='add-act-label'>actitivty title:</label>
-                  <input type="text" id='title' />
+                  <input onChange={(e)=>handle(e)} value={data.title} type="text" id='title' />
                   <label htmlFor="deadline" className='add-act-label'>actitivty deadline:</label>
-                  <input type="date" id='deadline' />
+                  <input onChange={(e)=>handle(e)} value={data.deadline} type="date" id='deadline' />
                   <div className="exp-pts-input">
                     <div className="exp-pts-holder">
                       <label htmlFor="exp" className='add-act-label'>exp:</label>
-                      <input type="text" id='exp' />
+                      <input onChange={(e)=>handle(e)} value={data.exp} type="number" id='exp' />
                     </div>
                     <div className="exp-pts-holder">
                       <label htmlFor="pts" className='add-act-label'>points:</label>
-                      <input type="number" id='pts' />
+                      <input onChange={(e)=>handle(e)} value={data.pts}  type="number" id='pts' />
                     </div>
                   </div>
                   <label htmlFor="description" className='add-act-label'>actitivty description:</label>
-                  <input type="text" id='description' />
+                  <input onChange={(e)=>handle(e)} value={data.description} type="text" id='description' />
                   <div className='btn-holder'>
-                    <button id="submit" className='submit-btn'>Add</button>
-                    <button className='cancel-btn'>Cancel</button>
+                    <button onClick={pact} id="submit" className='submit-btn'>Add</button>
+                    <button onClick={pact} className='cancel-btn'>Cancel</button>
                   </div>
 
                 </form>
