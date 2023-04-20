@@ -199,10 +199,10 @@ class Post{
             $date = date("Y-m-d");
             $activity = $this->get->select_activity($data->id);
             if($activity['payload']['data']['0']['deadline'] >= $date){
-                $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `attachment`,`status`) VALUES 
-                (?,?,?,?)";
+                $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `attachment`,`status`,`name`,`date`) VALUES 
+                (?,?,?,?,?,?)";
                 $stmt= $this->pdo->prepare($sql);
-                $stmt->execute([$activity['payload']['data'][0]['id'],$data->stud_num,$data->attachement,1]);
+                $stmt->execute([$activity['payload']['data'][0]['id'],$data->stud_num,$data->attachement,1,$data->name,$date]);
                 return $this->gm->response_payload(null,"Success","Activity Submitted",200); 
             }
             else{
@@ -285,6 +285,29 @@ class Post{
         }
     }
 
+    public function delete_act($data){
+        try{
+            $sql = "DELETE FROM activity WHERE id=?";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute([$data->act_id]);
+
+            return $this->gm->response_payload($stmt,"success","Successfuly deleted",200);
+        }catch(\PDOException $e){
+            return $e;
+        }
+    }
+
+    public function delete_post($data){
+        try{
+            $sql = "DELETE FROM posts WHERE post_id=?";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute([$data->post_id]);
+
+            return $this->gm->response_payload($stmt,"success","Successfuly deleted",200);
+        }catch(\PDOException $e){
+            return $e;
+        }
+    }
 }
 
     

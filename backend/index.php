@@ -72,6 +72,15 @@
                 case "get_status":
                     echo json_encode($get->get_role($req[1]));
                 break;
+                case "get_list_submits":
+                    echo json_encode($get->get_list_submition($req[1]));
+                break;
+                case "get_list_profile":
+                    echo json_encode($get->get_list_profile());
+                break;
+                case "get_list_unverified":
+                    echo json_encode($get->get_list_unverified());
+                break;
             }
         
         break;
@@ -107,6 +116,12 @@
                 break;
                 case "update_exp_lvl":
                     echo json_encode($post->add_exp_points($req[1],$req[2],$req[3]));
+                break;
+                case "delete_act":
+                    echo json_encode($post->delete_act($data));
+                break;
+                case "delete_post":
+                    echo json_encode($post->delete_post($data));
                 break;
 
             }

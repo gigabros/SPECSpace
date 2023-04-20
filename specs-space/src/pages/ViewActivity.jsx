@@ -52,10 +52,15 @@ export default function ViewActivity() {
         const submitting = await axios.post('/submit',{
             id: sessionStorage.getItem('act_id'),
             stud_num: sessionStorage.getItem('stud_num'),
-            attachment:null
+            attachment:null,
+            name:sessionStorage.getItem('name')
         })
         .then(res=>{
             console.log(res)
+            alert("Submition Success")
+        }).catch(error=>{
+            console.log(error)
+            alert("Error")
         })
     }
     return (

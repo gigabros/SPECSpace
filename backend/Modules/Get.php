@@ -143,4 +143,33 @@ class Get{
             return $this->gm->response_payload(null,"Fail","Unable to fetch data",400);
         }
     }
+    public function get_list_submition($id){
+        try{
+            $sql = "select * from submits where act_id='$id' AND status=1";
+            $res = $this->gm->exec_query($sql);
+
+            if($res['code']=200){
+                return $this->gm->response_payload($res,"Success","Successfuly Retrieved Data",$res['code']);
+            }else{
+                return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$res['code']);
+            }
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",400);
+        }
+    }
+    public function get_list_profile(){
+        $sql = "SELECT * FROM profiles";
+
+        $result= $this->gm->exec_query($sql);
+
+        return $result;
+    }
+
+    public function get_list_unverified(){
+        $sql = "SELECT * FROM unverified";
+
+        $result= $this->gm->exec_query($sql);
+
+        return $result;
+    }
 }

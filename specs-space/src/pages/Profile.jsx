@@ -68,7 +68,7 @@ export default function Profile() {
               <div className="prof-header-info">
                 <p className="prof-name">{sessionStorage.getItem('name')}</p>
                 <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}</p>
-                <p className="prof-pts">{sessionStorage.getItem('points')}</p>
+                <p className="prof-pts">{sessionStorage.getItem('points')} POINTS</p>
               </div>
 
               <div className='prof-dp'>

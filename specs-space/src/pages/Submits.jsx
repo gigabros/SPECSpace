@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useReducer, useEffect } from 'react'
 import AdSidebar from '../components/AdSidebar'
 import { MdArrowBackIosNew, MdCheck, MdFileDownload } from 'react-icons/md'
 import { BsPlusLg } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
 
 const submitted = [
 
@@ -86,7 +87,59 @@ const submitted = [
 export default function Submits() {
 
     const hiddenFileInput = React.useRef(null);
+    const [id, setId] = useState()
+    const [subject, setSubject] = useState()
+    const [description, setDescription] = useState()
+    const [attachment, setAtteachment] = useState()
+    const [deadline, setDeadline] = useState()
+    const [points, setPoints] = useState()
+    const [exp, setExp] = useState()
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
+    const [data, setData] = useState([]);
+
+    const get_activity = () => {
+        axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
+            .then(res => {
+                setId(res.data.payload.data[0].id)
+                setSubject(res.data.payload.data[0].subject)
+                setDescription(res.data.payload.data[0].description)
+                setDeadline(res.data.payload.data[0].deadline)
+                setPoints(res.data.payload.data[0].points)
+                setExp(res.data.payload.data[0].exp)
+                forceUpdate()
+            })
+    }
+    useEffect(() => {
+        get_activity()
+        sub_list()
+        console.log(data)
+    }, [])
+
+    const sub_list = () => {
+        axios.get('/get_list_submits/' + sessionStorage.getItem('act_id'))
+            .then(
+                res => {
+                    setData(res.data.payload.data)
+                    console.log(res.data.payload.data)
+                }
+            )
+    }
+    // const [act_id,setAct_id]
+    const finish = async (id, stud_num) => {
+        axios.post('/finish', {
+            act_id: id,
+            stud_num: stud_num
+        }).then(res => {
+            alert("Finished")
+            sub_list()
+        }).catch(error => {
+            alert("error")
+            console.log(error)
+        })
+        console.log(id)
+        console.log(stud_num)
+    }
     const handleClick = event => {
         hiddenFileInput.current.click();
     };
@@ -95,6 +148,20 @@ export default function Submits() {
         // props.handleFile(fileUploaded);
     };
 
+
+    const navi = useNavigate();
+    const nav_act = () => navi('/Adquest')
+
+    const delete_act = async () => {
+        const delete_now = await axios.post('/delete_act', {
+            act_id: sessionStorage.getItem('act_id')
+        }).then(res => {
+            console.log(res)
+            nav_act()
+        }).catch(error => {
+            console.log(error)
+        })
+    }
     return (
         <>
             <div className="page-container">
@@ -113,20 +180,20 @@ export default function Submits() {
                             <div className="submit-act-holder">
                                 <div className="submit-list">
                                     {
-                                        submitted != null
+                                        data != null
                                             ?
-                                            submitted.map((item) => {
+                                            data.map((item) => {
                                                 return (
                                                     <>
                                                         <div className="submit-holder">
                                                             <div className="submit-header">
-                                                                <p className='submit-auth'>{item.auth} </p>
+                                                                <p className='submit-auth'>{item.name} </p>
                                                                 <p className='submit-date'>Date Submitted: {item.date} </p>
                                                             </div>
                                                             <div className="submit-file-container">
                                                                 <button id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
                                                                 <p className='submit-file'>{item.file}</p>
-                                                                <button id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
+                                                                <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
                                                                 <button id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
                                                             </div>
                                                         </div>
@@ -145,15 +212,15 @@ export default function Submits() {
                                     </div>
 
                                     <div className="submit-act-info">
-                                        <p className='task-title'>Do Homework</p>
-                                        <p className='task-info'>+100 EXP</p>
-                                        <p className='task-info'>+50 PTS</p>
-                                        <p className='task-info'>3/31/2023</p>
-                                        <p className='task-des'>   Ea velit quis ipsum cupidatat duis consectetur dolore commodo incididunt quis elit id ullamco excepteur. Voluptate do anim nostrud id reprehenderit irure. Quis aliqua incididunt aliquip ut amet labore velit laborum nisi esse dolor nulla. Commodo dolore pariatur tempor aliqua. Duis ullamco mollit ea commodo duis labore labore laboris do nisi. Excepteur cupidatat cupidatat cillum proident dolor dolor reprehenderit consectetur labore enim. Nostrud aliqua sunt ipsum commodo minim incididunt nulla ea duis non ullamco duis ex.</p>
+                                        <p className='task-title'>{subject}</p>
+                                        <p className='task-info'>{exp}</p>
+                                        <p className='task-info'>{points}</p>
+                                        <p className='task-info'>{deadline}</p>
+                                        <p className='task-des'>{description}</p>
                                     </div>
 
                                     <div className="rmv-file">
-                                        <button className='rmv-btn'>Remove</button>
+                                        <button onClick={()=>delete_act()} className='rmv-btn'>Remove</button>
                                     </div>
 
                                 </div>

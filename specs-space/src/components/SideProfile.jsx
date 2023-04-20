@@ -11,9 +11,8 @@ export default function SideProfile() {
           <div className="profilebtn-content">
             <div className='icon'><img src={dp} className="icon-img" /></div>
             <div className="label">
-              <span id='Profile'>Anya Forger</span>
-              <span>Challenger</span>
-              <span>Level 9000+</span>
+              <span id='Profile'>{sessionStorage.getItem('name')}</span>
+              <span>LVL: {sessionStorage.getItem('lvl')}</span>
             </div>
 
           </div>
