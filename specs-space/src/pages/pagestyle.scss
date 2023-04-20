@@ -1954,18 +1954,19 @@
                     display: block;
                 }
 
-                .announce-header {
+                .adannounce-header {
                     display: flex;
                     flex-direction: column;
                     // justify-content: center;
                     align-items: center;
+                    width: 100%;
 
                     .announce-img {
                         max-width: 100%;
                         border-radius: 15px;
                     }
 
-                    .announce-title-holder {
+                    .adannounce-title-holder {
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
@@ -1973,7 +1974,7 @@
                         margin-top: 3%;
                         width: 90%;
 
-                        .announce-title {
+                        .adannounce-title {
                             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
                             font-size: 1.5rem;
                             font-weight: 800;
@@ -1981,9 +1982,10 @@
                             // border: red 1px solid;
                             margin: 0;
                             margin-right: 5%;
+                            width: 50%;
                         }
 
-                        .btn-drpdwn {
+                        .adbtn-drpdwn {
                             display: inline-block;
                             cursor: pointer;
                             color: #373D3F;
@@ -2003,12 +2005,12 @@
                             }
                         }
 
-                        .del-btn {
+                        .addel-btn {
                             color: #B71103;
                             cursor: pointer;
                             transition: all 0.2s ease;
                             // border: red 1px solid;
-                            margin-right: 5%;
+                            // margin-right: 5%;
 
                             &:hover {
                                 // color: #888888;

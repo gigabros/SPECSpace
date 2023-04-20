@@ -11,7 +11,7 @@ const announcedata = [
   {
     id: "1",
     img: img,
-    title: "Announcement Title",
+    title: "adle",
     desc: "Duis anim est velit est sit culpa occaecat ut amet deserunt proident in tempor mollit. Aliqua voluptate ea fugiat aliquip labore minim id aliqua adipisicing. Reprehenderit incididunt proident elit anim nulla pariatur et deserunt nulla aute dolor nisi. Fugiat culpa magna quis dolor in incididunt mollit eiusmod. Id excepteur id elit cillum anim consectetur laborum ipsum in occaecat do amet. Veniam culpa aute ut irure ullamco consectetur aute sint non ex."
   },
   {
@@ -72,12 +72,12 @@ export default function AdAnnouncements() {
                   return (
                     <div className="announce-card" key={index}>
                       <input type="checkbox" id={value.id} className='chbx' />
-                      <div className='announce-header'>
-                        <img src={value.img} className="announce-img" />
-                        <div className="announce-title-holder">
-                          <label htmlFor={value.id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
-                          <p className="announce-title">{value.title}</p>
-                          <MdDeleteForever size={30} className='del-btn' />
+                      <div className='adannounce-header'>
+                        {/* <img src={value.img} className="announce-img" /> */}
+                        <div className="adannounce-title-holder">
+                          <label htmlFor={value.id} className='adbtn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
+                          <p className="adannounce-title">{value.title}</p>
+                          <MdDeleteForever size={30} className='addel-btn' />
                         </div>
                       </div>
                       <div className='announce-desc-container'>
