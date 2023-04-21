@@ -4,7 +4,7 @@ import { MdArrowBackIosNew } from 'react-icons/md'
 import { GoPlus } from 'react-icons/go'
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
-import { useState, useReducer,useEffect } from 'react'
+import { useState, useReducer, useEffect } from 'react'
 
 export default function ViewActivity() {
 
@@ -27,42 +27,69 @@ export default function ViewActivity() {
     const [exp, setExp] = useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-    const get_activity = ()=>{
+    const get_activity = () => {
         axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
-        .then(res => {
-            setId(res.data.payload.data[0].id)
-            setSubject(res.data.payload.data[0].subject)
-            setDescription(res.data.payload.data[0].description)
-            setDeadline(res.data.payload.data[0].deadline)
-            setPoints(res.data.payload.data[0].points)
-            setExp(res.data.payload.data[0].exp)
-            forceUpdate()
-            console.log(res.data.payload.data[0].description)
+            .then(res => {
+                setId(res.data.payload.data[0].id)
+                setSubject(res.data.payload.data[0].subject)
+                setDescription(res.data.payload.data[0].description)
+                setDeadline(res.data.payload.data[0].deadline)
+                setPoints(res.data.payload.data[0].points)
+                setExp(res.data.payload.data[0].exp)
+                forceUpdate()
+                console.log(res.data.payload.data[0].description)
 
-        })
+            })
     }
-    useEffect(()=>{
+    useEffect(() => {
         get_activity()
-    },[])
-    const check_submit=()=>{
-        
+    }, [])
+    const check_submit = () => {
+
     }
-    const submit = async(e)=>{
+    const submit = async (e) => {
         e.preventDefault();
-        const submitting = await axios.post('/submit',{
+        const submitting = await axios.post('/submit', {
             id: sessionStorage.getItem('act_id'),
             stud_num: sessionStorage.getItem('stud_num'),
-            attachment:null,
-            name:sessionStorage.getItem('name')
+            attachment: null,
+            name: sessionStorage.getItem('name')
         })
-        .then(res=>{
-            console.log(res)
-            alert("Submition Success")
-        }).catch(error=>{
-            console.log(error)
-            alert("Error")
-        })
+            .then(res => {
+                console.log(res)
+                alert("Submition Success")
+            }).catch(error => {
+                console.log(error)
+                alert("Error")
+            })
     }
+
+    const [picture, setPicture] = useState(null);
+
+    const handleFileInput = (event)=>{
+        setPicture(event.target.files[0]);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('file', picture);
+        formData.append('act_id',sessionStorage.getItem('act_id'))
+        formData.append('stud_num',sessionStorage.getItem('stud_num'))
+        formData.append('name',sessionStorage.getItem('name'))
+
+
+        axios.post('/file_upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((response) => {
+            console.log(response.data);
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
     return (
         <>
             <div className="page-container">
@@ -109,14 +136,14 @@ export default function ViewActivity() {
                                         <p className='task-des'>{description}</p>
                                     </div>
 
-                                    <form className="view-file-form">
+                                    <form onSubmit={handleSubmit} className="view-file-form">
                                         <button onClick={handleClick} className='file-btn'><GoPlus />Attach File</button>
                                         <input type="file"
                                             ref={hiddenFileInput}
-                                            onChange={handleChange}
+                                            onChange={handleFileInput}
                                             style={{ display: 'none' }}
                                         />
-                                        <button onClick={submit} id='submit' className='submit-btn'>Submit</button>
+                                        <button type='submit' id='submit' className='submit-btn'>Submit</button>
                                     </form>
 
                                 </div>

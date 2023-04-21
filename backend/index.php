@@ -123,7 +123,29 @@
                 case "delete_post":
                     echo json_encode($post->delete_post($data));
                 break;
+                
+                case "file_upload":
+                    if(isset($_FILES['file'])){
+                        $date = date("Y-m-d");
+                        $target_dir = 'files/';
+                        $file_name= $_FILES['file']['name'];
+                        $target_file = $target_dir.basename($_FILES['file']['name']);
+                        if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
+                            $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `file_name`, `file_loc`, `status`, `name`, `date`) 
+                            VALUES (?,?,?,?,?,?,?)";
+                            $stmt= $pdo->prepare($sql);
+                            $stmt->execute([$_POST['act_id'],$_POST['stud_num'],$file_name,$target_file,1,$_POST['name'],$date]);
 
+                            echo 'success';
+                        }else{
+                            echo 'error ';
+                        }
+                        // echo $target_file;
+                        // echo $file_name;
+                    }else{
+                        echo "No files attach";
+                    }
+                break;
             }
         
         break;
