@@ -106,7 +106,7 @@ class Get{
 
     public function get_finished_submits($id){
         try{
-            $sql="select count(*) from submits where status=0";
+            $sql="select count(*) from submits where status=2";
             $result = $this->gm->exec_query($sql);
             return $result;
             
@@ -179,15 +179,26 @@ class Get{
             if($stmt['code']==200){
                 $filename = $stmt['data'][0]['file_name'];
                 $filepath = $stmt['data'][0]['file_loc'];
-                
-                // header('Content-Type: application/octet-stream');
-                // header('Content-Length: ' . filesize($filepath));
-                // header('Content-Disposition: attachment; filename=' . $filename);
-
                 return readfile($filepath);
             }
         }catch(\PDOException $e){
             return $this->gm->response_payload($e,"Fail","Failed",400);
         }
+    }
+
+    public function board_points(){
+        $sql = "SELECT * FROM profiles ORDER BY points DESC";
+
+        $result= $this->gm->exec_query($sql);
+
+        return $result;
+    }
+
+    public function board_lvl(){
+        $sql = "SELECT * FROM profiles ORDER BY lvl DESC";
+
+        $result= $this->gm->exec_query($sql);
+
+        return $result;
     }
 }

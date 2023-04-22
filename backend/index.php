@@ -83,6 +83,13 @@
                 case "download":
                     echo json_encode($get->download($req[1],$req[2]));
                 break;
+                case "board_points":
+                    echo json_encode($get->board_points());
+                break;
+
+                case "board_lvl":
+                    echo json_encode($get->board_points());
+                break;
             }
         
         break;
