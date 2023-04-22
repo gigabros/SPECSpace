@@ -10,7 +10,8 @@ export default function ViewActivity() {
 
     const hiddenFileInput = React.useRef(null);
 
-    const handleClick = event => {
+    const handleClick = (event) => {
+        event.preventDefault()
         hiddenFileInput.current.click();
     };
     const handleChange = event => {
@@ -67,11 +68,12 @@ export default function ViewActivity() {
     const [picture, setPicture] = useState(null);
 
     const handleFileInput = (event)=>{
+        event.preventDefault();
         setPicture(event.target.files[0]);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const formData = new FormData();
         formData.append('file', picture);
         formData.append('act_id',sessionStorage.getItem('act_id'))
@@ -85,8 +87,13 @@ export default function ViewActivity() {
             }
         }).then((response) => {
             console.log(response.data);
+            if (response.data=="Success") {
+                alert("Submitted Successfuly")
+            } else {
+                alert("No files Attach")
+            }
         }).catch((error) => {
-            console.log(error);
+            alert("Server please try again later")
         });
     }
 
@@ -136,14 +143,14 @@ export default function ViewActivity() {
                                         <p className='task-des'>{description}</p>
                                     </div>
 
-                                    <form onSubmit={handleSubmit} className="view-file-form">
+                                    <form className="view-file-form">
                                         <button onClick={handleClick} className='file-btn'><GoPlus />Attach File</button>
                                         <input type="file"
                                             ref={hiddenFileInput}
                                             onChange={handleFileInput}
                                             style={{ display: 'none' }}
                                         />
-                                        <button type='submit' id='submit' className='submit-btn'>Submit</button>
+                                        <button onClick={handleSubmit} id='submit' className='submit-btn'>Submit</button>
                                     </form>
 
                                 </div>

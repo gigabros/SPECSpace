@@ -8,7 +8,6 @@
 
     $db = new Connection;
     $pdo = $db->connect();
-
     $get = new Get($pdo);
     $post = new Post($pdo);
     $add_lvl = new addlvl();
@@ -81,6 +80,9 @@
                 case "get_list_unverified":
                     echo json_encode($get->get_list_unverified());
                 break;
+                case "download":
+                    echo json_encode($get->download($req[1],$req[2]));
+                break;
             }
         
         break;
@@ -136,16 +138,18 @@
                             $stmt= $pdo->prepare($sql);
                             $stmt->execute([$_POST['act_id'],$_POST['stud_num'],$file_name,$target_file,1,$_POST['name'],$date]);
 
-                            echo 'success';
+                            echo "Success";
                         }else{
-                            echo 'error ';
+                            echo "Fail";
                         }
                         // echo $target_file;
                         // echo $file_name;
-                    }else{
-                        echo "No files attach";
+                    }
+                    else{
+                        echo "No Files";
                     }
                 break;
+                
             }
         
         break;

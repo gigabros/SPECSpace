@@ -5,85 +5,6 @@ import { BsPlusLg } from 'react-icons/bs'
 import { Link,useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 
-const submitted = [
-
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-    {
-        auth: "Anya Forger",
-        file: "Forger.Anya_Activity.pdf",
-        date: "3/31/2023",
-    },
-]
-
 export default function Submits() {
 
     const hiddenFileInput = React.useRef(null);
@@ -124,6 +45,24 @@ export default function Submits() {
                     console.log(res.data.payload.data)
                 }
             )
+    }
+    const handleDownload = (act,stud,filename) =>{
+        axios({
+            url: '/download/' + act + '/' + stud,
+            method: 'GET',
+            responseType: 'blob'
+          })
+          .then(res => {
+            const url = window.URL.createObjectURL(new Blob([res.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+          })
+          .catch(error => {
+            console.log(error);
+          });
     }
     // const [act_id,setAct_id]
     const finish = async (id, stud_num) => {
@@ -191,7 +130,7 @@ export default function Submits() {
                                                                 <p className='submit-date'>Date Submitted: {item.date} </p>
                                                             </div>
                                                             <div className="submit-file-container">
-                                                                <button id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
+                                                                <button onClick={()=> handleDownload(item.act_id,item.stud_num,item.file_name)} id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
                                                                 <p className='submit-file'>{item.file}</p>
                                                                 <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
                                                                 <button id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>

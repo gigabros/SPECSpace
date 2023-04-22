@@ -172,4 +172,22 @@ class Get{
 
         return $result;
     }
+    public function download ($act,$stud){
+        try{
+            $sql = "SELECT * FROM submits where act_id='$act' AND stud_num=$stud AND status=1";
+            $stmt = $this->gm->exec_query($sql);
+            if($stmt['code']==200){
+                $filename = $stmt['data'][0]['file_name'];
+                $filepath = $stmt['data'][0]['file_loc'];
+                
+                // header('Content-Type: application/octet-stream');
+                // header('Content-Length: ' . filesize($filepath));
+                // header('Content-Disposition: attachment; filename=' . $filename);
+
+                return readfile($filepath);
+            }
+        }catch(\PDOException $e){
+            return $this->gm->response_payload($e,"Fail","Failed",400);
+        }
+    }
 }
