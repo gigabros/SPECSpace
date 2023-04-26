@@ -212,4 +212,32 @@ class Get{
             return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
         }
     }
+
+    public function get_submits($id){
+        try{
+            $sql="select * from submits where stud_num=$id";
+            $result = $this->gm->exec_query($sql);
+            return $this->gm->response_payload($result,"success","success",200);
+            
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
+    }
+
+    public function check_dup_submit($stud_num,$act_id){
+        try{
+            $sql="select * from submits where stud_num=$stud_num and act_id='$act_id' and status=1";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute();
+            $row = $stmt->rowCount();
+            if($row>=1){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
+    }
 }

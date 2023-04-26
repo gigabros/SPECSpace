@@ -309,6 +309,17 @@ class Post{
         }
     }
 
+    public function reject_submit($data){
+        try{
+            $sql = "DELETE FROM submits WHERE act_id='$data->act_id' AND stud_num=$data->stud_num";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $this->gm->response_payload($stmt,"Success","Successfuly delete",200);
+        }
+        catch(\PDOException $e){
+            return $e;
+        }
+    }
 }
 
     

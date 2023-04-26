@@ -28,6 +28,17 @@ export default function ViewActivity() {
     const [exp, setExp] = useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
+    // const [check,setCheck]= useState();
+    var check;
+    const chech_submit=()=>{
+        axios.get('/chech_dupe/'+sessionStorage.getItem('stud_num')+'/'+sessionStorage.getItem('act_id'))
+        .then(res=>{
+            
+            check = res.data
+            console.log(check)
+        })
+    }
+
     const get_activity = () => {
         axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
             .then(res => {
@@ -44,6 +55,7 @@ export default function ViewActivity() {
     }
     useEffect(() => {
         get_activity()
+        chech_submit()
     }, [])
     const check_submit = () => {
 
@@ -85,16 +97,24 @@ export default function ViewActivity() {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        }).then((response) => {
+        }).then(response => {
             console.log(response.data);
-            if (response.data=="Success") {
+            if (response.data=="Submitted Success Fully") {
                 alert("Submitted Successfuly")
-            } else {
-                alert("No files Attach")
+            }else if(response.data=="No Files"){
+                alert("No Attached File")
+            }else if(response.data=="Resubmitted Successfuly"){
+                alert("Resubmitted Successfuly")
+            }
+            else{
+                alert("Server Error")
             }
         }).catch((error) => {
             alert("Server please try again later")
         });
+        // }
+        
+        
     }
 
     return (

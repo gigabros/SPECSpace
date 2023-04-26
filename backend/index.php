@@ -94,6 +94,15 @@
                 case "achieve_submitted":
                     echo json_encode($get->get_students_submits($req[1]));
                 break;
+                
+                case "get_list_sub":
+                    echo json_encode($get->get_submits($req[1]));
+                break;
+
+                case "chech_dupe":
+                    echo json_encode($get->check_dup_submit($req[1],$req[2]));
+                break;
+                
             }
         
         break;
@@ -138,29 +147,55 @@
                 break;
                 
                 case "file_upload":
-                    if(isset($_FILES['file'])){
-                        $date = date("Y-m-d");
-                        $target_dir = 'files/';
-                        $file_name= $_FILES['file']['name'];
-                        $target_file = $target_dir.basename($_FILES['file']['name']);
-                        if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
-                            $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `file_name`, `file_loc`, `status`, `name`, `date`) 
-                            VALUES (?,?,?,?,?,?,?)";
-                            $stmt= $pdo->prepare($sql);
-                            $stmt->execute([$_POST['act_id'],$_POST['stud_num'],$file_name,$target_file,1,$_POST['name'],$date]);
-
-                            echo "Success";
-                        }else{
-                            echo "Fail";
+                    $check = $get->check_dup_submit($_POST['stud_num'],$_POST['act_id']);
+                    if($check){
+                        if(isset($_FILES['file'])){
+                            $act_id=$_POST['act_id'];
+                            $stud_num = $_POST['stud_num'];
+                            $date = date("Y-m-d");
+                            $target_dir = 'files/';
+                            $file_name= $_FILES['file']['name'];
+                            $target_file = $target_dir.basename($_FILES['file']['name']);
+                            if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
+                                $sql = "UPDATE `submits` SET file_name=?,file_loc=?,date=? WHERE act_id='$act_id' AND stud_num=$stud_num";
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->execute([$file_name,$target_file,$date]);
+                                echo "Resubmitted Successfuly";
+                            }else{
+                                echo "Fail";
+                            }
                         }
-                        // echo $target_file;
-                        // echo $file_name;
+                        else{
+                            echo "No Files";
+                        }
                     }
                     else{
-                        echo "No Files";
+                        if(isset($_FILES['file'])){
+                            $date = date("Y-m-d");
+                            $target_dir = 'files/';
+                            $file_name= $_FILES['file']['name'];
+                            $target_file = $target_dir.basename($_FILES['file']['name']);
+                            if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
+                                $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `file_name`, `file_loc`, `status`, `name`, `date`) 
+                                VALUES (?,?,?,?,?,?,?)";
+                                $stmt= $pdo->prepare($sql);
+                                $stmt->execute([$_POST['act_id'],$_POST['stud_num'],$file_name,$target_file,1,$_POST['name'],$date]);
+    
+                                echo "Submitted Success Fully";
+                            }else{
+                                echo "Fail";
+                            }
+                        }
+                        else{
+                            echo "No Files";
+                        }
                     }
+                    
                 break;
-                
+
+                case "reject_submit":
+                    echo json_encode($post->reject_submit($data));
+                break;
             }
         
         break;

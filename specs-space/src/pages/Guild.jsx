@@ -26,6 +26,7 @@ export default function Guild() {
   // const [readMore, setReadMore] = useState(false);
   const [activity,setActivity]=useState([]);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  const [submits,setSubmits] = useState([]);
 
   const posted_activity=()=>{
     axios.get('/activity')
@@ -34,8 +35,18 @@ export default function Guild() {
       forceUpdate()
     })
   }
+
+  const get_submitted=()=>{
+    axios.get('/get_list_sub/'+sessionStorage.getItem('stud_num'))
+    .then(res=>{
+      console.log(res.data.payload.data)
+      setSubmits(res.data.payload.data)
+    })
+  }
+
   useEffect(()=>{
     posted_activity()
+    get_submitted()
   },[])
   const get_id = async (id)=>{
     sessionStorage.setItem('act_id',id)
@@ -109,14 +120,20 @@ export default function Guild() {
               <div className="submitted-act">
                 <h1 className='submitted-act-title'>Submitted Activities</h1>
 
-                {submittedact.map((task, index) => {
+                {
+                  submits != null
+                  ?
+                  submits.map((task) => {
                   return (
-                    <div className="sub-holder" key={index}>
-                      <p className="sub-title">{task.title}</p>
-                      <p className="sub-file">{task.file}</p>
+                    <div className="sub-holder" key={task.act_id}>
+                      <p className="sub-title">{task.file_name}</p>
+                      <p className="sub-file">{task.data}</p>
                     </div>
-                  )
-                })}
+                  ) 
+                })
+                :
+                <h1>No submits</h1>
+              }
               </div>
             </div>
 

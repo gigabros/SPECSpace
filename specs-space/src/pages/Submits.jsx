@@ -76,8 +76,7 @@ export default function Submits() {
             alert("error")
             console.log(error)
         })
-        console.log(id)
-        console.log(stud_num)
+
     }
     const handleClick = event => {
         hiddenFileInput.current.click();
@@ -98,6 +97,19 @@ export default function Submits() {
             console.log(res)
             nav_act()
         }).catch(error => {
+            console.log(error)
+        })
+       
+    }
+
+    const delete_submit=async(act_id,stud_num)=>{
+        const delete_sub = await axios.post('/reject_submit',{
+            act_id: act_id,
+            stud_num: stud_num
+        }).then(res=>{
+            console.log(res)
+            sub_list()
+        }).catch(error=>{
             console.log(error)
         })
     }
@@ -133,7 +145,7 @@ export default function Submits() {
                                                                 <button onClick={()=> handleDownload(item.act_id,item.stud_num,item.file_name)} id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
                                                                 <p className='submit-file'>{item.file}</p>
                                                                 <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
-                                                                <button id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
+                                                                <button onClick={()=>delete_submit(item.act_id,item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
                                                             </div>
                                                         </div>
                                                     </>
