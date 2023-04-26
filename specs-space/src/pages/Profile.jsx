@@ -28,6 +28,15 @@ export default function Profile() {
         console.log(submitted['data']['payload']['data'][0]['count(*)'])
         sessionStorage.setItem('submitted', submitted['data']['payload']['data'][0]['count(*)'])
       })
+      
+    axios.get('/achieve_submitted/'+sessionStorage.getItem('stud_num'))
+      .then(res=>{
+          
+          sessionStorage.setItem('totalsubs',res['data']['data'][0]['count(*)'])
+          
+
+        })
+      
   }
 
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);

@@ -106,7 +106,7 @@ class Get{
 
     public function get_finished_submits($id){
         try{
-            $sql="select count(*) from submits where status=2";
+            $sql="select count(*) from submits where status=2 and stud_num=$id";
             $result = $this->gm->exec_query($sql);
             return $result;
             
@@ -116,7 +116,7 @@ class Get{
     }
     public function get_submitted_submits($id){
         try{
-            $sql="select count(*) from submits where status=1";
+            $sql="select count(*) from submits where status=1 and stud_num=$id";
             $result = $this->gm->exec_query($sql);
             if($result['code']=200){
                 return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
@@ -200,5 +200,16 @@ class Get{
         $result= $this->gm->exec_query($sql);
 
         return $result;
+    }
+
+    public function get_students_submits($id){
+        try{
+            $sql="select count(*) from submits where stud_num=$id";
+            $result = $this->gm->exec_query($sql);
+            return $result;
+            
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
     }
 }

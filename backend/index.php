@@ -90,6 +90,10 @@
                 case "board_lvl":
                     echo json_encode($get->board_points());
                 break;
+
+                case "achieve_submitted":
+                    echo json_encode($get->get_students_submits($req[1]));
+                break;
             }
         
         break;
