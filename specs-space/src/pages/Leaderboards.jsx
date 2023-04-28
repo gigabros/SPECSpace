@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
+import axios from '../api/axios';
 
 const lboarddata = [
   {
@@ -72,12 +73,35 @@ const lboarddata = [
 
 
 export default function Leaderboards() {
-  const [count, setCount] = useState(0);
+  const [points,setPoints] = useState([]);
+  const [lvl,setLvl] = useState([])
 
-  const incrementCount = () => {
-    // Update state with incremented value
-    setCount(count + 1);
-  };
+    useEffect(()=>{
+      getPoints()
+      getLvl()
+    },[])
+
+  const getPoints =()=>{
+    axios.get('/board_points')
+    .then(res=>{
+      setPoints(res.data.data)
+      console.log(res)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
+
+  const getLvl =()=>{
+    axios.get('/board_lvl')
+    .then(res=>{
+      setLvl(res.data.data)
+      console.log(res)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
   return (
     <>
       <div className="page-container">
@@ -112,11 +136,11 @@ export default function Leaderboards() {
 
               <div className="lboard-content-holder">
                 <h1 className="lboard-title">Ranking by Points</h1>
-                {lboarddata.map((item, index) => {
+                {points.map((item, index) => {
                   return (
-                    <div className="lboard-content" key={index} id={item.top}>
-                      <p className='lboard-rank'>RANK {index+1}</p>
-                      <p className='lboard-username'>{item.username}</p>
+                    <div className="lboard-content" key={item.stud_num} id={item.top}>
+                      <p className='lboard-rank'>RANK {(index+1)}</p>
+                      <p className='lboard-username'>{item.name}</p>
                       <p className='lboard-points'>{item.points} pts</p>
                     </div>
                   )
@@ -125,11 +149,11 @@ export default function Leaderboards() {
 
               <div className="lboard-content-holder">
                 <h1 className="lboard-title">Ranking by Level</h1>
-                {lboarddata.map((item, index) => {
+                {lvl.map((item, index) => {
                   return (
                     <div className="lboard-content" key={index} id={item.top}>
-                      <p className='lboard-rank'>RANK {index+1} </p>
-                      <p className='lboard-username'>{item.username}</p>
+                      <p className='lboard-rank'>RANK {(index+1)} </p>
+                      <p className='lboard-username'>{item.name}</p>
                       <p className='lboard-level'>level {item.lvl}</p>
                     </div>
                   )

@@ -5,30 +5,49 @@ import { CgProfile } from 'react-icons/cg';
 import badge from '../data/badge-placeholder.png'
 import avatar from '../data/avatar-placeholder.png'
 import dp from '../data/dp.jpg'
-import { useReducer,useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import axios from '../api/axios'
 
 
 export default function Profile() {
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  useEffect(()=>{
-    profdata()
-    
-  
-  },[])
-  useEffect(()=>{
-    forceUpdate()
-  },[])
+  const profdata = () => {
+    axios.get('/profile/' + sessionStorage.getItem('stud_num'))
+      .then(res => {
+        console.log(res.data)
+        sessionStorage.setItem('name', res.data.name)
+        sessionStorage.setItem('lvl', res.data.lvl)
+        sessionStorage.setItem('points', res.data.points)
+      })
+    axios.get('/get_finished/' + sessionStorage.getItem('stud_num'))
+      .then(finished => {
+        console.log(finished['data']['data'][0]['count(*)'])
+        sessionStorage.setItem('finished', finished['data']['data'][0]['count(*)'])
+      })
+    axios.get('/get_submitted/' + sessionStorage.getItem('stud_num'))
+      .then(submitted => {
+        console.log(submitted['data']['payload']['data'][0]['count(*)'])
+        sessionStorage.setItem('submitted', submitted['data']['payload']['data'][0]['count(*)'])
+      })
+      
+    axios.get('/achieve_submitted/'+sessionStorage.getItem('stud_num'))
+      .then(res=>{
+          
+          sessionStorage.setItem('totalsubs',res['data']['data'][0]['count(*)'])
+          
 
-  const profdata =()=>{
-    axios.get('/profile/'+sessionStorage.getItem('stud_num'))
-    .then(res=>{
-      console.log(res.data)
-      sessionStorage.setItem('name',res.data.name)
-      sessionStorage.setItem('lvl',res.data.lvl)
-      sessionStorage.setItem('points',res.data.points)
-    })
+        })
+      
   }
+
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  useEffect(() => {
+    profdata()
+  }, [])
+  useEffect(() => {
+    forceUpdate()
+  }, [])
+
+
   return (
     <>
       <div className="page-container">
@@ -56,9 +75,10 @@ export default function Profile() {
           <div className="profile-page">
             <div className="profile-header">
               <div className="prof-header-info">
-                <p className="prof-name">{sessionStorage.getItem('name')}juswa ayran</p>
-                <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}99</p>
-                <p className="prof-pts">1000{sessionStorage.getItem('points')} POINTS</p>
+
+                <p className="prof-name">{sessionStorage.getItem('name')}</p>
+                <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}</p>
+                <p className="prof-pts">{sessionStorage.getItem('points')} POINTS</p>
               </div>
 
               <div className='prof-dp'>
@@ -70,12 +90,12 @@ export default function Profile() {
               <div className="stats-badge-container">
                 <div className="stats-content">
                   <div className="stats-holder">
-                    <p className="stats-title">SUBMITTED ACTIVITIES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('')}20</p>
+                    <p className="stats-title">PENDING ACTIVITITES</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}</p>
                   </div>
                   <div className="stats-holder">
                     <p className="stats-title">FINISHED ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('')}10</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('finished')}</p>
                   </div>
                 </div>
 

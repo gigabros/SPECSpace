@@ -44,26 +44,22 @@ const announcedata = [
   // },
 ]
 export default function Announcements() {
-  const [poster, setPoster] = useState([]);
+  const [data, setData] = useState([]);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-  // useEffect(()=>{
-  //   posted_activity()
-
-
-  // },[])
-  // useEffect(()=>{
-  //   forceUpdate()
-  // },[])
-
-  const posted_activity = axios.get('/get_posts')
+  const posted_activty=()=>{
+    axios.get('/get_posts')
     .then(res => {
-      setPoster(res.data.payload.data);
+      setData(res.data.payload.data);
+      console.log(res.data.payload.data)
+      console.log(data)
       forceUpdate()
     })
-  // useEffect(()=>{
-  //   console.log(poster)
-  // },[])
+  }
+  useEffect(()=>{
+    posted_activty()
+  },[])
+
 
 
   return (
@@ -95,9 +91,9 @@ export default function Announcements() {
             <h1 className='announcement-title'>Announcements</h1>
             <div className="announce-container">
               {
-                poster != null
+                data != null
                   ?
-                  announcedata.map((task, index) => {
+                  data.map((task, index) => {
                     return (
                       <div className="announce-card" key={index}>
                         <input type="checkbox" id={index} className='chbx' />
@@ -110,6 +106,9 @@ export default function Announcements() {
                         </div>
                         <div className='announce-desc-container'>
                           <p className="announce-desc">{task.message}</p>
+                          <br></br>
+                          <p className="announce-desc">Date Posted</p>
+                          <p className="announce-desc">{task.date}</p>
                         </div>
                       </div>
                     )

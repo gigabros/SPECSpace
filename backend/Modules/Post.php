@@ -89,10 +89,10 @@ class Post{
                     }
                 }
                 else{
-                    return $this->gm->response_payload(null,"Fail","Password is either too short or does not match",200);
+                    return $this->gm->response_payload(null,"Password","Password is either too short or does not match",200);
                 }
             }else{
-                return $this->gm->response_payload(null,"Fail","Account Already exists",200);
+                return $this->gm->response_payload(null,"Account","Account Already exists",200);
             }
 
         }
@@ -143,29 +143,29 @@ class Post{
             $stmt->execute([$email]);
             if($stmt->rowCount()>0){
                 $res = $stmt->fetchAll()[0];
-                
+                $id = $this->get->get_profile($res['id']);
                 if($this->checkPassword($password,$res['password'])){
-                    return $this->get->get_profile($res['id']);
+                    return $this->gm->response_payload($id,"Success","Login Sucessfuly",200);
                 }else{
-                    return $this->gm->response_payload(null,"Fail","Incorrect password",200);
+                    return $this->gm->response_payload(null,"Password","Incorrect password",200);
                 }
                     
             }else{
-                return $this->gm->response_payload(null,"Fail","Account does not exists", 200);
+                return $this->gm->response_payload(null,"Account","Account does not exists", 200);
             }
         }
         catch (\PDOException $e){
-            return $this->gm->response_payload(null,"Fail","fail to login",200);
+            return $this->gm->response_payload(null,"Fail","fail to login",400);
         }
     }
     public function add_activity($data){
 
        try{
             $gen_id = uniqid("GC_");
-            $sql ="INSERT INTO activity (`id`, `subject`, `description`, `attachment`, `deadline`, `points`,`exp`)
-                VALUES (?,?,?,?,?,?,?)";
+            $sql ="INSERT INTO activity (`id`, `subject`, `description`, `deadline`, `points`,`exp`)
+                VALUES (?,?,?,?,?,?)";
             $stmt =$this->pdo->prepare($sql);
-            $stmt->execute([$gen_id,$data->subject,$data->description,$data->attachment,$data->deadline,$data->points,$data->exp]);
+            $stmt->execute([$gen_id,$data->subject,$data->description,$data->deadline,$data->points,$data->exp]);
             return $this->gm->response_payload(null,"Success", "Activity Posted",200);
             
        }
@@ -177,7 +177,7 @@ class Post{
 
     public function add_post($data){
         try{
-            $date = date("h:i a/ d-m-Y");
+            $date = date("d-m-Y");
             $gen_id = uniqid("GC_post_");
             $sql= "INSERT INTO `posts`(`post_id`, `title`, `message`,`date`) VALUES (?,?,?,?)";
             $stmt = $this->pdo->prepare($sql);
@@ -199,10 +199,10 @@ class Post{
             $date = date("Y-m-d");
             $activity = $this->get->select_activity($data->id);
             if($activity['payload']['data']['0']['deadline'] >= $date){
-                $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `attachment`,`status`) VALUES 
-                (?,?,?,?)";
+                $sql = "INSERT INTO `submits`(`act_id`, `stud_num`, `attachment`,`status`,`name`,`date`) VALUES 
+                (?,?,?,?,?,?)";
                 $stmt= $this->pdo->prepare($sql);
-                $stmt->execute([$activity['payload']['data'][0]['id'],$data->stud_num,$data->attachement,1]);
+                $stmt->execute([$activity['payload']['data'][0]['id'],$data->stud_num,$data->attachement,1,$data->name,$date]);
                 return $this->gm->response_payload(null,"Success","Activity Submitted",200); 
             }
             else{
@@ -285,6 +285,41 @@ class Post{
         }
     }
 
+    public function delete_act($data){
+        try{
+            $sql = "DELETE FROM activity WHERE id=?";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute([$data->act_id]);
+
+            return $this->gm->response_payload($stmt,"success","Successfuly deleted",200);
+        }catch(\PDOException $e){
+            return $e;
+        }
+    }
+
+    public function delete_post($data){
+        try{
+            $sql = "DELETE FROM posts WHERE post_id=?";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute([$data->post_id]);
+
+            return $this->gm->response_payload($stmt,"success","Successfuly deleted",200);
+        }catch(\PDOException $e){
+            return $e;
+        }
+    }
+
+    public function reject_submit($data){
+        try{
+            $sql = "DELETE FROM submits WHERE act_id='$data->act_id' AND stud_num=$data->stud_num";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $this->gm->response_payload($stmt,"Success","Successfuly delete",200);
+        }
+        catch(\PDOException $e){
+            return $e;
+        }
+    }
 }
 
     

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import './pagestyle.scss';
 import AdSidebar from '../components/AdSidebar'
+import axios from '../api/axios';
 
 const lboarddata = [
   {
@@ -69,6 +70,37 @@ const lboarddata = [
 ]
 
 export default function AdLeaderboards() {
+
+  const [points,setPoints] = useState([]);
+  const [lvl,setLvl] = useState([])
+
+    useEffect(()=>{
+      getPoints()
+      getLvl()
+    },[])
+
+  const getPoints =()=>{
+    axios.get('/board_points')
+    .then(res=>{
+      setPoints(res.data.data)
+      console.log(res)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
+
+  const getLvl =()=>{
+    axios.get('/board_lvl')
+    .then(res=>{
+      setLvl(res.data.data)
+      console.log(res)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
+
   return (
     <>
       <div className="page-container">
@@ -88,11 +120,11 @@ export default function AdLeaderboards() {
 
               <div className="lboard-content-holder">
                 <h1 className="lboard-title">Ranking by Points</h1>
-                {lboarddata.map((item, index) => {
+                {points.map((item, index) => {
                   return (
                     <div className="lboard-content" key={index} id={item.top}>
-                      <p className='lboard-rank'>Rank {item.rank} </p>
-                      <p className='lboard-username'>{item.username}</p>
+                      <p className='lboard-rank'>Rank {(index+1)} </p>
+                      <p className='lboard-username'>{item.name}</p>
                       <p className='lboard-points'>{item.points} pts</p>
                     </div>
                   )
@@ -101,11 +133,11 @@ export default function AdLeaderboards() {
 
               <div className="lboard-content-holder">
                 <h1 className="lboard-title">Ranking by Level</h1>
-                {lboarddata.map((item, index) => {
+                {lvl.map((item, index) => {
                   return (
                     <div className="lboard-content" key={index} id={item.top}>
-                      <p className='lboard-rank'>Rank {item.rank} </p>
-                      <p className='lboard-username'>{item.username}</p>
+                      <p className='lboard-rank'>Rank {(index+1)} </p>
+                      <p className='lboard-username'>{item.name}</p>
                       <p className='lboard-level'>level {item.lvl}</p>
                     </div>
                   )
