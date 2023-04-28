@@ -4,6 +4,7 @@ import AdSidebar from '../components/AdSidebar'
 import { GiTrashCan } from "react-icons/gi";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import dp from '../data/dp.jpg'
+import logo from '../components/specs_logo.png'
 import axios from '../api/axios';
 
 
@@ -11,125 +12,125 @@ import axios from '../api/axios';
 const Accounts = [
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   }, {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
   },
   {
     img: dp,
-    username: "John Wick",
+    name: "John Wick",
     title: "Challenger",
     level: 9000,
     points: 100,
@@ -167,7 +168,7 @@ export default function Adaccounts() {
                   return (
                     <div className="acc-card" key={item.stud_num}>
                       <div className="acc-img-holder">
-                        <img src={dp} className="acc-img" />
+                        <img src={logo} className="acc-img" />
                       </div>
                       <div className="acc-info-holder">
                         <p className='acc-username'>{item.name}</p>

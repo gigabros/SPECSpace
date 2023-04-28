@@ -4,68 +4,6 @@ import dp from '../data/dp.jpg'
 import { MdOutlineNotInterested } from 'react-icons/md'
 import axios from '../api/axios'
 
-const Accounts = [
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    {
-        img: dp,
-        username: "John Wick",
-        email: "babayaga@gmail.com",
-    },
-    // {
-    //     img: dp,
-    //     username: "John Wick",
-    //     email: "babayaga@gmail.com",
-    // },
-    // {
-    //     img: dp,
-    //     username: "John Wick",
-    //     email: "babayaga@gmail.com",
-    // },
-]
 export default function Requests() {
     const [data, setData] = useState([])
 
@@ -105,33 +43,31 @@ export default function Requests() {
                         <h1 className='Request-title'>Verification Requests</h1>
                         <div className="req-list">
                             {
-                                data !=null
-                                ?
-                                data.map((item) => {
-                                return (
-                                    <>
-                                        <div className="req-card-holder">
-                                            <div className="req-card" key={data.id}>
+                                data != null
+                                    ?
+                                    data.map((item) => {
+                                        return (
+                                            <>
+                                                <div className="req-card-holder">
+                                                    <div className="req-info" key={item.id}>
 
-                                                <div className="req-info-holder">
-                                                    <p className='req-title'>{item.name} </p>
-                                                    <p className='req-des'>{item.id}</p>
-                                                    <p className='req-des'>{item.email}</p>
+                                                        <p className='req-title'>{item.name} </p>
+                                                        <p className='req-des'>{item.id}</p>
+                                                        <p className='req-des'>{item.email}</p>
+                                                    </div>
+
+                                                    <div className="req-btn">
+                                                        <button onClick={() => verify_account(item.id, item.name)} className='verify-btn'>Verify User</button>
+                                                        <MdOutlineNotInterested size={30} className='reject-btn' />
+
+                                                    </div>
+
                                                 </div>
-                                            </div>
-
-                                            <div className="req-btn">
-                                                <button onClick={() => verify_account(item.id, item.name)} className='verify-btn'>Verify User</button>
-                                                <MdOutlineNotInterested size={30} className='reject-btn' />
-
-                                            </div>
-
-                                        </div>
-                                    </>
-                                )
-                                })
-                                :
-                                <h1>No Accounts!</h1>
+                                            </>
+                                        )
+                                    })
+                                    :
+                                    <h1>No Accounts!</h1>
                             }
 
                         </div>

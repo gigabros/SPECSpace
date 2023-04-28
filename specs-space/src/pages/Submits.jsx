@@ -164,9 +164,9 @@ export default function Submits() {
 
                                     <div className="submit-act-info">
                                         <p className='task-title'>{subject}</p>
-                                        <p className='task-info'>{exp}</p>
-                                        <p className='task-info'>{points}</p>
-                                        <p className='task-info'>{deadline}</p>
+                                        <p className='task-info'>{exp} EXP</p>
+                                        <p className='task-info'>{points} PTS</p>
+                                        <p className='task-info'>Deadline: {deadline}</p>
                                         <p className='task-des'>{description}</p>
                                     </div>
 

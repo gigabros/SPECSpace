@@ -5,6 +5,7 @@ import { CgProfile } from 'react-icons/cg';
 import badge from '../data/badge-placeholder.png'
 import avatar from '../data/avatar-placeholder.png'
 import dp from '../data/dp.jpg'
+import logo1 from '../components/specs_logo.png'
 import { useReducer, useEffect } from 'react';
 import axios from '../api/axios'
 
@@ -55,7 +56,7 @@ export default function Profile() {
           <Sidebar />
         </div>
 
-        <div className="area">
+        {/* <div className="area">
           <ul class="circles">
             <li></li>
             <li></li>
@@ -68,7 +69,7 @@ export default function Profile() {
             <li></li>
             <li></li>
           </ul>
-        </div>
+        </div> */}
 
         <div className="right-side">
           {/* <h1>Profile</h1> */}
@@ -82,7 +83,7 @@ export default function Profile() {
               </div>
 
               <div className='prof-dp'>
-                <img src={dp} className="prof-dp-img" />
+                <img src={logo1} className="prof-dp-img" />
               </div>
             </div>
 
@@ -91,11 +92,11 @@ export default function Profile() {
                 <div className="stats-content">
                   <div className="stats-holder">
                     <p className="stats-title">PENDING ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}20</p>
                   </div>
                   <div className="stats-holder">
                     <p className="stats-title">FINISHED ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('finished')}</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('finished')}20</p>
                   </div>
                 </div>
 
