@@ -84,7 +84,7 @@ export default function Guild() {
                 {
                   activity != null
                     ?
-                    quest.map((task) => {
+                    activity.map((task) => {
                       return (
                         <>
                           <div className="task-card-holder">
