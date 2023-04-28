@@ -60,9 +60,9 @@ const Sidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-        <Link to="/" className='logout-link'>
-          <MdLogout size={30} className='logout-btn'/>
-        </Link>
+          <Link to="/" className='logout-link'>
+            <MdLogout size={30} className='logout-btn' />
+          </Link>
         </div>
       </div>
 

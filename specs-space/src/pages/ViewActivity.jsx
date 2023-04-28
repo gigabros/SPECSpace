@@ -156,11 +156,11 @@ export default function ViewActivity() {
                                     </div>
 
                                     <div className="view-act-info">
-                                        <p className='task-title'>{subject}</p>
+                                        <p className='task-title'>{subject}Title</p>
                                         <p className='task-info'>{exp} EXP</p>
                                         <p className='task-info'>{points} PTS</p>
-                                        <p className='task-info'>{deadline}</p>
-                                        <p className='task-des'>{description}</p>
+                                        <p className='task-info'>{deadline}xx.xx.xxxx</p>
+                                        <p className='task-des'>{description} Lorem ipsum dolor sit amet consectetur </p>
                                     </div>
 
                                     <form className="view-file-form">

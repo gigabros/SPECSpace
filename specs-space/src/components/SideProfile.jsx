@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { CgProfile } from 'react-icons/cg';
 import dp from '../data/dp.jpg'
 
 export default function SideProfile() {
@@ -11,8 +10,10 @@ export default function SideProfile() {
           <div className="profilebtn-content">
             <div className='icon'><img src={dp} className="icon-img" /></div>
             <div className="label">
+
               <span id='Profile'>{sessionStorage.getItem('name')}</span>
               <span>LVL: {sessionStorage.getItem('lvl')}</span>
+
             </div>
 
           </div>

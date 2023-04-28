@@ -7,6 +7,7 @@ import { MdDeleteForever, MdUpload } from "react-icons/md";
 import { FaFileUpload } from 'react-icons/fa'
 import axios from '../api/axios';
 
+
 export default function AdAnnouncements() {
   const hiddenFileInput = React.useRef(null);
 
@@ -86,6 +87,7 @@ export default function AdAnnouncements() {
               <div className="announce-list">
                 {posts.map((task) => {
                   return (
+
                     <div className="announce-card" key={task.post_id}>
                       <input type="checkbox" id={task.post_id} className='chbx' />
                       <div className='announce-header'>
@@ -94,6 +96,7 @@ export default function AdAnnouncements() {
                           <label htmlFor={task.post_id} className='btn-drpdwn'><BsChevronExpand size={30} className='exp-btn' /></label>
                           <p className="announce-title">{task.title}</p>
                           <MdDeleteForever onClick={()=>delete_post(task.post_id)} size={30} className='del-btn' />
+
                         </div>
                       </div>
                       <div className='announce-desc-container'>
