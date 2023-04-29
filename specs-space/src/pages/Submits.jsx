@@ -2,8 +2,28 @@ import React, { useState, useReducer, useEffect } from 'react'
 import AdSidebar from '../components/AdSidebar'
 import { MdArrowBackIosNew, MdCheck, MdFileDownload } from 'react-icons/md'
 import { BsPlusLg } from 'react-icons/bs'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+
+
+const sub = [
+    {
+        name: "asdasdasdsddddddfsdfsdfsfsdfsfsdfsfsfddddddddd",
+        date: '01.01.2020'
+    },
+    {
+        name: "dsasd",
+        date: '01.01.2020'
+    },
+    {
+        name: "fgdgf fgdg fgdgfdfg df",
+        date: '01.01.2020'
+    },
+    {
+        name: "fdgfgfdgdfg",
+        date: '01.01.2020'
+    },
+]
 
 export default function Submits() {
 
@@ -46,23 +66,23 @@ export default function Submits() {
                 }
             )
     }
-    const handleDownload = (act,stud,filename) =>{
+    const handleDownload = (act, stud, filename) => {
         axios({
             url: '/download/' + act + '/' + stud,
             method: 'GET',
             responseType: 'blob'
-          })
-          .then(res => {
-            const url = window.URL.createObjectURL(new Blob([res.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
-            link.click();
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        })
+            .then(res => {
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', filename);
+                document.body.appendChild(link);
+                link.click();
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
     // const [act_id,setAct_id]
     const finish = async (id, stud_num) => {
@@ -99,17 +119,17 @@ export default function Submits() {
         }).catch(error => {
             console.log(error)
         })
-       
+
     }
 
-    const delete_submit=async(act_id,stud_num)=>{
-        const delete_sub = await axios.post('/reject_submit',{
+    const delete_submit = async (act_id, stud_num) => {
+        const delete_sub = await axios.post('/reject_submit', {
             act_id: act_id,
             stud_num: stud_num
-        }).then(res=>{
+        }).then(res => {
             console.log(res)
             sub_list()
-        }).catch(error=>{
+        }).catch(error => {
             console.log(error)
         })
     }
@@ -133,19 +153,21 @@ export default function Submits() {
                                     {
                                         data != null
                                             ?
-                                            data.map((item) => {
+                                            sub.map((item) => {
                                                 return (
                                                     <>
                                                         <div className="submit-holder">
+                                                            <div className="submit-dwnl-container">
+                                                                <button onClick={() => handleDownload(item.act_id, item.stud_num, item.file_name)} id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
+                                                            </div>
                                                             <div className="submit-header">
                                                                 <p className='submit-auth'>{item.name} </p>
                                                                 <p className='submit-date'>Date Submitted: {item.date} </p>
                                                             </div>
                                                             <div className="submit-file-container">
-                                                                <button onClick={()=> handleDownload(item.act_id,item.stud_num,item.file_name)} id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
-                                                                <p className='submit-file'>{item.file}</p>
+                                                                <input type='number' className='score'/>points 
                                                                 <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
-                                                                <button onClick={()=>delete_submit(item.act_id,item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
+                                                                <button onClick={() => delete_submit(item.act_id, item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
                                                             </div>
                                                         </div>
                                                     </>
@@ -171,7 +193,7 @@ export default function Submits() {
                                     </div>
 
                                     <div className="rmv-file">
-                                        <button onClick={()=>delete_act()} className='rmv-btn'>Remove</button>
+                                        <button onClick={() => delete_act()} className='rmv-btn'>Remove</button>
                                     </div>
 
                                 </div>

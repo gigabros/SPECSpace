@@ -1540,7 +1540,7 @@
             .submit-list {
                 display: flex;
                 flex-direction: column;
-                width: 35%;
+                width: 50%;
                 border-radius: 10px;
                 background-color: white;
                 box-shadow: 0px 10px 20px 5px #888888;
@@ -1548,14 +1548,45 @@
 
                 .submit-holder {
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
+                    align-items: center;
                     margin-bottom: 3%;
                     padding-bottom: 3%;
                     border-bottom: #373D3F 1px solid;
 
+                    .submit-dwnl-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 2rem;
+                        height: 2rem;
+                        border: none;
+                        // background-color: #373D3F;
+                        margin: 0 2%;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        // border: red 1px solid;
+
+                        &:hover {
+                            // color: #888888;
+                            // box-shadow: 5px 5px 10px 3px #888888;
+                            transform: translateY(-2px);
+                        }
+
+                        .dwnld-btn {
+                            color: #D7DCEA;
+                        }
+
+                        #dwnld {
+                            background-color: #373D3F;
+                        }
+                    }
+
                     .submit-header {
                         display: flex;
                         flex-direction: column;
+                        width: 65%;
+                        // border: red 1px solid;
 
                         .submit-auth {
                             font-family: Arial, Helvetica, sans-serif;
@@ -1565,6 +1596,11 @@
                             text-transform: uppercase;
                             color: #373D3F;
                             margin: 0;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            display: inline-block;
+                            text-overflow: ellipsis;
+                            width: calc(95%);
                         }
 
                         .submit-date {
@@ -1582,19 +1618,47 @@
                     .submit-file-container {
                         display: flex;
                         flex-direction: row;
-                        height: 2rem;
+                        align-items: center;
+                        height: 3rem;
+                        width: 25%;
                         // border: red 1px solid;
+
+                        .score {
+                            display: block;
+                            border: none;
+                            // width: 80%;
+                            // margin-bottom: 10%;
+                            padding: 0;
+                            height: 2rem;
+                            width: 3rem;
+
+                            font-size: medium;
+                            transition: all 0.2s ease;
+
+                            
+                            &:focus {
+                                outline: none;
+                                border: none;
+                            }
+
+                            &:hover {
+                                outline: 0.5px solid black;
+                                box-shadow: 2px 2px 9px -1px black;
+                            }
+                        }
 
                         .submit-btn-holder {
                             display: flex;
                             justify-content: center;
                             align-items: center;
                             width: 2rem;
+                            height: 2rem;
                             border: none;
                             // background-color: #373D3F;
                             margin: 0 2%;
                             cursor: pointer;
                             transition: all 0.2s ease;
+                            // border: red 1px solid;
 
                             &:hover {
                                 // color: #888888;
@@ -1602,9 +1666,6 @@
                                 transform: translateY(-2px);
                             }
 
-                            .dwnld-btn {
-                                color: #D7DCEA;
-                            }
 
                             .correct-btn {
                                 color: #D7DCEA;
@@ -1616,9 +1677,6 @@
                             }
                         }
 
-                        #dwnld {
-                            background-color: #373D3F;
-                        }
 
                         #correct {
                             background-color: #02854F;
@@ -1627,22 +1685,6 @@
                         #wrong {
                             background-color: #B71103;
                         }
-
-                        .submit-file {
-                            font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1.5rem;
-                            font-weight: bold;
-                            text-align: left;
-                            // text-transform: uppercase;
-                            color: #373D3F;
-                            margin: 0;
-                            width: 70%;
-                            width: calc(100%);
-                            overflow: hidden;
-                            display: inline-block;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                        }
                     }
                 }
             }
@@ -1650,7 +1692,7 @@
             .submit-info-container {
                 display: flex;
                 flex-direction: column;
-                width: 50%;
+                width: 35%;
                 height: min-content;
                 border-radius: 10px;
                 padding: 2%;
