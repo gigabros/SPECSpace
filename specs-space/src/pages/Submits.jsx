@@ -152,7 +152,7 @@ export default function Submits() {
                                     {
                                         data != null
                                             ?
-                                            sub.map((item) => {
+                                            data.map((item) => {
                                                 return (
                                                     <>
                                                         <div className="submit-holder">
@@ -196,11 +196,11 @@ export default function Submits() {
                                     </div>
 
                                     <div className="submit-act-info">
-                                        <p className='task-title'>{subject}asdadada</p>
+                                        <p className='task-title'>{subject}</p>
                                         <p className='task-info'>{exp} EXP</p>
                                         <p className='task-info'>{points} PTS</p>
                                         <p className='task-info'>Deadline: {deadline}</p>
-                                        <p className='task-des'>{description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eveniet officiis modi enim accusantium a? Officia ullam natus illo laboriosam, optio sed similique quo accusantium quasi amet, placeat eveniet iste?</p>
+                                        <p className='task-des'>{description}</p>
                                     </div>
 
                                     <div className="rmv-file">

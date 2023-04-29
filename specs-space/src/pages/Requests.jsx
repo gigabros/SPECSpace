@@ -65,7 +65,7 @@ export default function Requests() {
                             {
                                 data != null
                                     ?
-                                    ver.map((item) => {
+                                    data.map((item) => {
                                         return (
                                             <>
                                                 <div className="req-card-holder">
