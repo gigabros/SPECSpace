@@ -1,8 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import AdSidebar from '../components/AdSidebar'
 import dp from '../data/dp.jpg'
-import { MdOutlineNotInterested } from 'react-icons/md'
+import { GoVerified } from 'react-icons/go'
+import { FiAlertCircle } from 'react-icons/fi'
 import axios from '../api/axios'
+import ConfirmationModal from '../components/ConfirmationModal'
+
+const ver = [
+    {
+        id: 202011015,
+        name: "Juswaaaaaaaaaaaaaaaaaaaaaa",
+        email: '202011015@gordoncollege.edu.ph'
+    },
+    {
+        id: 202011015,
+        name: "Juswaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        email: '202011015@gordoncollege.edu.ph'
+    },
+    {
+        id: 202011015,
+        name: "Juswa",
+        email: '202011015@gordoncollege.edu.ph'
+    },
+]
 
 export default function Requests() {
     const [data, setData] = useState([])
@@ -45,7 +65,7 @@ export default function Requests() {
                             {
                                 data != null
                                     ?
-                                    data.map((item) => {
+                                    ver.map((item) => {
                                         return (
                                             <>
                                                 <div className="req-card-holder">
@@ -57,9 +77,20 @@ export default function Requests() {
                                                     </div>
 
                                                     <div className="req-btn">
-                                                        <button onClick={() => verify_account(item.id, item.name)} className='verify-btn'>Verify User</button>
-                                                        <MdOutlineNotInterested size={30} className='reject-btn' />
-
+                                                        {/* <button onClick={() => verify_account(item.id, item.name)} className='verify-btn'>Verify User</button> */}
+                                                        <ConfirmationModal
+                                                            confirmIcon={<GoVerified size={100} className='verify-icon'/>}
+                                                            message="Are you sure you want to VERIFY this User?"
+                                                            onConfirm={() => verify_account(item.id, item.name)}
+                                                            buttonLabel="Verify User"
+                                                            buttonClassName='verify-btn' />
+                                                        <ConfirmationModal
+                                                            confirmIcon={<FiAlertCircle size={100} className='reject-icon'/>}
+                                                            message="Are you sure you want to REJECT this User?"
+                                                            onConfirm={() => verify_account(item.id, item.name)}
+                                                            buttonLabel="Reject"
+                                                            buttonClassName='reject-btn' />
+                                                        {/* <MdOutlineNotInterested size={30} className='reject-btn' /> */}
                                                     </div>
 
                                                 </div>

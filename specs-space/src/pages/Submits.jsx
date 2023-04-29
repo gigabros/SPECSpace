@@ -1,9 +1,11 @@
 import React, { useState, useReducer, useEffect } from 'react'
 import AdSidebar from '../components/AdSidebar'
-import { MdArrowBackIosNew, MdCheck, MdFileDownload } from 'react-icons/md'
+import { MdArrowBackIosNew, MdCheck, MdFileDownload, MdDeleteForever } from 'react-icons/md'
+import { RxCrossCircled, RxCheckCircled } from 'react-icons/rx'
 import { BsPlusLg } from 'react-icons/bs'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+import ConfirmationModal from '../components/ConfirmationModal'
 
 
 const sub = [
@@ -145,9 +147,6 @@ export default function Submits() {
                         <h1 className='Submit-title'>Submitted Works</h1>
 
                         <div className="submit-act-container">
-                            <div className="submit-act-graphic">
-
-                            </div>
                             <div className="submit-act-holder">
                                 <div className="submit-list">
                                     {
@@ -165,9 +164,21 @@ export default function Submits() {
                                                                 <p className='submit-date'>Date Submitted: {item.date} </p>
                                                             </div>
                                                             <div className="submit-file-container">
-                                                                <input type='number' className='score'/>points 
-                                                                <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
-                                                                <button onClick={() => delete_submit(item.act_id, item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
+                                                                <input type='number' className='score' /><i>points</i>
+                                                                {/* <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
+                                                                <button onClick={() => delete_submit(item.act_id, item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button> */}
+                                                                <ConfirmationModal
+                                                                    confirmIcon={<RxCheckCircled size={100} className='crrct-icon' />}
+                                                                    message="Confirm Action?"
+                                                                    onConfirm={() => finish(item.act_id, item.stud_num)}
+                                                                    buttonLabel="Correct"
+                                                                    buttonClassName='crrct-btn' />
+                                                                <ConfirmationModal
+                                                                    confirmIcon={<RxCrossCircled size={100} className='wrng-icon' />}
+                                                                    message="Confirm Action?"
+                                                                    onConfirm={() => delete_submit(item.act_id, item.stud_num)}
+                                                                    buttonLabel="Reject"
+                                                                    buttonClassName='wrng-btn' />
                                                             </div>
                                                         </div>
                                                     </>
@@ -185,22 +196,26 @@ export default function Submits() {
                                     </div>
 
                                     <div className="submit-act-info">
-                                        <p className='task-title'>{subject}</p>
+                                        <p className='task-title'>{subject}asdadada</p>
                                         <p className='task-info'>{exp} EXP</p>
                                         <p className='task-info'>{points} PTS</p>
                                         <p className='task-info'>Deadline: {deadline}</p>
-                                        <p className='task-des'>{description}</p>
+                                        <p className='task-des'>{description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eveniet officiis modi enim accusantium a? Officia ullam natus illo laboriosam, optio sed similique quo accusantium quasi amet, placeat eveniet iste?</p>
                                     </div>
 
                                     <div className="rmv-file">
-                                        <button onClick={() => delete_act()} className='rmv-btn'>Remove</button>
+                                        {/* <button onClick={() => delete_act()} className='rmv-btn'>Remove</button> */}
+                                        <ConfirmationModal
+                                            confirmIcon={<MdDeleteForever size={100} className='rmv-act-icon' />}
+                                            message="REMOVE this activity?"
+                                            onConfirm={() => delete_act()}
+                                            buttonLabel="Remove"
+                                            buttonClassName='rmv-btn' />
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
