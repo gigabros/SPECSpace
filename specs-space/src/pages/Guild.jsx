@@ -9,16 +9,57 @@ import axios from '../api/axios'
 
 const submittedact = [
   {
-    title: "Do Homework",
-    file: "Submitted-activity.pdf"
+    act_id: 1,
+    file_name: "Submitted-activity.pdf"
   },
   {
-    title: "Do Homework",
-    file: "Submitted-activity.pdf"
+    act_id: 2,
+    file_name: "Submitted-actidasdasdadadasdvity.pdf"
   },
   {
-    title: "Do Homework",
-    file: "Submitted-activity.pdf"
+    act_id: 3,
+    file_name: "Subm.pdf"
+  },
+  {
+    act_id: 4,
+    file_name: "Submitted-acasdasdassssssssssssssssssssssssssssssssstivity.pdf"
+  },
+]
+const actlist = [
+  {
+    id: 1,
+    subject: "Do Homework",
+    exp: 100,
+    points: 30,
+    deadline: '01.01.2020'
+  },
+  {
+    id: 1,
+    subject: "dasdasdasdadasdasdada",
+    exp: 100,
+    points: 30,
+    deadline: '01.01.2020'
+  },
+  {
+    id: 1,
+    subject: "Dasdasdadadk",
+    exp: 100,
+    points: 30,
+    deadline: '01.01.2020'
+  },
+  {
+    id: 1,
+    subject: "dsadas sdadasd asdasd asdk",
+    exp: 100,
+    points: 30,
+    deadline: '01.01.2020'
+  },
+  {
+    id: 1,
+    subject: "asdasd",
+    exp: 100,
+    points: 30,
+    deadline: '01.01.2020'
   },
 ]
 
@@ -126,8 +167,7 @@ export default function Guild() {
                   submits.map((task) => {
                   return (
                     <div className="sub-holder" key={task.act_id}>
-                      <p className="sub-title">{task.file_name}</p>
-                      <p className="sub-file">{task.data}</p>
+                      <p className="sub-file">{task.file_name}</p>
                     </div>
                   ) 
                 })

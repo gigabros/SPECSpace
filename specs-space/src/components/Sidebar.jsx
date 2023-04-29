@@ -1,9 +1,9 @@
 import React from 'react'
-import SideProfile from './SideProfile'
 import { NavLink, Link } from 'react-router-dom';
 import { FaTasks, FaTrophy, FaChartBar, FaRegFlag } from 'react-icons/fa'
 import { BsMegaphoneFill } from 'react-icons/bs'
 import { MdLogout } from 'react-icons/md'
+import logo from '../data/logo.png'
 import './compstyle.scss'
 
 const SidebarData = [
@@ -35,7 +35,14 @@ const Sidebar = () => {
     <>
       <div className="sidebar-container">
         <div className="profilesidebar-container">
-          <SideProfile />
+          <NavLink to='/profile' className='prof-link'>
+            <div className='side-logo-holder'>
+              <img src={logo} className="side-logo" />
+            </div>
+            <div className="side-prof-label">
+              <span id='Profile'>{sessionStorage.getItem('name')}</span>
+            </div>
+          </NavLink>
         </div>
 
         <section>
