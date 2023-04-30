@@ -11,6 +11,12 @@ import axios from '../api/axios'
 
 
 export default function Profile() {
+  useEffect(() => {
+    profdata()
+  },[])
+  useEffect(() => {
+    forceUpdate()
+  },[])
   const profdata = () => {
     axios.get('/profile/' + sessionStorage.getItem('stud_num'))
       .then(res => {
@@ -44,12 +50,7 @@ export default function Profile() {
   }
 
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  useEffect(() => {
-    profdata()
-  }, [])
-  useEffect(() => {
-    forceUpdate()
-  }, [])
+  
 
 
   return (
