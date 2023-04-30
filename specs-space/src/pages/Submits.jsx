@@ -38,6 +38,7 @@ export default function Submits() {
     const [points, setPoints] = useState()
     const [exp, setExp] = useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+    const [staticPoints,setStaticPoints]=useState()
 
     const [data, setData] = useState([]);
     function handle(e){
@@ -54,6 +55,7 @@ export default function Submits() {
                 setDeadline(res.data.payload.data[0].deadline)
                 setPoints(res.data.payload.data[0].points)
                 setExp(res.data.payload.data[0].exp)
+                setStaticPoints(res.data.payload.data[0].points)
                 forceUpdate()
             })
     }
@@ -204,7 +206,7 @@ export default function Submits() {
                                     <div className="submit-act-info">
                                         <p className='task-title'>{subject}</p>
                                         <p className='task-info'>{exp} EXP</p>
-                                        <p className='task-info'>{points} PTS</p>
+                                        <p className='task-info'>{staticPoints} PTS</p>
                                         <p className='task-info'>Deadline: {deadline}</p>
                                         <p className='task-des'>{description}</p>
                                     </div>

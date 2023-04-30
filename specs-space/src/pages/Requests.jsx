@@ -74,7 +74,7 @@ export default function Requests() {
                                                 <div className="req-card-holder">
                                                     <div className="req-info" key={item.id}>
 
-                                                        <p className='req-title'>{item.name} </p>
+                                                        <p className='req-title'>{item.first_name} {item.last_name}</p>
                                                         <p className='req-des'>{item.id}</p>
                                                         <p className='req-des'>{item.email}</p>
                                                     </div>

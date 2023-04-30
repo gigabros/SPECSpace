@@ -8,135 +8,6 @@ import logo from '../components/specs_logo.png'
 import axios from '../api/axios';
 
 
-
-const Accounts = [
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  }, {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  },
-  {
-    img: dp,
-    name: "John Wick",
-    title: "Challenger",
-    level: 9000,
-    points: 100,
-  }
-]
-
 export default function Adaccounts() {
 
   const [data,setData] = useState([])
@@ -171,7 +42,7 @@ export default function Adaccounts() {
                         <img src={logo} className="acc-img" />
                       </div>
                       <div className="acc-info-holder">
-                        <p className='acc-username'>{item.name}</p>
+                        <p className='acc-username'>{item.last_name}, {item.first_name}</p>
                         <p className='acc-lvl'>Level {item.lvl} </p>
                         <p className='acc-points'>{item.points} points</p>
                       </div>
