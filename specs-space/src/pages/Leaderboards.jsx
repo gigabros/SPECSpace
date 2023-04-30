@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar'
 import axios from '../api/axios';
 import logo from '../components/specs_logo.png'
 import { BsAward } from 'react-icons/bs'
-import { AiOutlineStar } from "react-icons/Ai";
+import { AiOutlineStar } from "react-icons/ai";
 
 export default function Leaderboards() {
   const [points, setPoints] = useState([]);
