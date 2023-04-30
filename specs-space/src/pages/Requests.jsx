@@ -39,10 +39,13 @@ export default function Requests() {
 
     }, [])
 
-    const verify_account = async (id, stud_name) => {
+    const verify_account = async (id, fname,lname,block,year) => {
         const verifying = await axios.post('/verify', {
             id: id,
-            name: stud_name
+            fname: fname,
+            lname:lname,
+            block:block,
+            year:year
         }).then(res => {
             console.log(res)
             get_data()
@@ -81,7 +84,7 @@ export default function Requests() {
                                                         <ConfirmationModal
                                                             confirmIcon={<GoVerified size={100} className='verify-icon'/>}
                                                             message="Are you sure you want to VERIFY this User?"
-                                                            onConfirm={() => verify_account(item.id, item.name)}
+                                                            onConfirm={() => verify_account(item.id, item.first_name,item.last_name,item.block,item.year)}
                                                             buttonLabel="Verify User"
                                                             buttonClassName='verify-btn' />
                                                         <ConfirmationModal

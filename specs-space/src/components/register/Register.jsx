@@ -20,11 +20,14 @@ function Register() {
   const url = '/add_account'
 
   const [data, setData] = useState({
-    name: "",
+    fname: "",
+    lname:"",
     id: "",
     email: "",
     pass: "",
-    conpass: ""
+    conpass: "",
+    block:"A",
+    level:"First Year",
   })
 
   function Pop(){
@@ -41,7 +44,10 @@ function Register() {
   function submit(e) {
     e.preventDefault();
     axios.post(url, {
-      name: data.name,
+      first_name: data.fname,
+      last_name: data.lname,
+      block: data.block,
+      year: data.level,
       id: data.id,
       email: data.email,
       password: data.pass,
@@ -68,7 +74,21 @@ function Register() {
     newdata[e.target.id] = e.target.value
     setData(newdata)
   }
+  function handleLevel(event) {
+    const { level, value } = event.target;
+    setData((prevData) => ({ ...prevData, ['level']: value }));
+    console.log(data.level)
+  }
 
+  function handleBlock(event) {
+    const { block, value } = event.target;
+    setData((prevData) => ({ ...prevData, ['block']: value }));
+    console.log(data.block)
+  }
+  function subSubmit(e){
+    e.preventDefault()
+    console.log(data)
+  }
   return (
     <>
       <div className="signup-box">
@@ -80,18 +100,18 @@ function Register() {
         </div>
         <form onSubmit={(e) => submit(e)} className="signup-form">
           <h1>Sign Up</h1>
-          <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="First Name" id="fname" required />
-          <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="Last Name" id="lname" required />
+          <input onChange={(e) => handle(e)} value={data.fname} type="text" placeholder="First Name" id="fname" required />
+          <input onChange={(e) => handle(e)} value={data.lname} type="text" placeholder="Last Name" id="lname" required />
           <div className="BlockYear">
           <label for="Year">Year Level: </label>
-          <select name="level" id="level" required>
-          <option value="1">First year</option>
-          <option value="2">Second year</option>
-          <option value="3">Third year</option>
-          <option value="4">Fourth year</option>
+          <select value={data.level} onChange={(e) => handleLevel(e)} name="level" id="level" required>
+          <option value="First Year">First year</option>
+          <option value="Second Year">Second year</option>
+          <option value="Third Year">Third year</option>
+          <option value="Fourth Year">Fourth year</option>
           </select>
           <label for="block">    Block: </label>
-          <select name="Block" id="block" required>
+          <select value={data.block} onChange={(e) => handleBlock(e)} name="Block" id="block" required>
           <option value="A">A</option>
           <option value="B">B</option>
           <option value="C">C</option>

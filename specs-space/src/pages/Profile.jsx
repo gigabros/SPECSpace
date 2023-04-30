@@ -15,7 +15,10 @@ export default function Profile() {
     axios.get('/profile/' + sessionStorage.getItem('stud_num'))
       .then(res => {
         console.log(res.data)
-        sessionStorage.setItem('name', res.data.name)
+        sessionStorage.setItem('first_name', res.data.first_name)
+        sessionStorage.setItem('last_name', res.data.last_name)
+        sessionStorage.setItem('block', res.data.block)
+        sessionStorage.setItem('year', res.data.year)
         sessionStorage.setItem('lvl', res.data.lvl)
         sessionStorage.setItem('points', res.data.points)
       })
@@ -77,7 +80,8 @@ export default function Profile() {
             <div className="profile-header">
               <div className="prof-header-info">
 
-                <p className="prof-name">{sessionStorage.getItem('name')}</p>
+                <p className="prof-name">{sessionStorage.getItem('first_name')} {sessionStorage.getItem('last_name')}</p>
+                <p className="prof-lvl">{sessionStorage.getItem('year')} Block:{sessionStorage.getItem('block')}</p>
                 <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}</p>
                 <p className="prof-pts">{sessionStorage.getItem('points')} POINTS</p>
               </div>

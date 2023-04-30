@@ -93,7 +93,7 @@ export default function ViewActivity() {
         formData.append('file', picture);
         formData.append('act_id',sessionStorage.getItem('act_id'))
         formData.append('stud_num',sessionStorage.getItem('stud_num'))
-        formData.append('name',sessionStorage.getItem('name'))
+        formData.append('name',sessionStorage.getItem('first_name')+", "+sessionStorage.getItem('last_name'))
 
 
         axios.post('/file_upload', formData, {

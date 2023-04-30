@@ -56,12 +56,12 @@ class Post{
         return $existingPassword === crypt($password, $existingPassword);
      }
 
-    public function add_profile($id,$name){
+    public function add_profile($stud_num,$fname,$lname,$block,$year){
         try{
-            $sql = "INSERT INTO `profiles`(`stud_num`, `name`, `lvl`, `exp`, `finished`, `submitted`, `points`) 
-                VALUES (?,?,1,0,0,0,0)";
+            $sql = "INSERT INTO `profiles`(`stud_num`, `first_name`, `last_name`, `block`, `year`, `lvl`, `exp`, `points`) 
+                VALUES (?,?,?,?,?,1,0,0)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$id,$name]);
+            $stmt->execute([$stud_num,$fname,$lname,$block,$year]);
             return $this->gm->response_payload($stmt,"Success","Profile is added",200);
         }
         catch(\PDOException $e){
@@ -73,7 +73,7 @@ class Post{
 
     public function add_account($data){
         try{
-            $sql = "INSERT INTO unverified (name,id,email,password,role) VALUES (?,?,?,?,?)";
+            $sql = "INSERT INTO unverified (first_name,last_name,block,year,id,email,password,role) VALUES (?,?,?,?,?,?,?,?)";
 
             if($this->user_exists_account($data->id) && $this->user_exists_unverified($data->id)){
                 if(strlen($data->password) >= 6 && $data->password == $data->conpass){
@@ -81,7 +81,7 @@ class Post{
                         
                         $stmt = $this->pdo->prepare($sql);
                         $enc_pass= $this->encrypt_password($data->password);
-                        $stmt->execute([$data->name,$data->id,$data->email,$enc_pass,"Student"]);
+                        $stmt->execute([$data->first_name,$data->last_name,$data->block,$data->year,$data->id,$data->email,$enc_pass,"Student"]);
                         return $this->gm->response_payload($data,"Success","Account Successfuly made",200);
                     }
                     catch(\PDOException $e){
@@ -118,11 +118,14 @@ class Post{
                 return "Account does not exist";
             }
             else{
-                $sql = "INSERT INTO `accounts`(`name`,`id`, `email`, `password`, `role`) SELECT * FROM unverified where id=?";
+                $sql = "INSERT INTO `accounts` (`first_name`, `last_name`, `id`, `email`, `password`, `role`)
+                SELECT `first_name`, `last_name`, `id`, `email`, `password`, `role` FROM `unverified` WHERE `id` = ?
+                ";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute([$data->id]);
                 $delete = $this->delete_unverified($data->id);
-                $this->add_profile($data->id,$data->name);    
+                //($stud_num,$fname,$lname,$block,$year)
+                $this->add_profile($data->id,$data->fname,$data->lname,$data->block,$data->year);    
                 return "Account succesfuly verified";    
             }
             

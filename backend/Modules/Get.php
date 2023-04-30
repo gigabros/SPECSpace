@@ -187,7 +187,7 @@ class Get{
     }
 
     public function board_points(){
-        $sql = "SELECT * FROM profiles ORDER BY points DESC";
+        $sql = "SELECT * FROM profiles  ORDER BY points DESC";
 
         $result= $this->gm->exec_query($sql);
 
