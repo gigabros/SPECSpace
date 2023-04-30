@@ -6,6 +6,7 @@ import { BsChevronExpand } from 'react-icons/bs'
 import { MdDeleteForever, MdUpload } from "react-icons/md";
 import { FaFileUpload } from 'react-icons/fa'
 import axios from '../api/axios';
+import logo from '../components/specs_logo.png'
 
 export default function AdAnnouncements() {
   const hiddenFileInput = React.useRef(null);
@@ -108,7 +109,12 @@ export default function AdAnnouncements() {
                   )
                 })
                 :
-                <h1>No Announcements!</h1>
+                <div className="announce-empty">
+                  <div className="empty-logo-holder">
+                    <img src={logo} alt="specs logo" className='empty-logo' />
+                  </div>
+                  <h1 className='empty-des'>No Announcement!</h1>
+                </div>
                 }
               </div>
 

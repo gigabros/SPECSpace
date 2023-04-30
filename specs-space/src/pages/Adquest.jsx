@@ -5,6 +5,7 @@ import AdSidebar from '../components/AdSidebar'
 import { GiTrashCan } from "react-icons/gi";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import axios from '../api/axios';
+import logo from '../components/specs_logo.png'
 
 
 export default function Adquest() {
@@ -102,7 +103,12 @@ export default function Adquest() {
                       )
                     })
                     :
-                    <h1>No Quest!</h1>
+                    <div className="act-empty">
+                      <div className="empty-act-holder">
+                        <img src={logo} alt="specs logo" className='empty-act' />
+                      </div>
+                      <h1 className='empty-act-des'>No Activities!</h1>
+                    </div>
                 }
               </div>
 
