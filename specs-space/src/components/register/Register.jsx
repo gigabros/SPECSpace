@@ -80,7 +80,24 @@ function Register() {
         </div>
         <form onSubmit={(e) => submit(e)} className="signup-form">
           <h1>Sign Up</h1>
-          <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="Name" id="name" required />
+          <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="First Name" id="fname" required />
+          <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="Last Name" id="lname" required />
+          <div className="BlockYear">
+          <label for="Year">Year Level: </label>
+          <select name="level" id="level" required>
+          <option value="1">First year</option>
+          <option value="2">Second year</option>
+          <option value="3">Third year</option>
+          <option value="4">Fourth year</option>
+          </select>
+          <label for="block">    Block: </label>
+          <select name="Block" id="block" required>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          </select>
+          </div>
           <input onChange={(e) => handle(e)} value={data.id} type="text" placeholder="Student Number" id="id" required />
           <input onChange={(e) => handle(e)} value={data.email} type="email" placeholder="Email" id="email" required />
           <input onChange={(e) => handle(e)} value={data.pass} type="password" placeholder="Password" id="pass" required />
