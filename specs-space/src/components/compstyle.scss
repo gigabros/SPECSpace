@@ -54,9 +54,9 @@
                 }
             }
 
-            .side-prof-label { 
+            .side-prof-label {
                 // border: 1px red solid;
-                text-align: center;               
+                text-align: center;
                 width: calc(90%);
                 overflow: hidden;
                 display: inline-block;
@@ -156,6 +156,86 @@
 
     }
 }
+
+//modal
+.confirm-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .confirm-modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 20%;
+
+        .confirm-icon-holder {
+            margin-bottom: 10%;
+        }
+
+        p {
+            margin: 0 0 20px 0;
+        }
+
+        .confirm-btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            // border: red 1px solid;
+            .confirm-button {
+                margin: 0 10px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #02854F;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background-color: #02854F;
+                    transform: translateY(-2px);
+                }
+            }
+
+            .confirm-cancel-button {
+                margin: 0 10px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #B71103;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background-color: #B71103;
+                    transform: translateY(-2px);
+                }
+            }
+        }
+
+    }
+}
+
 
 
 //--------Responsiveness-------//

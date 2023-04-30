@@ -26,10 +26,12 @@ export default function ViewActivity() {
     const [deadline, setDeadline] = useState()
     const [points, setPoints] = useState()
     const [exp, setExp] = useState()
+    const [altfile,setAltfile]=useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
     // const [check,setCheck]= useState();
     var check;
+    
     const chech_submit=()=>{
         axios.get('/chech_dupe/'+sessionStorage.getItem('stud_num')+'/'+sessionStorage.getItem('act_id'))
         .then(res=>{
@@ -56,6 +58,7 @@ export default function ViewActivity() {
     useEffect(() => {
         get_activity()
         chech_submit()
+        check_if_submit()
     }, [])
     const check_submit = () => {
 
@@ -78,7 +81,7 @@ export default function ViewActivity() {
     }
 
     const [picture, setPicture] = useState(null);
-
+    
     const handleFileInput = (event)=>{
         event.preventDefault();
         setPicture(event.target.files[0]);
@@ -116,7 +119,22 @@ export default function ViewActivity() {
         
         
     }
-
+    const [bool,setBool]=useState(false)
+    const check_if_submit=()=>{
+        axios.get('/check_if_submit/'+sessionStorage.getItem('stud_num')+"/"+sessionStorage.getItem('act_id'))
+            .then(res=>{
+                if(res.data.payload.data[0].status==1||res.data.payload.data[0].status==2){
+                    setAltfile(res.data.payload.data[0].file_name)
+                }
+                if(res.data.payload.data[0].status==0||res.data.payload.data[0].status==2){
+                    setBool(true)
+                }
+                
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
     return (
         <>
             <div className="page-container">
@@ -161,6 +179,18 @@ export default function ViewActivity() {
                                         <p className='task-info'>{points} PTS</p>
                                         <p className='task-info'>Deadline: {deadline}</p>
                                         <p className='task-des'>{description}</p>
+                                        {
+                                            picture != null
+                                            ?
+                                            <p className='task-des'>{picture.name}</p>
+                                            
+                                            :
+                                            altfile != null
+                                            ?
+                                            <p className='task-des'>{altfile}</p>
+                                            :
+                                            <p className='task-des'>No Files Attached</p>
+                                        }
                                     </div>
 
                                     <form className="view-file-form">
@@ -170,7 +200,14 @@ export default function ViewActivity() {
                                             onChange={handleFileInput}
                                             style={{ display: 'none' }}
                                         />
-                                        <button onClick={handleSubmit} id='submit' className='submit-btn'>Submit</button>
+                                        {
+                                            bool == true
+                                            ?
+                                            <h1>Checked</h1>
+                                            :
+                                            <button onClick={handleSubmit} id='submit' className='submit-btn'>Submit</button>
+                                        }
+                                        
                                     </form>
 
                                 </div>

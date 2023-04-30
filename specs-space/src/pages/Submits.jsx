@@ -1,9 +1,31 @@
 import React, { useState, useReducer, useEffect } from 'react'
 import AdSidebar from '../components/AdSidebar'
-import { MdArrowBackIosNew, MdCheck, MdFileDownload } from 'react-icons/md'
+import { MdArrowBackIosNew, MdCheck, MdFileDownload, MdDeleteForever } from 'react-icons/md'
+import { RxCrossCircled, RxCheckCircled } from 'react-icons/rx'
 import { BsPlusLg } from 'react-icons/bs'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+import ConfirmationModal from '../components/ConfirmationModal'
+
+
+const sub = [
+    {
+        name: "asdasdasdsddddddfsdfsdfsfsdfsfsdfsfsfddddddddd",
+        date: '01.01.2020'
+    },
+    {
+        name: "dsasd",
+        date: '01.01.2020'
+    },
+    {
+        name: "fgdgf fgdg fgdgfdfg df",
+        date: '01.01.2020'
+    },
+    {
+        name: "fdgfgfdgdfg",
+        date: '01.01.2020'
+    },
+]
 
 export default function Submits() {
 
@@ -18,7 +40,11 @@ export default function Submits() {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
     const [data, setData] = useState([]);
-
+    function handle(e){
+        
+        setPoints(e.target.value)
+        console.log(points)
+    }
     const get_activity = () => {
         axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
             .then(res => {
@@ -46,31 +72,32 @@ export default function Submits() {
                 }
             )
     }
-    const handleDownload = (act,stud,filename) =>{
+    const handleDownload = (act, stud, filename) => {
         axios({
             url: '/download/' + act + '/' + stud,
             method: 'GET',
             responseType: 'blob'
-          })
-          .then(res => {
-            const url = window.URL.createObjectURL(new Blob([res.data]));
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
-            link.click();
-          })
-          .catch(error => {
-            console.log(error);
-          });
+        })
+            .then(res => {
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', filename);
+                document.body.appendChild(link);
+                link.click();
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
     // const [act_id,setAct_id]
     const finish = async (id, stud_num) => {
         axios.post('/finish', {
             act_id: id,
-            stud_num: stud_num
+            stud_num: stud_num,
+            exp: exp,
+            points: points
         }).then(res => {
-            alert("Finished")
             sub_list()
         }).catch(error => {
             alert("error")
@@ -99,17 +126,17 @@ export default function Submits() {
         }).catch(error => {
             console.log(error)
         })
-       
+
     }
 
-    const delete_submit=async(act_id,stud_num)=>{
-        const delete_sub = await axios.post('/reject_submit',{
+    const delete_submit = async (act_id, stud_num) => {
+        const delete_sub = await axios.post('/reject_submit', {
             act_id: act_id,
             stud_num: stud_num
-        }).then(res=>{
+        }).then(res => {
             console.log(res)
             sub_list()
-        }).catch(error=>{
+        }).catch(error => {
             console.log(error)
         })
     }
@@ -125,9 +152,6 @@ export default function Submits() {
                         <h1 className='Submit-title'>Submitted Works</h1>
 
                         <div className="submit-act-container">
-                            <div className="submit-act-graphic">
-
-                            </div>
                             <div className="submit-act-holder">
                                 <div className="submit-list">
                                     {
@@ -137,15 +161,30 @@ export default function Submits() {
                                                 return (
                                                     <>
                                                         <div className="submit-holder">
+                                                            <div className="submit-dwnl-container">
+                                                                <button onClick={() => handleDownload(item.act_id, item.stud_num, item.file_name)} id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
+                                                            </div>
                                                             <div className="submit-header">
                                                                 <p className='submit-auth'>{item.name} </p>
                                                                 <p className='submit-date'>Date Submitted: {item.date} </p>
+                                                                <p className='submit-auth'>{item.file_name} </p>
                                                             </div>
                                                             <div className="submit-file-container">
-                                                                <button onClick={()=> handleDownload(item.act_id,item.stud_num,item.file_name)} id='dwnld' className='submit-btn-holder'><MdFileDownload size={20} className='dwnld-btn' /></button>
-                                                                <p className='submit-file'>{item.file}</p>
-                                                                <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
-                                                                <button onClick={()=>delete_submit(item.act_id,item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button>
+                                                                <input onChange={(e)=>handle(e)} value={points} type='number' className='score' /><i>points</i>
+                                                                {/* <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
+                                                                <button onClick={() => delete_submit(item.act_id, item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button> */}
+                                                                <ConfirmationModal
+                                                                    confirmIcon={<RxCheckCircled size={100} className='crrct-icon' />}
+                                                                    message="Confirm Action?"
+                                                                    onConfirm={() => finish(item.act_id, item.stud_num)}
+                                                                    buttonLabel="Correct"
+                                                                    buttonClassName='crrct-btn' />
+                                                                <ConfirmationModal
+                                                                    confirmIcon={<RxCrossCircled size={100} className='wrng-icon' />}
+                                                                    message="Confirm Action?"
+                                                                    onConfirm={() => delete_submit(item.act_id, item.stud_num)}
+                                                                    buttonLabel="Reject"
+                                                                    buttonClassName='wrng-btn' />
                                                             </div>
                                                         </div>
                                                     </>
@@ -171,14 +210,18 @@ export default function Submits() {
                                     </div>
 
                                     <div className="rmv-file">
-                                        <button onClick={()=>delete_act()} className='rmv-btn'>Remove</button>
+                                        {/* <button onClick={() => delete_act()} className='rmv-btn'>Remove</button> */}
+                                        <ConfirmationModal
+                                            confirmIcon={<MdDeleteForever size={100} className='rmv-act-icon' />}
+                                            message="REMOVE this activity?"
+                                            onConfirm={() => delete_act()}
+                                            buttonLabel="Remove"
+                                            buttonClassName='rmv-btn' />
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

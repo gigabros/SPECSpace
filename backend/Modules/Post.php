@@ -263,10 +263,10 @@ class Post{
         try{
                 $status = $this->check_status($data->stud_num,$data->act_id);
                 if($status["data"][0]["status"]==1){
-                    $activity_info=$this->get->select_activity($data->act_id);
-                    $activity_exp = $activity_info["payload"]["data"][0]["exp"];
-                    $activity_points = $activity_info["payload"]["data"][0]["points"];
-                    $this->add_exp_points($data->stud_num,$activity_exp,$activity_points);
+                    // $activity_info=$this->get->select_activity($data->act_id);
+                    // $activity_exp = $activity_info["payload"]["data"][0]["exp"];
+                    // $activity_points = $activity_info["payload"]["data"][0]["points"];
+                    $this->add_exp_points($data->stud_num,$data->exp,$data->points);
                     $this->update_stud_submit($data->stud_num,$data->act_id);
 
                     $profile_info = $this->get->get_profile($data->stud_num);
