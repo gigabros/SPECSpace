@@ -76,20 +76,24 @@ class Post{
             $sql = "INSERT INTO unverified (first_name,last_name,block,year,id,email,password,role) VALUES (?,?,?,?,?,?,?,?)";
 
             if($this->user_exists_account($data->id) && $this->user_exists_unverified($data->id)){
-                if(strlen($data->password) >= 6 && $data->password == $data->conpass){
-                    try{
+                if(strlen($data->password) >= 6 ){
+                    if($data->password == $data->conpass){
+                        try{
                         
-                        $stmt = $this->pdo->prepare($sql);
-                        $enc_pass= $this->encrypt_password($data->password);
-                        $stmt->execute([$data->first_name,$data->last_name,$data->block,$data->year,$data->id,$data->email,$enc_pass,"Student"]);
-                        return $this->gm->response_payload($data,"Success","Account Successfuly made",200);
-                    }
-                    catch(\PDOException $e){
-                        return $this->gm->response_payload($e,"Fail","Fail to make account",200);
-                    }
+                            $stmt = $this->pdo->prepare($sql);
+                            $enc_pass= $this->encrypt_password($data->password);
+                            $stmt->execute([$data->first_name,$data->last_name,$data->block,$data->year,$data->id,$data->email,$enc_pass,"Student"]);
+                            return $this->gm->response_payload($data,"Success","Account Successfuly made",200);
+                        }
+                        catch(\PDOException $e){
+                            return $this->gm->response_payload($e,"Fail","Fail to make account",200);
+                        }
+                    }else{
+                        return $this->gm->response_payload(null,"Password","Password does not match",200);
+                    }                 
                 }
                 else{
-                    return $this->gm->response_payload(null,"Password","Password is either too short or does not match",200);
+                    return $this->gm->response_payload(null,"Password","Password should be 6 or more characters",200);
                 }
             }else{
                 return $this->gm->response_payload(null,"Account","Account Already exists",200);

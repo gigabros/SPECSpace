@@ -250,4 +250,19 @@ class Get{
             return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
         }
     }
+    public function check_login_unverified($email){
+        try{
+            $sql = "select * from unverified where email=?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$email]);
+            if($stmt->rowCount()>0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }catch(\PDOException $e){
+
+        }
+    }
 }

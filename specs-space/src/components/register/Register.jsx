@@ -56,7 +56,7 @@ function Register() {
     }).then(res => {
       console.log(res);
       if (res['data']['status']['remarks'] == "Success") {
-        alert("Account sucessfully added");
+        alert("Account sucessfully added, please wait for verification.");
 
       } else if(res['data']['status']['remarks'] == "Password"){
         alert(res['data']['status']['message'])

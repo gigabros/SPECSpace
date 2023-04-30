@@ -42,8 +42,7 @@ function Login() {
   const nav_prof = () => navi('/announcements')
   const nav_admin = () => navi('/Adannouncements')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const login_true =async (e) => {
     try {
       const response = await axios.post(LOGIN_URL,
         JSON.stringify({ email, password }),
@@ -58,20 +57,13 @@ function Login() {
       else if (response['data']['status']['remarks'] == "Account") {
         alert(response['data']['status']['message'])
       } else {
-        const role = await axios.get('/get_status/' + email).then
+        const role = axios.get('/get_status/' + email).then
           (result => {
-            // console.log(result['data']['payload']['data'][0]['role'])
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
               nav_admin()
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student") {
-              // console.log(response['data']['payload']['stud_num'])
               sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
-              // console.log()
-              // sessionStorage.setItem('name', response['data']['payload']['name'])
-              // sessionStorage.setItem('lvl', response['data']['payload']['lvl'])
-              // sessionStorage.setItem('points', response['data']['payload']['points'])
-              
               get_data(response['data']['payload']['stud_num'])
               nav_prof()
             }
@@ -81,11 +73,24 @@ function Login() {
 
       }
     } catch (err) {
-      if (!err?.response) {
-        console.log(err)
-      }
-      errRef.current.focus();
+      console.log(err)
     }
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    axios.get('/check_login_unverified/' + email)
+      .then(res => {
+        if (res.data == true) {
+          alert("Account still not verified.")
+        }
+        else {
+          login_true()
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+
   }
 
 

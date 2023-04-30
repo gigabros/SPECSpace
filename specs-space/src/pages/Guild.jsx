@@ -7,62 +7,6 @@ import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { BsChevronExpand } from 'react-icons/bs'
 import axios from '../api/axios'
 
-const submittedact = [
-  {
-    act_id: 1,
-    file_name: "Submitted-activity.pdf"
-  },
-  {
-    act_id: 2,
-    file_name: "Submitted-actidasdasdadadasdvity.pdf"
-  },
-  {
-    act_id: 3,
-    file_name: "Subm.pdf"
-  },
-  {
-    act_id: 4,
-    file_name: "Submitted-acasdasdassssssssssssssssssssssssssssssssstivity.pdf"
-  },
-]
-const actlist = [
-  {
-    id: 1,
-    subject: "Do Homework",
-    exp: 100,
-    points: 30,
-    deadline: '01.01.2020'
-  },
-  {
-    id: 1,
-    subject: "dasdasdasdadasdasdada",
-    exp: 100,
-    points: 30,
-    deadline: '01.01.2020'
-  },
-  {
-    id: 1,
-    subject: "Dasdasdadadk",
-    exp: 100,
-    points: 30,
-    deadline: '01.01.2020'
-  },
-  {
-    id: 1,
-    subject: "dsadas sdadasd asdasd asdk",
-    exp: 100,
-    points: 30,
-    deadline: '01.01.2020'
-  },
-  {
-    id: 1,
-    subject: "asdasd",
-    exp: 100,
-    points: 30,
-    deadline: '01.01.2020'
-  },
-]
-
 export default function Guild() {
   // const [readMore, setReadMore] = useState(false);
   const [activity,setActivity]=useState([]);

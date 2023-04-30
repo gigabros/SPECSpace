@@ -105,6 +105,9 @@
                 case "check_if_submit":
                     echo json_encode($get->check_if_submit($req[1],$req[2]));
                 break;
+                case "check_login_unverified":
+                    echo json_encode($get->check_login_unverified($req[1]));
+                break;
             }
         
         break;
