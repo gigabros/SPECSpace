@@ -201,6 +201,9 @@
                 case "reject_submit":
                     echo json_encode($post->reject_submit($data));
                 break;
+                case "reject_verify":
+                    echo json_encode($post->reject_unverify($data));
+                break;
             }
         
         break;
