@@ -84,7 +84,9 @@ export default function AdAnnouncements() {
             <h1 className='adannouncement-title'>Announcements</h1>
             <div className="adannounce-container">
               <div className="adannounce-list">
-                {posts.map((task, index) => {
+                { posts != null
+                    ?
+                    posts.map((task, index) => {
                   return (
 
                     <div className="adannounce-card" key={task.post_id}>
@@ -104,7 +106,10 @@ export default function AdAnnouncements() {
                       </div>
                     </div>
                   )
-                })}
+                })
+                :
+                <h1>No Announcements!</h1>
+                }
               </div>
 
               <div className="add-announce-holder">
