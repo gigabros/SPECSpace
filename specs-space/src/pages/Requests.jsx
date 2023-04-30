@@ -53,7 +53,16 @@ export default function Requests() {
             console.log(error)
         })
     }
-
+    const reject_verify = async (id) => {
+        const verifying = await axios.post('/reject_verify', {
+            id: id,
+        }).then(res => {
+            console.log(res)
+            get_data()
+        }).catch(error => {
+            console.log(error)
+        })
+    }
     return (
         <>
             <div className="page-container">
@@ -90,7 +99,7 @@ export default function Requests() {
                                                         <ConfirmationModal
                                                             confirmIcon={<FiAlertCircle size={100} className='reject-icon'/>}
                                                             message="Are you sure you want to REJECT this User?"
-                                                            onConfirm={() => verify_account(item.id, item.name)}
+                                                            onConfirm={() => reject_verify(item.id)}
                                                             buttonLabel="Reject"
                                                             buttonClassName='reject-btn' />
                                                         {/* <MdOutlineNotInterested size={30} className='reject-btn' /> */}

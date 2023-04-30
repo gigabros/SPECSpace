@@ -327,6 +327,17 @@ class Post{
             return $e;
         }
     }
+
+    public function reject_unverify($data){
+        try{
+            $delete = "DELETE FROM unverified where id=?";
+            $stmt_delete = $this->pdo->prepare($delete);
+            $stmt_delete->execute([$data->id]);
+            return $this->gm->response_payload(null,"Success","Successfuly deleted",200);
+        }catch(\PDOException $e){
+            return $e;
+        }
+    }
 }
 
     

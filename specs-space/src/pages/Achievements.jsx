@@ -29,61 +29,37 @@ import finish5 from '../data/badge/finish/finish5.png';
 export default function Achievements() {
 
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  const [prof, setProf] = useState({
-    lvl: sessionStorage.getItem('data.lvl'),
-    finished: sessionStorage.getItem('finished'),
-    submitted: sessionStorage.getItem('totalsubs')
-  })
 
   var data = [];
-
-
-  // useEffect(()=>{
-  //   getData()
-  //   console.log(data)
-
-  // },[])
-
-
-  // var data.lvl = sessionStorage.getItem('data.lvl')
   var finished = sessionStorage.getItem('finished')
-  var points = sessionStorage.getItem('points')
 
-
-
-
-
-
-
-
-  //data.lvl
-  if (prof.lvl <= 5) {
+  if (sessionStorage.getItem('lvl') <= 5) {
     data.push({
       img: lvl1,
       title: "Rookie",
       description: "lvl 1 and above"
     })
-  } else if (data.lvl <= 10) {
+  } else if ( sessionStorage.getItem('lvl') <= 10) {
     data.push({
       img: lvl2,
       title: "Amateur",
       description: "lvl 10 and above"
     })
 
-  } else if (data.lvl <= 20) {
+  } else if (sessionStorage.getItem('lvl') <= 20) {
     data.push({
       img: lvl3,
       title: "Trained",
       description: "lvl 20 and above"
     })
 
-  } else if (data.lvl <= 30) {
+  } else if (sessionStorage.getItem('lvl') <= 30) {
     data.push({
       img: lvl4,
       title: "Skilled",
       description: "lvl 30 and above"
     })
-  } else if (data.lvl >= 40) {
+  } else if ( sessionStorage.getItem('lvl') >= 40) {
     data.push({
       img: lvl5,
       title: "Gladiator",
@@ -133,33 +109,33 @@ export default function Achievements() {
   }
 
 
-  if (prof.submitted <= 10) {
+  if (sessionStorage.getItem('submitted')) {
     data.push({
       img: finish1,
       title: "Iron Will",
       description: "submitted 10 Activity"
     })
-  } else if (prof.submitted <= 20) {
+  } else if (sessionStorage.getItem('submitted') <= 20) {
     data.push({
       img: finish2,
       title: "Relentless",
       description: "submitted 20 Activity"
     })
 
-  } else if (prof.submitted <= 50) {
+  } else if (sessionStorage.getItem('submitted') <= 50) {
     data.push({
       img: finish3,
       title: "Productive",
       description: "submitted 50 Activity"
     })
 
-  } else if (prof.submitted <= 100) {
+  } else if (sessionStorage.getItem('submitted') <= 100) {
     data.push({
       img: finish4,
       title: "Perserverance",
       description: "submitted 100 Activity"
     })
-  } else if (prof.submitted >= 200) {
+  } else if (sessionStorage.getItem('submitted') >= 200) {
     data.push({
       img: finish5,
       title: "Hard working",
