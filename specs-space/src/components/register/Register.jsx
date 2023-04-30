@@ -103,6 +103,7 @@ function Register() {
           <input onChange={(e) => handle(e)} value={data.fname} type="text" placeholder="First Name" id="fname" required />
           <input onChange={(e) => handle(e)} value={data.lname} type="text" placeholder="Last Name" id="lname" required />
           <div className="BlockYear">
+
           <label for="Year">Year Level: </label>
           <select value={data.level} onChange={(e) => handleLevel(e)} name="level" id="level" required>
           <option value="First Year">First year</option>

@@ -109,9 +109,9 @@ export default function Adquest() {
               <div className="add-act-holder">
                 <h1 className='add-act-title'>Add Activity</h1>
                 <form className='add-act-form'>
-                  <label htmlFor="title" className='add-act-label'>actitivty title:</label>
+                  <label htmlFor="title" className='add-act-label'>activity title:</label>
                   <input onChange={(e)=>handle(e)} value={data.title} type="text" id='title' />
-                  <label htmlFor="deadline" className='add-act-label'>actitivty deadline:</label>
+                  <label htmlFor="deadline" className='add-act-label'>activity deadline:</label>
                   <input onChange={(e)=>handle(e)} value={data.deadline} type="date" id='deadline' />
                   <div className="exp-pts-input">
                     <div className="exp-pts-holder">
@@ -123,7 +123,7 @@ export default function Adquest() {
                       <input onChange={(e)=>handle(e)} value={data.pts}  type="number" id='pts' />
                     </div>
                   </div>
-                  <label htmlFor="description" className='add-act-label'>actitivty description:</label>
+                  <label htmlFor="description" className='add-act-label'>activity description:</label>
                   <input onChange={(e)=>handle(e)} value={data.description} type="text" id='description' />
                   <div className='btn-holder'>
                     <button onClick={pact} id="submit" className='submit-btn'>Add</button>
