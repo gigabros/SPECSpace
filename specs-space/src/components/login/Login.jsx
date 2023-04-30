@@ -39,7 +39,7 @@ function Login() {
   const errRef = useRef();
 
   const navi = useNavigate();
-  const nav_prof = () => navi('/Profile')
+  const nav_prof = () => navi('/announcements')
   const nav_admin = () => navi('/Adannouncements')
 
   const handleSubmit = async (e) => {
