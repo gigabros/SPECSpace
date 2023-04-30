@@ -83,14 +83,14 @@ function Register() {
           <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="First Name" id="fname" required />
           <input onChange={(e) => handle(e)} value={data.name} type="text" placeholder="Last Name" id="lname" required />
           <div className="BlockYear">
-          <label for="Year">Year Level: </label>
+          <label for="Year">Year Level:    </label>
           <select name="level" id="level" required>
           <option value="1">First year</option>
           <option value="2">Second year</option>
           <option value="3">Third year</option>
           <option value="4">Fourth year</option>
           </select>
-          <label for="block">    Block: </label>
+          <label for="block" id="block">    Block:  </label>
           <select name="Block" id="block" required>
           <option value="A">A</option>
           <option value="B">B</option>
