@@ -40,7 +40,11 @@ export default function Submits() {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
     const [data, setData] = useState([]);
-
+    function handle(e){
+        
+        setPoints(e.target.value)
+        console.log(points)
+    }
     const get_activity = () => {
         axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
             .then(res => {
@@ -90,9 +94,10 @@ export default function Submits() {
     const finish = async (id, stud_num) => {
         axios.post('/finish', {
             act_id: id,
-            stud_num: stud_num
+            stud_num: stud_num,
+            exp: exp,
+            points: points
         }).then(res => {
-            alert("Finished")
             sub_list()
         }).catch(error => {
             alert("error")
@@ -162,9 +167,10 @@ export default function Submits() {
                                                             <div className="submit-header">
                                                                 <p className='submit-auth'>{item.name} </p>
                                                                 <p className='submit-date'>Date Submitted: {item.date} </p>
+                                                                <p className='submit-auth'>{item.file_name} </p>
                                                             </div>
                                                             <div className="submit-file-container">
-                                                                <input type='number' className='score' /><i>points</i>
+                                                                <input onChange={(e)=>handle(e)} value={points} type='number' className='score' /><i>points</i>
                                                                 {/* <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
                                                                 <button onClick={() => delete_submit(item.act_id, item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button> */}
                                                                 <ConfirmationModal

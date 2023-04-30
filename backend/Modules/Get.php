@@ -240,4 +240,14 @@ class Get{
             return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
         }
     }
+
+    public function check_if_submit($stud_num,$act_id){
+        try{
+            $sql="select * from submits where stud_num=$stud_num and act_id='$act_id' ";
+            $res= $this->gm->exec_query($sql);
+            return $this->gm->response_payload($res,"Success","Success",200);
+        }catch(\PDOException $e){
+            return $this->gm->response_payload(null,"Fail","Unable to fetch data",200);
+        }
+    }
 }

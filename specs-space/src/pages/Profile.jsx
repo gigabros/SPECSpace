@@ -92,11 +92,11 @@ export default function Profile() {
                 <div className="stats-content">
                   <div className="stats-holder">
                     <p className="stats-title">PENDING ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}20</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}</p>
                   </div>
                   <div className="stats-holder">
                     <p className="stats-title">FINISHED ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('finished')}20</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('finished')}</p>
                   </div>
                 </div>
 
