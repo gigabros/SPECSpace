@@ -4,6 +4,7 @@ import AdSidebar from '../components/AdSidebar'
 import axios from '../api/axios';
 import logo from '../components/specs_logo.png'
 import { BsAward } from 'react-icons/bs'
+import { FaPhoenixFramework } from "react-icons/fa";
 
 const lboarddata = [
   {
@@ -138,7 +139,7 @@ export default function AdLeaderboards() {
                 })}
               </div>
 
-              <h1 className="lboard-title"><BsAward/> Ranking by Level <BsAward/></h1>
+              <h1 className="lboard-title"><FaPhoenixFramework/> Ranking by Level <FaPhoenixFramework/></h1>
               <div className="lboard-content-holder">
                 {lvl.map((item, index) => {
                   return (
