@@ -6,7 +6,20 @@ import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import dp from '../data/dp.jpg'
 import logo from '../components/specs_logo.png'
 import axios from '../api/axios';
-
+const sub = [
+  {
+    first_name: "Yurrrrrrr",
+    last_name: "Yurrrrrrr",
+    lvl: 20,
+    points: 20
+  },
+  {
+    first_name: "Yurrrrrrssssr",
+    last_name: "Yurrrrrrsssssr",
+    lvl: 20,
+    points: 20
+  },
+]
 
 export default function Adaccounts() {
 
@@ -60,7 +73,7 @@ export default function Adaccounts() {
                       </div>
                       <h1 className='empty-acc-des'>No Accounts!</h1>
                     </div>
-                    }
+                }
               </div>
             </div>
           </div>

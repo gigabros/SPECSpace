@@ -10,7 +10,7 @@ import logo from '../components/specs_logo.png'
 const ver = [
     {
         id: 202011015,
-        name: "Juswaaaaaaaaaaaaaaaaaaaaaa",
+        first_name: "Juswaaaaaaaaaaaaaaaaaaaaaa",
         email: '202011015@gordoncollege.edu.ph'
     },
     {

@@ -8,6 +8,20 @@ import { FaFileUpload } from 'react-icons/fa'
 import axios from '../api/axios';
 import logo from '../components/specs_logo.png'
 
+const sub = [
+  {
+    id: 1,
+    title: "Yurrrrrrr", 
+    message: 'sssssssssss ssss ssssss ssss ssssss ssssssss sssssss ssssss ss sssssssss',
+    date: "01.02.2020"
+  },
+  {
+    id: 1,
+    title: "Yurrrrssss sss sssssssssssss sssss sssss ssssssssrrr",
+    message: 'sad',
+    date: "01.02.2020"
+  },
+]
 export default function AdAnnouncements() {
   const hiddenFileInput = React.useRef(null);
 
@@ -103,7 +117,6 @@ export default function AdAnnouncements() {
                       <div className='adannounce-desc-container'>
                         <p className="adannounce-desc">{task.message}</p>
                         <br></br>
-                        <p className="adannounce-desc">{task.date}</p>
                       </div>
                     </div>
                   )

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdCheckCircle } from 'react-icons/md';
 import { json, Link } from 'react-router-dom';
 import SpecsLogo from '../specs_logo.png';
+import sslogo from '../ss_logo.png';
 import axios from "../../api/axios";
 
 
@@ -93,10 +94,12 @@ function Register() {
     <>
       <div className="signup-box">
         <div className="signup-right">
-          <div className="logo"></div>
-          <div>
-            <img className="specslogo" src={SpecsLogo} alt="Specs Logo" />
-          </div>
+            <div className="logo-holder">
+              <img className="sslogo" src={sslogo} alt="Specs Logo" />
+            </div>
+            <div className="logo-holder">
+              <img className="specslogo" src={SpecsLogo} alt="Specs Logo" />
+            </div>
         </div>
         <form onSubmit={(e) => submit(e)} className="signup-form">
           <h1>Sign Up</h1>
@@ -110,7 +113,7 @@ function Register() {
           <option value="Second Year">Second year</option>
           <option value="Third Year">Third year</option>
           <option value="Fourth Year">Fourth year</option>
-          </select>
+          </select> <br/>
           <label for="block">    Block: </label>
           <select value={data.block} onChange={(e) => handleBlock(e)} name="Block" id="block" required>
           <option value="A">A</option>
