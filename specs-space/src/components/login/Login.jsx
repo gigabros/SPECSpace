@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { MdOutlineError } from 'react-icons/md';
 import { json, Link, Navigate, useNavigate } from 'react-router-dom';
 import SpecsLogo from '../specs_logo.png';
+import sslogo from '../ss_logo.png';
 import axios from "../../api/axios";
 import get_data from "../../api/profdata";
 
@@ -42,7 +43,7 @@ function Login() {
   const nav_prof = () => navi('/profile')
   const nav_admin = () => navi('/Adannouncements')
 
-  const login_true =async (e) => {
+  const login_true = async (e) => {
     try {
       const response = await axios.post(LOGIN_URL,
         JSON.stringify({ email, password }),
@@ -103,13 +104,15 @@ function Login() {
       ) : (
         <div className="box">
           <div className="right">
-            <div className="logo"></div>
-            <div>
+            <div className="logo-holder">
+              <img className="sslogo" src={sslogo} alt="Specs Logo" />
+            </div>
+            <div className="logo-holder">
               <img className="specslogo" src={SpecsLogo} alt="Specs Logo" />
             </div>
           </div>
 
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="login-form" onSubmit={handleSubmit}>
             <h1>Login</h1>
             <input
               type="text"

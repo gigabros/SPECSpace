@@ -5,11 +5,12 @@ import { GoVerified } from 'react-icons/go'
 import { FiAlertCircle } from 'react-icons/fi'
 import axios from '../api/axios'
 import ConfirmationModal from '../components/ConfirmationModal'
+import logo from '../components/specs_logo.png'
 
 const ver = [
     {
         id: 202011015,
-        name: "Juswaaaaaaaaaaaaaaaaaaaaaa",
+        first_name: "Juswaaaaaaaaaaaaaaaaaaaaaa",
         email: '202011015@gordoncollege.edu.ph'
     },
     {
@@ -39,13 +40,13 @@ export default function Requests() {
 
     }, [])
 
-    const verify_account = async (id, fname,lname,block,year) => {
+    const verify_account = async (id, fname, lname, block, year) => {
         const verifying = await axios.post('/verify', {
             id: id,
             fname: fname,
-            lname:lname,
-            block:block,
-            year:year
+            lname: lname,
+            block: block,
+            year: year
         }).then(res => {
             console.log(res)
             get_data()
@@ -91,13 +92,13 @@ export default function Requests() {
                                                     <div className="req-btn">
                                                         {/* <button onClick={() => verify_account(item.id, item.name)} className='verify-btn'>Verify User</button> */}
                                                         <ConfirmationModal
-                                                            confirmIcon={<GoVerified size={100} className='verify-icon'/>}
+                                                            confirmIcon={<GoVerified size={100} className='verify-icon' />}
                                                             message="Are you sure you want to VERIFY this User?"
-                                                            onConfirm={() => verify_account(item.id, item.first_name,item.last_name,item.block,item.year)}
+                                                            onConfirm={() => verify_account(item.id, item.first_name, item.last_name, item.block, item.year)}
                                                             buttonLabel="Verify User"
                                                             buttonClassName='verify-btn' />
                                                         <ConfirmationModal
-                                                            confirmIcon={<FiAlertCircle size={100} className='reject-icon'/>}
+                                                            confirmIcon={<FiAlertCircle size={100} className='reject-icon' />}
                                                             message="Are you sure you want to REJECT this User?"
                                                             onConfirm={() => reject_verify(item.id)}
                                                             buttonLabel="Reject"
@@ -110,7 +111,12 @@ export default function Requests() {
                                         )
                                     })
                                     :
-                                    <h1>No Accounts!</h1>
+                                    <div className="req-empty">
+                                        <div className="empty-req-holder">
+                                            <img src={logo} alt="specs logo" className='empty-req' />
+                                        </div>
+                                        <h1 className='empty-req-des'>No Accounts!</h1>
+                                    </div>
                             }
 
                         </div>
