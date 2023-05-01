@@ -4,7 +4,8 @@ import Sidebar from '../components/Sidebar'
 import axios from '../api/axios';
 import logo from '../components/specs_logo.png'
 import { BsAward } from 'react-icons/bs'
-import { AiOutlineStar } from "react-icons/ai";
+import { FaPhoenixFramework } from "react-icons/fa";
+
 
 export default function Leaderboards() {
   const [points, setPoints] = useState([]);
@@ -86,7 +87,7 @@ export default function Leaderboards() {
                 })}
               </div>
 
-              <h1 className="lboard-title"><AiOutlineStar/> Ranking by Level <AiOutlineStar/></h1>
+              <h1 className="lboard-title"><FaPhoenixFramework/> Ranking by Level <FaPhoenixFramework/></h1>
               <div className="lboard-content-holder">
                 {lvl.map((item, index) => {
                   return (

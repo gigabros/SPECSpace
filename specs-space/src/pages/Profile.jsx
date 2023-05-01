@@ -78,33 +78,33 @@ export default function Profile() {
     data.push({
       img: lvl1,
       title: "Rookie",
-      description: "lvl 1 and above"
+      description: "Lvl 1 and above"
     })
   } else if ( sessionStorage.getItem('lvl') <= 10) {
     data.push({
       img: lvl2,
       title: "Amateur",
-      description: "lvl 10 and above"
+      description: "Lvl 10 and above"
     })
 
   } else if (sessionStorage.getItem('lvl') <= 20) {
     data.push({
       img: lvl3,
       title: "Trained",
-      description: "lvl 20 and above"
+      description: "Lvl 20 and above"
     })
 
   } else if (sessionStorage.getItem('lvl') <= 30) {
     data.push({
       img: lvl4,
       title: "Skilled",
-      description: "lvl 30 and above"
+      description: "Lvl 30 and above"
     })
   } else if ( sessionStorage.getItem('lvl') >= 40) {
     data.push({
       img: lvl5,
       title: "Gladiator",
-      description: "lvl 40 and above"
+      description: "Lvl 40 and above"
     })
   }
 
@@ -154,33 +154,33 @@ export default function Profile() {
     data.push({
       img: finish1,
       title: "Iron Will",
-      description: "submitted 10 Activity"
+      description: "Submitted 10 Activity"
     })
   } else if (sessionStorage.getItem('submitted') <= 20) {
     data.push({
       img: finish2,
       title: "Relentless",
-      description: "submitted 20 Activity"
+      description: "Submitted 20 Activity"
     })
 
   } else if (sessionStorage.getItem('submitted') <= 50) {
     data.push({
       img: finish3,
       title: "Productive",
-      description: "submitted 50 Activity"
+      description: "Submitted 50 Activity"
     })
 
   } else if (sessionStorage.getItem('submitted') <= 100) {
     data.push({
       img: finish4,
       title: "Perserverance",
-      description: "submitted 100 Activity"
+      description: "Submitted 100 Activity"
     })
   } else if (sessionStorage.getItem('submitted') >= 200) {
     data.push({
       img: finish5,
       title: "Hard working",
-      description: "submitted 200 Activity"
+      description: "Submitted 200 Activity"
     })
   }
 
@@ -213,7 +213,7 @@ export default function Profile() {
               <div className="prof-header-info">
 
                 <p className="prof-name">{sessionStorage.getItem('first_name')} {sessionStorage.getItem('last_name')}</p>
-                <p className="prof-lvl">{sessionStorage.getItem('year')} Block:{sessionStorage.getItem('block')}</p>
+                <p className="prof-lvl">{sessionStorage.getItem('year')} ,Block:{sessionStorage.getItem('block')}</p>
                 <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}</p>
                 <p className="prof-pts">{sessionStorage.getItem('points')} POINTS</p>
               </div>
