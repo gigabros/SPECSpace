@@ -149,7 +149,7 @@ function Login() {
       )}
 
       <div className="log-area">
-        <ul class="circles">
+        <ul className="circles">
           <li></li>
           <li></li>
           <li></li>
