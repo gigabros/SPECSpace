@@ -212,7 +212,7 @@ export default function Profile() {
             <div className="profile-header">
               <div className="prof-header-info">
 
-                <p className="prof-name">{sessionStorage.getItem('first_name')} {sessionStorage.getItem('last_name')}Joshua Ayran</p>
+                <p className="prof-name">{sessionStorage.getItem('first_name')} {sessionStorage.getItem('last_name')}</p>
                 <p className="prof-lvl">{sessionStorage.getItem('year')} Block:{sessionStorage.getItem('block')}</p>
                 <p className='prof-lvl'>LEVEL {sessionStorage.getItem('lvl')}</p>
                 <p className="prof-pts">{sessionStorage.getItem('points')} POINTS</p>
@@ -228,11 +228,11 @@ export default function Profile() {
                 <div className="stats-content">
                   <div className="stats-holder">
                     <p className="stats-title">PENDING ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}20</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('submitted')}</p>
                   </div>
                   <div className="stats-holder">
                     <p className="stats-title">FINISHED ACTIVITITES</p>
-                    <p className="stats-cnt">{sessionStorage.getItem('finished')}20</p>
+                    <p className="stats-cnt">{sessionStorage.getItem('finished')}</p>
                   </div>
                 </div>
 
