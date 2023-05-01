@@ -6,7 +6,22 @@ import { BsChevronExpand } from 'react-icons/bs'
 import { MdDeleteForever, MdUpload } from "react-icons/md";
 import { FaFileUpload } from 'react-icons/fa'
 import axios from '../api/axios';
+import logo from '../components/specs_logo.png'
 
+const sub = [
+  {
+    id: 1,
+    title: "Yurrrrrrr", 
+    message: 'sssssssssss ssss ssssss ssss ssssss ssssssss sssssss ssssss ss sssssssss',
+    date: "01.02.2020"
+  },
+  {
+    id: 1,
+    title: "Yurrrrssss sss sssssssssssss sssss sssss ssssssssrrr",
+    message: 'sad',
+    date: "01.02.2020"
+  },
+]
 export default function AdAnnouncements() {
   const hiddenFileInput = React.useRef(null);
 
@@ -102,13 +117,17 @@ export default function AdAnnouncements() {
                       <div className='adannounce-desc-container'>
                         <p className="adannounce-desc">{task.message}</p>
                         <br></br>
-                        <p className="adannounce-desc">{task.date}</p>
                       </div>
                     </div>
                   )
                 })
                 :
-                <h1>No Announcements!</h1>
+                <div className="announce-empty">
+                  <div className="empty-logo-holder">
+                    <img src={logo} alt="specs logo" className='empty-logo' />
+                  </div>
+                  <h1 className='empty-des'>No Announcement!</h1>
+                </div>
                 }
               </div>
 

@@ -2,6 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { GoPlus } from 'react-icons/go'
+import { FiCheckSquare } from 'react-icons/fi'
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
 import { useState, useReducer, useEffect } from 'react'
@@ -26,19 +27,19 @@ export default function ViewActivity() {
     const [deadline, setDeadline] = useState()
     const [points, setPoints] = useState()
     const [exp, setExp] = useState()
-    const [altfile,setAltfile]=useState()
+    const [altfile, setAltfile] = useState()
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
     // const [check,setCheck]= useState();
     var check;
-    
-    const chech_submit=()=>{
-        axios.get('/chech_dupe/'+sessionStorage.getItem('stud_num')+'/'+sessionStorage.getItem('act_id'))
-        .then(res=>{
-            
-            check = res.data
-            console.log(check)
-        })
+
+    const chech_submit = () => {
+        axios.get('/chech_dupe/' + sessionStorage.getItem('stud_num') + '/' + sessionStorage.getItem('act_id'))
+            .then(res => {
+
+                check = res.data
+                console.log(check)
+            })
     }
 
     const get_activity = () => {
@@ -81,8 +82,8 @@ export default function ViewActivity() {
     }
 
     const [picture, setPicture] = useState(null);
-    
-    const handleFileInput = (event)=>{
+
+    const handleFileInput = (event) => {
         event.preventDefault();
         setPicture(event.target.files[0]);
     }
@@ -91,9 +92,9 @@ export default function ViewActivity() {
         e.preventDefault()
         const formData = new FormData();
         formData.append('file', picture);
-        formData.append('act_id',sessionStorage.getItem('act_id'))
-        formData.append('stud_num',sessionStorage.getItem('stud_num'))
-        formData.append('name',sessionStorage.getItem('first_name')+", "+sessionStorage.getItem('last_name'))
+        formData.append('act_id', sessionStorage.getItem('act_id'))
+        formData.append('stud_num', sessionStorage.getItem('stud_num'))
+        formData.append('name', sessionStorage.getItem('first_name') + ", " + sessionStorage.getItem('last_name'))
 
 
         axios.post('/file_upload', formData, {
@@ -102,36 +103,36 @@ export default function ViewActivity() {
             }
         }).then(response => {
             console.log(response.data);
-            if (response.data=="Submitted Success Fully") {
+            if (response.data == "Submitted Success Fully") {
                 alert("Submitted Successfuly")
-            }else if(response.data=="No Files"){
+            } else if (response.data == "No Files") {
                 alert("No Attached File")
-            }else if(response.data=="Resubmitted Successfuly"){
+            } else if (response.data == "Resubmitted Successfuly") {
                 alert("Resubmitted Successfuly")
             }
-            else{
+            else {
                 alert("Server Error")
             }
         }).catch((error) => {
             alert("Server please try again later")
         });
         // }
-        
-        
+
+
     }
-    const [bool,setBool]=useState(false)
-    const check_if_submit=()=>{
-        axios.get('/check_if_submit/'+sessionStorage.getItem('stud_num')+"/"+sessionStorage.getItem('act_id'))
-            .then(res=>{
-                if(res.data.payload.data[0].status==1||res.data.payload.data[0].status==2){
+    const [bool, setBool] = useState(false)
+    const check_if_submit = () => {
+        axios.get('/check_if_submit/' + sessionStorage.getItem('stud_num') + "/" + sessionStorage.getItem('act_id'))
+            .then(res => {
+                if (res.data.payload.data[0].status == 1 || res.data.payload.data[0].status == 2) {
                     setAltfile(res.data.payload.data[0].file_name)
                 }
-                if(res.data.payload.data[0].status==0||res.data.payload.data[0].status==2){
+                if (res.data.payload.data[0].status == 0 || res.data.payload.data[0].status == 2) {
                     setBool(true)
                 }
-                
+
             })
-            .catch(error=>{
+            .catch(error => {
                 console.log(error)
             })
     }
@@ -181,15 +182,15 @@ export default function ViewActivity() {
                                         <p className='task-des'>{description}</p>
                                         {
                                             picture != null
-                                            ?
-                                            <p className='task-des'>{picture.name}</p>
-                                            
-                                            :
-                                            altfile != null
-                                            ?
-                                            <p className='task-des'>{altfile}</p>
-                                            :
-                                            <p className='task-des'>No Files Attached</p>
+                                                ?
+                                                <p className='task-des'>{picture.name}</p>
+
+                                                :
+                                                altfile != null
+                                                    ?
+                                                    <p className='task-des'>{altfile}</p>
+                                                    :
+                                                    <p className='task-des'>No Files Attached</p>
                                         }
                                     </div>
 
@@ -202,12 +203,16 @@ export default function ViewActivity() {
                                         />
                                         {
                                             bool == true
-                                            ?
-                                            <h1>Checked</h1>
-                                            :
-                                            <button onClick={handleSubmit} id='submit' className='submit-btn'>Submit</button>
+                                                ?
+                                                <p className='task-check'>Checked <FiCheckSquare className='check-icon'/></p>
+                                                :
+                                                altfile != null
+                                                    ?
+                                                    <button onClick={handleSubmit} id='submit' className='submit-btn'>Re-submit</button>
+                                                    :
+                                                    <button onClick={handleSubmit} id='submit' className='submit-btn'>Submit</button>
                                         }
-                                        
+
                                     </form>
 
                                 </div>

@@ -2,9 +2,9 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import img from '../data/img1.jpg'
 import { BsChevronExpand } from 'react-icons/bs'
-import { RiFlag2Fill } from 'react-icons/ri'
 import axios from '../api/axios'
 import { useState, useReducer, useEffect } from 'react'
+import logo from '../components/specs_logo.png'
 
 export default function Announcements() {
   const [data, setData] = useState([]);
@@ -74,7 +74,12 @@ export default function Announcements() {
                     )
                   })
                   :
-                  <h1>No Announcement!</h1>
+                  <div className="announce-empty">
+                    <div className="empty-logo-holder">
+                      <img src={logo} alt="specs logo" className='empty-logo' />
+                    </div>
+                    <h1 className='empty-des'>No Announcement!</h1>
+                  </div>
               }
             </div>
           </div>

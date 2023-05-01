@@ -40,7 +40,7 @@ const Sidebar = () => {
               <img src={logo} className="side-logo" />
             </div>
             <div className="side-prof-label">
-              <span id='Profile'>{sessionStorage.getItem('first_name')} {sessionStorage.getItem('last_name')}</span>
+              <span id='Profile'>{sessionStorage.getItem('first_name')} {sessionStorage.getItem('last_name')} juswaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             </div>
           </NavLink>
         </div>

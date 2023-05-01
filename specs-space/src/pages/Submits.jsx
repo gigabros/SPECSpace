@@ -159,7 +159,7 @@ export default function Submits() {
                                     {
                                         data != null
                                             ?
-                                            data.map((item) => {
+                                            sub.map((item) => {
                                                 return (
                                                     <>
                                                         <div className="submit-holder">
@@ -172,7 +172,7 @@ export default function Submits() {
                                                                 <p className='submit-auth'>{item.file_name} </p>
                                                             </div>
                                                             <div className="submit-file-container">
-                                                                <input onChange={(e)=>handle(e)} value={points} type='number' className='score' /><i>points</i>
+                                                                <input onChange={(e)=>handle(e)} value={points} type='number' className='score' min="1" max={staticPoints} /><i>points</i>
                                                                 {/* <button onClick={() => finish(item.act_id, item.stud_num)} id='correct' className='submit-btn-holder'><MdCheck size={20} className='correct-btn' /></button>
                                                                 <button onClick={() => delete_submit(item.act_id, item.stud_num)} id='wrong' className='submit-btn-holder'><BsPlusLg size={20} className='wrong-btn' /></button> */}
                                                                 <ConfirmationModal

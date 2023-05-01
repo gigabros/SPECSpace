@@ -1,4 +1,4 @@
-import React, { useState,useReducer,useEffect} from 'react'
+import React, { useState, useReducer, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './pagestyle.scss';
 import Sidebar from '../components/Sidebar'
@@ -6,44 +6,45 @@ import { GiTrashCan } from "react-icons/gi";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { BsChevronExpand } from 'react-icons/bs'
 import axios from '../api/axios'
+import logo from '../components/specs_logo.png'
 
 export default function Guild() {
   // const [readMore, setReadMore] = useState(false);
-  const [activity,setActivity]=useState([]);
+  const [activity, setActivity] = useState([]);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  const [submits,setSubmits] = useState([]);
+  const [submits, setSubmits] = useState([]);
 
-  const posted_activity=()=>{
+  const posted_activity = () => {
     axios.get('/activity')
-    .then(res=>{
-      setActivity(res.data.payload.data);
-      forceUpdate()
-    })
+      .then(res => {
+        setActivity(res.data.payload.data);
+        forceUpdate()
+      })
   }
 
-  const get_submitted=()=>{
-    axios.get('/get_list_sub/'+sessionStorage.getItem('stud_num'))
-    .then(res=>{
-      console.log(res.data.payload.data)
-      setSubmits(res.data.payload.data)
-    })
+  const get_submitted = () => {
+    axios.get('/get_list_sub/' + sessionStorage.getItem('stud_num'))
+      .then(res => {
+        console.log(res.data.payload.data)
+        setSubmits(res.data.payload.data)
+      })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     posted_activity()
     get_submitted()
-  },[])
-  const get_id = async (id)=>{
-    sessionStorage.setItem('act_id',id)
+  }, [])
+  const get_id = async (id) => {
+    sessionStorage.setItem('act_id', id)
   }
-  
+
   return (
     <>
       <div className="page-container">
         <div className="left-side">
           <Sidebar />
         </div>
-        
+
         <div className="area">
           <ul class="circles">
             <li></li>
@@ -89,7 +90,7 @@ export default function Guild() {
                             <div className="task-btn">
                               <Link to="/ViewActivity" className='link-btn'>
                                 <button className='entr-btn'
-                                onClick={()=> get_id(task.id)}>Enter</button>
+                                  onClick={() => get_id(task.id)}>Enter</button>
                               </Link>
                             </div>
 
@@ -98,7 +99,12 @@ export default function Guild() {
                       )
                     })
                     :
-                    <h1>No Quest!</h1>
+                    <div className="act-empty">
+                      <div className="empty-act-holder">
+                        <img src={logo} alt="specs logo" className='empty-act' />
+                      </div>
+                      <h1 className='empty-act-des'>No Activities!</h1>
+                    </div>
                 }
               </div>
 
@@ -107,17 +113,17 @@ export default function Guild() {
 
                 {
                   submits != null
-                  ?
-                  submits.map((task) => {
-                  return (
-                    <div className="sub-holder" key={task.act_id}>
-                      <p className="sub-file">{task.file_name}</p>
-                    </div>
-                  ) 
-                })
-                :
-                <h1>No submits</h1>
-              }
+                    ?
+                    submits.map((task) => {
+                      return (
+                        <div className="sub-holder" key={task.act_id}>
+                          <p className="sub-file">{task.file_name}</p>
+                        </div>
+                      )
+                    })
+                    :
+                    <h1>No submits</h1>
+                }
               </div>
             </div>
 
