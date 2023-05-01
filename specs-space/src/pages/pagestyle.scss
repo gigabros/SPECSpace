@@ -641,6 +641,12 @@
 
                 }
             }
+
+            .no-submits {
+                color: #373D3F;
+                text-align: center;
+                margin-bottom: 5%;
+            }
         }
     }
 }
@@ -1964,6 +1970,12 @@
                         }
                     }
                 }
+
+                .no-submit {
+                    color: #373D3F;
+                    text-align: center;
+                    font-size: 2rem;
+                }
             }
 
             .submit-info-container {
@@ -2802,7 +2814,7 @@
                     font-weight: bold;
                     border: none;
                     background-color: #02854F;
-                    color: #D7DCEA;
+                    color: #fff;
                     margin-right: 5%;
                     cursor: pointer;
                     transition: all 0.2s ease;
@@ -2850,7 +2862,7 @@
                     font-weight: bold;
                     border: none;
                     background-color: #B71103;
-                    color: #D7DCEA;
+                    color: #fff;
                     cursor: pointer;
                     transition: all 0.2s ease;
 
@@ -3640,6 +3652,13 @@
 
                     }
                 }
+
+                .no-submits {
+                    font-size: 1rem;
+                    color: #373D3F;
+                    text-align: center;
+                    margin-bottom: 5%;
+                }
             }
         }
     }
@@ -3653,7 +3672,7 @@
 
         .View-title {
             color: #2D5735;
-            font-size: 50px;
+            font-size: 2rem;
             width: 100%;
             margin-bottom: 2%;
             border-bottom-width: 4px;
@@ -3680,7 +3699,7 @@
                 flex-direction: row;
                 justify-content: space-around;
                 align-self: flex-end;
-                padding: 0 30%;
+                padding: 0 5%;
                 width: 100%;
                 height: 80%;
                 transform: translateY(-20%);
@@ -3706,8 +3725,8 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            height: 3rem;
-                            width: 3rem;
+                            height: 2rem;
+                            width: 2rem;
                             background-color: #E75F22;
                             border-radius: 50%;
                             padding: 1%;
@@ -3737,7 +3756,7 @@
 
                         .task-title {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 2rem;
+                            font-size: 1.5rem;
                             font-weight: bold;
                             text-align: center;
                             text-transform: uppercase;
@@ -3751,7 +3770,7 @@
 
                         .task-info {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1rem;
+                            font-size: .8rem;
                             // font-weight: bold;
                             font-style: italic;
                             text-align: start;
@@ -3764,7 +3783,7 @@
 
                         .task-des {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1.5rem;
+                            font-size: .8rem;
                             // font-weight: bold;
                             text-align: left;
                             text-transform: capitalize;
@@ -3795,11 +3814,11 @@
                             border-radius: 5px;
                             color: #373D3F;
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1rem;
+                            font-size: .8rem;
                             font-weight: bold;
                             text-align: center;
                             text-transform: capitalize;
-                            height: 3rem;
+                            height: 2rem;
                             width: 55%;
                             cursor: pointer;
                             transition: all 0.6s ease;
@@ -3813,7 +3832,7 @@
 
                         .task-check {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1.5rem;
+                            font-size: .8rem;
                             font-weight: bold;
                             vertical-align: middle;
                             text-align: left;
@@ -3845,11 +3864,11 @@
                             border-radius: 5px;
                             color: white;
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1rem;
+                            font-size: .8rem;
                             font-weight: bold;
                             text-align: center;
                             text-transform: capitalize;
-                            height: 3rem;
+                            height: 2rem;
                             width: 40%;
                             cursor: pointer;
                             transition: all 0.6s ease;
@@ -4672,7 +4691,7 @@
 
         .Submit-title {
             color: #2D5735;
-            font-size: 50px;
+            font-size: 2rem;
             width: 100%;
             margin-bottom: 2%;
             border-bottom-width: 4px;
@@ -4701,9 +4720,9 @@
 
             .submit-act-holder {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column-reverse;
                 justify-content: space-around;
-                align-items: flex-start;
+                align-items: center;
                 // align-self: flex-end;
                 // padding-right: 10%;
                 width: 100%;
@@ -4714,7 +4733,7 @@
                 .submit-list {
                     display: flex;
                     flex-direction: column;
-                    width: 60%;
+                    width: 90%;
                     border-radius: 10px;
                     background-color: white;
                     box-shadow: 0px 10px 20px 5px #888888;
@@ -4723,6 +4742,7 @@
                     .submit-holder {
                         display: flex;
                         flex-direction: row;
+                        flex-wrap: wrap;
                         align-items: center;
                         margin-bottom: 3%;
                         padding-bottom: 3%;
@@ -4759,12 +4779,12 @@
                         .submit-header {
                             display: flex;
                             flex-direction: column;
-                            width: 60%;
+                            width: 80%;
                             // border: red 1px solid;
 
                             .submit-auth {
                                 font-family: Arial, Helvetica, sans-serif;
-                                font-size: 1.5rem;
+                                font-size: 1rem;
                                 font-weight: bold;
                                 text-align: left;
                                 text-transform: uppercase;
@@ -4779,7 +4799,7 @@
 
                             .submit-date {
                                 font-family: Arial, Helvetica, sans-serif;
-                                font-size: 1rem;
+                                font-size: .8rem;
                                 // font-weight: bold;
                                 font-style: italic;
                                 text-align: left;
@@ -4795,7 +4815,7 @@
                             justify-content: space-between;
                             align-items: center;
                             height: 3rem;
-                            width: 30%;
+                            width: 100%;
                             // border: red 1px solid;
 
                             .crrct-btn {
@@ -4809,11 +4829,11 @@
                                 border-radius: 5px;
                                 color: white;
                                 font-family: Arial, Helvetica, sans-serif;
-                                // font-size: 1rem;
+                                font-size: .8rem;
                                 font-weight: bold;
                                 text-align: center;
                                 text-transform: capitalize;
-                                height: 3rem;
+                                height: 2rem;
                                 width: 30%;
                                 cursor: pointer;
                                 transition: all 0.6s ease;
@@ -4861,11 +4881,11 @@
                                 border-radius: 5px;
                                 color: white;
                                 font-family: Arial, Helvetica, sans-serif;
-                                // font-size: 1rem;
+                                font-size: .8rem;
                                 font-weight: bold;
                                 text-align: center;
                                 text-transform: capitalize;
-                                height: 3rem;
+                                height: 2rem;
                                 width: 30%;
                                 cursor: pointer;
                                 transition: all 0.6s ease;
@@ -4966,19 +4986,26 @@
                             }
                         }
                     }
+
+                    .no-submit {
+                        color: #373D3F;
+                        text-align: center;
+                        font-size: 1.5rem;
+                    }
                 }
 
                 .submit-info-container {
                     display: flex;
                     flex-direction: column;
-                    width: 35%;
+                    width: 90%;
                     height: min-content;
                     border-radius: 10px;
                     padding: 2%;
+                    margin-bottom: 10%;
                     background-color: white;
                     box-shadow: 0px 10px 20px 5px #888888;
-                    position: sticky;
-                    top: 100px;
+                    position: static;
+                    top: 0;
 
                     .bck-btn-holder {
                         display: flex;
@@ -4990,8 +5017,8 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            height: 3rem;
-                            width: 3rem;
+                            height: 2rem;
+                            width: 2rem;
                             background-color: #E75F22;
                             border-radius: 50%;
                             padding: 1%;
@@ -5021,7 +5048,7 @@
 
                         .task-title {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 2rem;
+                            font-size: 1rem;
                             font-weight: bold;
                             text-align: center;
                             text-transform: uppercase;
@@ -5034,7 +5061,7 @@
 
                         .task-info {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1rem;
+                            font-size: .8rem;
                             // font-weight: bold;
                             font-style: italic;
                             text-align: start;
@@ -5047,7 +5074,7 @@
 
                         .task-des {
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1.5rem;
+                            font-size: .8rem;
                             // font-weight: bold;
                             text-align: left;
                             text-transform: capitalize;
@@ -5078,11 +5105,11 @@
                             border-radius: 5px;
                             color: white;
                             font-family: Arial, Helvetica, sans-serif;
-                            font-size: 1rem;
+                            font-size: .8rem;
                             font-weight: bold;
                             text-align: center;
                             text-transform: capitalize;
-                            height: 3rem;
+                            height: 2rem;
                             width: 40%;
                             cursor: pointer;
                             transition: all 0.6s ease;

@@ -130,7 +130,7 @@ export default function AdLeaderboards() {
                       </div>
                       <div className="lboard-label">
                         <p className='lboard-rank'>RANK {(index + 1)}</p>
-                        <p className='lboard-username'>{item.name}</p>
+                        <p className='lboard-username'>{item.last_name}, {item.first_name}</p>
                         <p className='lboard-points'>{item.points} pts</p>
                       </div>
                     </div>
@@ -148,7 +148,7 @@ export default function AdLeaderboards() {
                     </div>
                     <div className="lboard-label">
                       <p className='lboard-rank'>RANK {(index + 1)}</p>
-                      <p className='lboard-username'>{item.name}</p>
+                      <p className='lboard-username'>{item.last_name}, {item.first_name}</p>
                       <p className='lboard-points'>Level {item.lvl}</p>
                     </div>
                     </div>

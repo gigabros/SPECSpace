@@ -122,7 +122,7 @@ export default function Guild() {
                       )
                     })
                     :
-                    <h1>No submits</h1>
+                    <h1 className='no-submits'>No submits</h1>
                 }
               </div>
             </div>

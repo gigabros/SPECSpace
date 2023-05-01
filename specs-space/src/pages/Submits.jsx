@@ -159,7 +159,7 @@ export default function Submits() {
                                     {
                                         data != null
                                             ?
-                                            sub.map((item) => {
+                                            data.map((item) => {
                                                 return (
                                                     <>
                                                         <div className="submit-holder">
@@ -193,7 +193,7 @@ export default function Submits() {
                                                 )
                                             })
                                             :
-                                            <h1>No Submits!</h1>
+                                            <h1 className='no-submit'>No Submits!</h1>
                                     }
                                 </div>
                                 <div className="submit-info-container">
