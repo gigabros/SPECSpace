@@ -7,6 +7,7 @@ import axios from "../../api/axios";
 import get_data from "../../api/profdata";
 
 import './login.scss';
+import ProtectedRoutes from "../ProtectedRoutes";
 
 
 function Login() {
@@ -66,6 +67,9 @@ function Login() {
             else if (result['data']['payload']['data'][0]['role'] == "Student") {
               sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
               get_data(response['data']['payload']['stud_num'])
+              // nav_prof()
+              localStorage.setItem('isLogged', true);
+              ProtectedRoutes()
               nav_prof()
             }
 

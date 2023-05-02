@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://specs-space.online/backend'
+    baseURL: 'http://localhost/SPECSpace/SPECSpace/backend/'
 });

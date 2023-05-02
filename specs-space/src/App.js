@@ -18,6 +18,7 @@ import AdLeaderboards from './pages/AdLeaderboards';
 import Adannouncements from './pages/Adannouncements.jsx';
 
 import Layout from './components/Layout';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 function App() {
   return (
@@ -25,13 +26,15 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<Login/>}/>
         <Route path='/Register' element={<Register/>}/>
-
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Achievements" element={<Achievements />} />
-        <Route path="/Activity" element={<Guild />} />
-        <Route path="/ViewActivity" element={<ViewActivity />} />
-        <Route path="/Leaderboards" element={<Leaderboards />} />
-        <Route path="/Announcements" element={<Announcements />} />
+        <Route element={ProtectedRoutes}>
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Achievements" element={<Achievements />} />
+          <Route path="/Activity" element={<Guild />} />
+          <Route path="/ViewActivity" element={<ViewActivity />} />
+          <Route path="/Leaderboards" element={<Leaderboards />} />
+          <Route path="/Announcements" element={<Announcements />} />
+        </Route>
+        
 
         <Route path="/Adquest" element={<Adquest />} />
         <Route path="/Adaccounts" element={<Adaccounts />} />
