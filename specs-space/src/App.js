@@ -1,5 +1,6 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import AdminLogin from './components/login/AdminLogin'
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 
@@ -23,22 +24,25 @@ function App() {
   return (
     <Routes >
       <Route path='/' element={<Layout />}>
-        <Route path='/' element={<Login/>}/>
-        <Route path='/Register' element={<Register/>}/>
+        <Route path='/' element={<Navigate to="/Student/Login" />}/>
+        <Route path='/Student/Login' element={<Login/>}/>
+        <Route path='/Student/Register' element={<Register/>}/>
 
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Achievements" element={<Achievements />} />
-        <Route path="/Activity" element={<Guild />} />
-        <Route path="/ViewActivity" element={<ViewActivity />} />
-        <Route path="/Leaderboards" element={<Leaderboards />} />
-        <Route path="/Announcements" element={<Announcements />} />
+        <Route path="/Student/Profile" element={<Profile />} />
+        <Route path="/Student/Achievements" element={<Achievements />} />
+        <Route path="/Student/Activity" element={<Guild />} />
+        <Route path="/Student/ViewActivity" element={<ViewActivity />} />
+        <Route path="/Student/Leaderboards" element={<Leaderboards />} />
+        <Route path="/Student/Announcements" element={<Announcements />} />
 
-        <Route path="/Adquest" element={<Adquest />} />
-        <Route path="/Adaccounts" element={<Adaccounts />} />
-        <Route path="/Submits" element={<Submits />} />
-        <Route path="/Requests" element={<Requests />} />
-        <Route path="/Adleaderboards" element={<AdLeaderboards />} />
-        <Route path="/Adannouncements" element={<Adannouncements />} />
+        <Route path='/Admin/Login' element={<AdminLogin/>}/>
+
+        <Route path="/Admin/Adquest" element={<Adquest />} />
+        <Route path="/Admin/Adaccounts" element={<Adaccounts />} />
+        <Route path="/Admin/Submits" element={<Submits />} />
+        <Route path="/Admin/Requests" element={<Requests />} />
+        <Route path="/Admin/Adleaderboards" element={<AdLeaderboards />} />
+        <Route path="/Admin/Adannouncements" element={<Adannouncements />} />
       </Route>
     </Routes>
   );

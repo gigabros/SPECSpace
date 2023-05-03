@@ -133,7 +133,7 @@ function Register() {
 
           <div className="sign-up">
 
-            <Link to="/" className='link'>Log in</Link>
+            <Link to="/Student/Login" className='link'>Log in</Link>
 
           </div>
           <div className={popupStyle}>

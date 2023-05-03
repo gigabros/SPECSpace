@@ -101,7 +101,7 @@ export default function Adquest() {
                             </div>
 
                             <div className="task-btn">
-                              <Link to="/Submits" className='link-btn'>
+                              <Link to="/Admin/Submits" className='link-btn'>
                                 <button onClick={() => get_id(task.id)} className='entr-btn'>Enter</button>
                               </Link>
                             </div>

@@ -100,20 +100,18 @@ function Login() {
   return (
     <>
       {success ? (
-        <Navigate to="/Student/profile"></Navigate>
+        <Navigate to="/Admin/Adquest"></Navigate>
       ) : (
-        <div className="box">
-          <div className="right">
-            <div className="logo-holder">
-              <img className="sslogo" src={sslogo} alt="Specs Logo" />
-            </div>
-            <div className="logo-holder">
-              <img className="specslogo" src={SpecsLogo} alt="Specs Logo" />
+        <div className="ad-box">
+          <div className="ad-right">
+            <div className="ad-logo-holder">
+              <img className="ad-sslogo" src={sslogo} alt="Specs Logo" />
+              <img className="ad-specslogo" src={SpecsLogo} alt="Specs Logo" />
             </div>
           </div>
 
-          <form className="login-form" onSubmit={handleSubmit}>
-            <h1>Login</h1>
+          <form className="ad-login-form" onSubmit={handleSubmit}>
+            <h1 className="ad-from-title">ADMIN LOGIN</h1>
             <input
               type="text"
               placeholder="Email"
@@ -131,12 +129,7 @@ function Login() {
               id="password"
               required />
 
-            <button type="submit" className="login-btn" >Login</button>
-            <p className="or">or</p>
-
-            <div className="sign-up">
-              <Link to="/Student/Register" className='link'>Sign-up</Link>
-            </div>
+            <button type="submit" className="ad-login-btn" >LOGIN</button>
 
             <div className={popupStyle}>
               <MdOutlineError color="red" size={100} />
@@ -148,8 +141,8 @@ function Login() {
         </div>
       )}
 
-      <div className="log-area">
-        <ul class="circles">
+      <div className="ad-log-area">
+        <ul className="ad-circles">
           <li></li>
           <li></li>
           <li></li>

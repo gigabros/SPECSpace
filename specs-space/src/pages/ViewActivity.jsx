@@ -169,7 +169,7 @@ export default function ViewActivity() {
                             <div className="view-act-holder">
                                 <div className="view-info-container">
                                     <div className="bck-btn-holder">
-                                        <Link to="/Activity" className='lnk-btn'>
+                                        <Link to="/Student/Activity" className='lnk-btn'>
                                             <MdArrowBackIosNew size={30} className='bck-btn' />
                                         </Link>
                                     </div>

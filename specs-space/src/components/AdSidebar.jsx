@@ -9,27 +9,27 @@ const SidebarData = [
 
   {
     title: "Announcements",
-    path: "/Adannouncements",
+    path: "/Admin/Adannouncements",
     icon: <RiFlag2Fill size={20} />,
   },
   {
     title: "Activity",
-    path: "/Adquest",
+    path: "/Admin/Adquest",
     icon: <FaTasks size={20} />,
   },
   {
     title: "Accounts",
-    path: "/Adaccounts",
+    path: "/Admin/Adaccounts",
     icon: <CgProfile size={20} />,
   },
   {
     title: "Requests",
-    path: "/Requests",
+    path: "/Admin/Requests",
     icon: <MdVerified size={20} />,
   },
   {
     title: "Leaderboards",
-    path: "/Adleaderboards",
+    path: "/Admin/Adleaderboards",
     icon: <FaChartBar size={20} />,
   },
 ]
@@ -64,7 +64,7 @@ const AdSidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-          <Link to="/" className='logout-link'>
+          <Link to="/Admin/Login" className='logout-link'>
             <MdLogout size={30} className='logout-btn' />
           </Link>
         </div>

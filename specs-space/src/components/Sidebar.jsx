@@ -10,22 +10,22 @@ const SidebarData = [
 
   {
     title: "Announcements",
-    path: "/announcements",
+    path: "/Student/announcements",
     icon: <BsMegaphoneFill size={20} />,
   },
   {
     title: "Activity",
-    path: "/activity",
+    path: "/Student/activity",
     icon: <FaTasks size={20} />,
   },
   {
     title: "Achievements",
-    path: "/achievements",
+    path: "/Student/achievements",
     icon: <FaTrophy size={20} />,
   },
   {
     title: "Leaderboards",
-    path: "/leaderboards",
+    path: "/Student/leaderboards",
     icon: <FaChartBar size={20} />,
   },
 ]
@@ -35,7 +35,7 @@ const Sidebar = () => {
     <>
       <div className="sidebar-container">
         <div className="profilesidebar-container">
-          <NavLink to='/profile' className='prof-link'>
+          <NavLink to='/Student/profile' className='prof-link'>
             <div className='side-logo-holder'>
               <img src={logo} className="side-logo" />
             </div>
@@ -67,7 +67,7 @@ const Sidebar = () => {
           </div>
         </section>
         <div className="logout-container">
-          <Link to="/" className='logout-link'>
+          <Link to="/Student/Login" className='logout-link'>
             <MdLogout size={30} className='logout-btn' />
           </Link>
         </div>

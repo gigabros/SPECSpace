@@ -198,7 +198,7 @@ export default function Submits() {
                                 </div>
                                 <div className="submit-info-container">
                                     <div className="bck-btn-holder">
-                                        <Link to="/Adquest" className='lnk-btn'>
+                                        <Link to="/Admin/Adquest" className='lnk-btn'>
                                             <MdArrowBackIosNew size={30} className='bck-btn' />
                                         </Link>
                                     </div>

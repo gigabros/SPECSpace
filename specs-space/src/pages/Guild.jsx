@@ -88,7 +88,7 @@ export default function Guild() {
                             </div>
 
                             <div className="task-btn">
-                              <Link to="/ViewActivity" className='link-btn'>
+                              <Link to="/Student/ViewActivity" className='link-btn'>
                                 <button className='entr-btn'
                                   onClick={() => get_id(task.id)}>Enter</button>
                               </Link>
