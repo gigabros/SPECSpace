@@ -20,7 +20,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errMsg, setErrmsg] = useState('');
   const [success, setSuccess] = useState(false);
-  const LOGIN_URL = '/Student/login'
+  const LOGIN_URL = '/login'
 
   const [popupStyle, showPopup] = useState("hide")
 
@@ -40,7 +40,7 @@ function Login() {
   const errRef = useRef();
 
   const navi = useNavigate();
-  const nav_prof = () => navi('/profile')
+  const nav_prof = () => navi('/student/profile')
   const nav_admin = () => navi('/Adannouncements')
 
   const login_true = async (e) => {
@@ -61,7 +61,7 @@ function Login() {
         const role = axios.get('/get_status/' + email).then
           (result => {
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
-              nav_admin()
+              alert("Access denied, Only for admin Users.")
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student") {
               sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])

@@ -1,6 +1,6 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Max-Age: 1000");
 header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
@@ -9,9 +9,9 @@ header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE, PATCH");
 date_default_timezone_set("Asia/Manila");
 
 define("SERVER", "localhost");
-define("DBASE", "u418990563_specspace");
-define("USER", "u418990563_user");
-define("PASSWORD", "1+Je8MODXNuL");
+define("DBASE", "specspace");
+define("USER", "root");
+define("PASSWORD", "");
 
 class Connection{
     protected $con_string = "mysql:host=".SERVER.";dbname=".DBASE."; charset=utf8mb4";

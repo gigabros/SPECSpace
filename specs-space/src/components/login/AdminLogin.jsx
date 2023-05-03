@@ -41,7 +41,7 @@ function Login() {
 
   const navi = useNavigate();
   const nav_prof = () => navi('/profile')
-  const nav_admin = () => navi('/Adannouncements')
+  const nav_admin = () => navi('/Admin/Adannouncements')
 
   const login_true = async (e) => {
     try {
@@ -63,12 +63,6 @@ function Login() {
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
               nav_admin()
             }
-            else if (result['data']['payload']['data'][0]['role'] == "Student") {
-              sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
-              get_data(response['data']['payload']['stud_num'])
-              nav_prof()
-            }
-
           })
 
 
