@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import Catcher from './pages/Catcher';
 import AdminLogin from './components/login/AdminLogin'
 import Login from './components/login/Login';
 import Register from './components/register/Register';
@@ -24,6 +25,8 @@ function App() {
   return (
     <Routes >
       <Route path='/' element={<Layout />}>
+        <Route path="*" element={<Navigate to='/404-Not-Found' />} />
+        <Route path='/404-Not-Found' element={<Catcher/>}/>
         <Route path='/' element={<Navigate to="/Student/Login" />}/>
         <Route path='/Student/Login' element={<Login/>}/>
         <Route path='/Student/Register' element={<Register/>}/>
