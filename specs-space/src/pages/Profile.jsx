@@ -9,6 +9,9 @@ import logo1 from '../components/specs_logo.png'
 import { useReducer, useEffect } from 'react';
 import axios from '../api/axios'
 
+import phnx1 from '../data/avatar/egg.png'
+import phnx2 from '../data/avatar/hatched-egg.png'
+
 import lvl1 from '../data/badge/lvl/lvl1.png';
 import lvl2 from '../data/badge/lvl/lvl2.png';
 import lvl3 from '../data/badge/lvl/lvl3.png';
@@ -257,7 +260,7 @@ export default function Profile() {
               </div>
 
               <div className="avatar-container">
-                <img src={avatar} className="avtr-img" />
+                <img src={phnx1} className="phnx-img" />
               </div>
             </div>
           </div>

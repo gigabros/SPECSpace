@@ -372,11 +372,47 @@
 
         .avatar-container {
             // border: red 1px solid;
+            position: relative;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
+            align-items: flex-end;
             width: 50%;
-        }
 
+            .phnx-img {
+                width: 50%;
+                animation: egg-wobble 2s ease infinite;
+
+                @keyframes egg-wobble {
+                    0% {
+                        transform: translateX(0%);
+                    }
+
+                    15% {
+                        transform: translateX(-25%) rotate(-5deg);
+                    }
+
+                    30% {
+                        transform: translateX(20%) rotate(3deg);
+                    }
+
+                    45% {
+                        transform: translateX(-15%) rotate(-3deg);
+                    }
+
+                    60% {
+                        transform: translateX(10%) rotate(2deg);
+                    }
+
+                    75% {
+                        transform: translateX(-5%) rotate(-1deg);
+                    }
+
+                    100% {
+                        transform: translateX(0%);
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -3203,9 +3239,9 @@
                     text-align: end;
                     width: calc(100%);
                     overflow: visible;
-                    display:block;
+                    display: block;
                     text-overflow: ellipsis;
-                    white-space:normal;
+                    white-space: normal;
                 }
 
                 .prof-lvl {
