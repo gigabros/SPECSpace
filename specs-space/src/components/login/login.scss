@@ -51,6 +51,29 @@
     filter: drop-shadow(0px 8px 5px rgb(49, 49, 49));
     -webkit-filter: drop-shadow(0px 8px 5px rgb(49, 49, 49));
 
+    animation: flip-with-scale 2s ease-in-out alternate infinite;
+
+    @keyframes flip-with-rotate {
+        0% {
+            transform: perspective(400px) rotateY(0);
+        }
+
+        // 50% {
+        //     transform: perspective(400px) rotateY(180deg);
+        // }
+        100% {
+            transform: perspective(400px) rotateY(180deg);
+        }
+    }
+    @keyframes flip-with-scale {
+        0% {
+            transform: perspective(400px) scaleX(1);
+        }
+    
+        100% {
+            transform: perspective(400px) scaleX(-1);
+        }
+    }
 }
 
 .box {
@@ -94,6 +117,7 @@ input:focus {
 .or {
     margin-bottom: -10%;
 }
+
 .signup-link {
     text-decoration: underline;
     color: #E75F22;
@@ -128,6 +152,7 @@ input:focus {
     position: relative;
 
 }
+
 .form-title {
     display: flex;
     flex-direction: column;
@@ -136,15 +161,18 @@ input:focus {
     width: 100%;
     // padding: 0 ;
 }
+
 .ssform-title {
     margin: 0;
     font-size: 1.5rem;
     color: #E75F22;
 }
+
 .login-title {
     font-size: 2rem;
     color: #373D3F;
 }
+
 .hide {
     position: absolute;
     transform: scale(0);
@@ -270,6 +298,7 @@ input:focus {
             font-size: 2rem;
             color: #E75F22;
         }
+
         .ad-ss-title {
             font-size: 1.5rem;
             color: #2D5735;
@@ -598,6 +627,7 @@ input:focus {
                     padding-left: 30%;
                     filter: drop-shadow(0px 8px 5px rgb(49, 49, 49));
                     -webkit-filter: drop-shadow(0px 8px 5px rgb(49, 49, 49));
+                    animation: none;
 
                 }
             }
