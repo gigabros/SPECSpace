@@ -105,7 +105,11 @@ function Login() {
           </div>
 
           <form className="ad-login-form" onSubmit={handleSubmit}>
-            <h1 className="ad-from-title">ADMIN LOGIN</h1>
+            <div className="form-title">
+              <h1 className="ad-ss-title">SPECS SPACE</h1>
+              <h1 className="ad-from-title">ADMIN LOGIN</h1>
+            </div>
+
             <input
               type="text"
               placeholder="Email"
@@ -123,7 +127,7 @@ function Login() {
               id="password"
               required />
 
-            <button type="submit" className="ad-login-btn" >LOGIN</button>
+            <button type="submit" className="ad-login-btn" ><p className="ad-btn-txt">LOGIN</p></button>
 
             <div className={popupStyle}>
               <MdOutlineError color="red" size={100} />

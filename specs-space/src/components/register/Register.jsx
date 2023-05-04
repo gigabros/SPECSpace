@@ -102,7 +102,10 @@ function Register() {
             </div>
         </div>
         <form onSubmit={(e) => submit(e)} className="signup-form">
-          <h1>Sign Up</h1>
+            <div className="form-title">
+              <h1 className="singupform-title">SPECS SPACE</h1>
+              <h1 className="signup-title">STUDENT SIGN UP</h1>
+            </div>
           <input onChange={(e) => handle(e)} value={data.fname} type="text" placeholder="First Name" id="fname" required />
           <input onChange={(e) => handle(e)} value={data.lname} type="text" placeholder="Last Name" id="lname" required />
           <div className="BlockYear">
@@ -128,12 +131,12 @@ function Register() {
           <input onChange={(e) => handle(e)} value={data.conpass} type="password" placeholder="Confirm Password" id="conpass" required />
 
 
-          <button className="signup-btn">Sign up</button>
+          <button className="signup-btn">SIGN UP</button>
           <p className="signup-or">Already have an account?</p>
 
-          <div className="sign-up">
+          <div>
 
-            <Link to="/Student/Login" className='link'>Log in</Link>
+            <Link to="/Student/Login" className='login-link'>Log in</Link>
 
           </div>
           <div className={popupStyle}>

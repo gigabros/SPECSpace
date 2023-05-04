@@ -113,7 +113,11 @@ function Login() {
           </div>
 
           <form className="login-form" onSubmit={handleSubmit}>
-            <h1>Login</h1>
+            <div className="form-title">
+              <h1 className="ssform-title">SPECS SPACE</h1>
+              <h1 className="login-title">STUDENT LOGIN</h1>
+            </div>
+
             <input
               type="text"
               placeholder="Email"
@@ -131,11 +135,11 @@ function Login() {
               id="password"
               required />
 
-            <button type="submit" className="login-btn" >Login</button>
+            <button type="submit" className="login-btn">LOGIN</button>
             <p className="or">or</p>
 
-            <div className="sign-up">
-              <Link to="/Student/Register" className='link'>Sign-up</Link>
+            <div>
+              <Link to="/Student/Register" className="signup-link">Sign-up</Link>
             </div>
 
             <div className={popupStyle}>
