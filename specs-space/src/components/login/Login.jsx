@@ -61,7 +61,7 @@ function Login() {
         const role = axios.get('/get_status/' + email).then
           (result => {
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
-              alert("Access denied, Only for admin Users.")
+              alert("Access denied. Please use the Admin Portal.")
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student") {
               sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
