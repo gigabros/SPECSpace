@@ -179,7 +179,7 @@ export default function Submits() {
                                                                     confirmIcon={<RxCheckCircled size={100} className='crrct-icon' />}
                                                                     message="Confirm Action?"
                                                                     onConfirm={() => finish(item.act_id, item.stud_num)}
-                                                                    buttonLabel="Correct"
+                                                                    buttonLabel="Accept"
                                                                     buttonClassName='crrct-btn' />
                                                                 <ConfirmationModal
                                                                     confirmIcon={<RxCrossCircled size={100} className='wrng-icon' />}
