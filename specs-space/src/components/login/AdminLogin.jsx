@@ -20,7 +20,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errMsg, setErrmsg] = useState('');
   const [success, setSuccess] = useState(false);
-  const LOGIN_URL = '/Student/login'
+  const LOGIN_URL = '/admin_login'
 
   const [popupStyle, showPopup] = useState("hide")
 
@@ -62,6 +62,9 @@ function Login() {
           (result => {
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
               nav_admin()
+            }
+            else if (result['data']['payload']['data'][0]['role'] == "Student"){
+              alert("You tried to login using student account, please use the correct portal to login succesfuly")
             }
           })
 

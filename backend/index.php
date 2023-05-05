@@ -204,6 +204,9 @@
                 case "reject_verify":
                     echo json_encode($post->reject_unverify($data));
                 break;
+                case "admin_login":
+                    echo json_encode($post->admin_login($data));
+                break;
             }
         
         break;
