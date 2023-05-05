@@ -96,47 +96,50 @@ function Login() {
       {success ? (
         <Navigate to="/Admin/Adquest"></Navigate>
       ) : (
-        <div className="ad-box">
-          <div className="ad-right">
-            <div className="ad-logo-holder">
-              <img className="ad-sslogo" src={sslogo} alt="Specs Logo" />
-              <img className="ad-specslogo" src={SpecsLogo} alt="Specs Logo" />
+        <div className="ad-login-page">
+          <div className="ad-box">
+            <div className="ad-right">
+              <div className="ad-logo-holder">
+                <img className="ad-sslogo" src={sslogo} alt="Specs Logo" />
+                <img className="ad-specslogo" src={SpecsLogo} alt="Specs Logo" />
+              </div>
             </div>
+
+            <form className="ad-login-form" onSubmit={handleSubmit}>
+              <div className="form-title">
+                <h1 className="ad-ss-title">SPECS SPACE</h1>
+                <h1 className="ad-from-title">ADMIN LOGIN</h1>
+              </div>
+
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                id="email"
+                ref={userRef}
+                autoComplete="off"
+                required />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                id="password"
+                required />
+
+              <button type="submit" className="ad-login-btn" ><p className="ad-btn-txt">LOGIN</p></button>
+
+              <div className={popupStyle}>
+                <MdOutlineError color="red" size={100} />
+                <h3 className="incorrect" >Login Failed</h3>
+                <p className="incorrect" >Incorrect Username or Password</p>
+              </div>
+
+            </form>
           </div>
-
-          <form className="ad-login-form" onSubmit={handleSubmit}>
-            <div className="form-title">
-              <h1 className="ad-ss-title">SPECS SPACE</h1>
-              <h1 className="ad-from-title">ADMIN LOGIN</h1>
-            </div>
-
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              id="email"
-              ref={userRef}
-              autoComplete="off"
-              required />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              id="password"
-              required />
-
-            <button type="submit" className="ad-login-btn" ><p className="ad-btn-txt">LOGIN</p></button>
-
-            <div className={popupStyle}>
-              <MdOutlineError color="red" size={100} />
-              <h3 className="incorrect" >Login Failed</h3>
-              <p className="incorrect" >Incorrect Username or Password</p>
-            </div>
-
-          </form>
         </div>
+
       )}
 
       <div className="ad-log-area">
