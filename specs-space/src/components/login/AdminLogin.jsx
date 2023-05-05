@@ -96,19 +96,19 @@ function Login() {
       {success ? (
         <Navigate to="/Admin/Adquest"></Navigate>
       ) : (
-        <div className="ad-login-page">
-          <div className="ad-box">
-            <div className="ad-right">
-              <div className="ad-logo-holder">
-                <img className="ad-sslogo" src={sslogo} alt="Specs Logo" />
-                <img className="ad-specslogo" src={SpecsLogo} alt="Specs Logo" />
+        <div className="admin-login-page">
+          <div className="admin-box">
+            <div className="admin-right">
+              <div className="admin-logo-holder">
+                <img className="admin-sslogo" src={sslogo} alt="Specs Logo" />
+                <img className="admin-specslogo" src={SpecsLogo} alt="Specs Logo" />
               </div>
             </div>
 
-            <form className="ad-login-form" onSubmit={handleSubmit}>
+            <form className="admin-login-form" onSubmit={handleSubmit}>
               <div className="form-title">
-                <h1 className="ad-ss-title">SPECS SPACE</h1>
-                <h1 className="ad-from-title">ADMIN LOGIN</h1>
+                <h1 className="admin-ss-title">SPECS SPACE</h1>
+                <h1 className="admin-from-title">ADMIN LOGIN</h1>
               </div>
 
               <input
@@ -128,7 +128,7 @@ function Login() {
                 id="password"
                 required />
 
-              <button type="submit" className="ad-login-btn" ><p className="ad-btn-txt">LOGIN</p></button>
+              <button type="submit" className="admin-login-btn" ><p className="ad-btn-txt">LOGIN</p></button>
 
               <div className={popupStyle}>
                 <MdOutlineError color="red" size={100} />
