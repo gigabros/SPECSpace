@@ -76,6 +76,12 @@ export default function Profile() {
 
   var data = [];
   var finished = sessionStorage.getItem('finished')
+  var character_model = null
+  if(sessionStorage.getItem('lvl')<=10){
+    character_model = phnx1;
+  }else{
+    character_model = phnx2
+  }
 
   if (sessionStorage.getItem('lvl') <= 5) {
     data.push({
@@ -260,7 +266,7 @@ export default function Profile() {
               </div>
 
               <div className="avatar-container">
-                <img src={phnx1} className="phnx-img" />
+                <img src={character_model} className="phnx-img" />
               </div>
             </div>
           </div>
