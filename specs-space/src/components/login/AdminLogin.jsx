@@ -64,7 +64,7 @@ function Login() {
               nav_admin()
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student"){
-              alert("You tried to login using student account, please use the correct portal to login succesfuly")
+              alert("Access denied. Please use the Student Portal.")
             }
           })
 
