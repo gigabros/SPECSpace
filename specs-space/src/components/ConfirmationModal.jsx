@@ -26,7 +26,7 @@ const ConfirmationModal = ({ message, onConfirm, buttonLabel, buttonClassName, c
                         <div className="confirm-icon-holder">
                             {confirmIcon}
                         </div>
-                        <p>{message}</p>
+                        <p className='confirm-msg'>{message}</p>
                         <div className="confirm-btn">
                             <button onClick={handleConfirm} className='confirm-button'>Confirm</button>
                             <button onClick={handleCloseModal} className='confirm-cancel-button'>Cancel</button>

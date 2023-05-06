@@ -1,27 +1,17 @@
 import { useState } from 'react';
 
-const FeedbackModal = ({ isOpen, onClose, children }) => {
-  const [modalStyle, setModalStyle] = useState({
-    opacity: 1
-  });
-
-  if (!isOpen) {
-    return null;
-  }
-
-  const closeModal = () => {
-    setModalStyle({ ...modalStyle, opacity: 0 });
-    setTimeout(() => {
-      onClose();
-    }, 300);
-  }
+const FeedbackModal = ({ fbckIcon, message, onClose }) => {
 
   return (
     <>
-      <div className="modal-overlay" onClick={closeModal}></div>
-      <div className="modal-content" style={modalStyle}>
-        {children}
-        <button onClick={closeModal} className='confirm-button'>Okay</button>
+      <div className="fbck-modal-overlay" onClick={onClose}>
+        <div className="fbck-modal-content">
+          <div className="fbck-icon-holder">
+            {fbckIcon}
+          </div>
+          <p className='fbck-msg'>{message}</p>
+          <button onClick={onClose} className='fbck-cls-button'>Close</button>
+        </div>
       </div>
     </>
   );
