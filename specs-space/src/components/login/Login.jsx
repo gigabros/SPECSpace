@@ -7,6 +7,11 @@ import axios from "../../api/axios";
 import get_data from "../../api/profdata";
 
 import './login.scss';
+import FeedbackModal from '../FeedbackModal'
+import { RiLockPasswordLine } from 'react-icons/ri'
+import { MdOutlineNoAccounts, MdAdminPanelSettings } from 'react-icons/md'
+import { BsCheck2Circle } from 'react-icons/bs'
+import { FiAlertTriangle } from 'react-icons/fi'
 
 
 function Login() {
@@ -22,6 +27,11 @@ function Login() {
   const [success, setSuccess] = useState(false);
   const LOGIN_URL = '/login'
 
+  const closePopup = () => {
+    const popup = document.querySelector('.fbck-modal-overlay');
+    popup.style.display = 'none';
+  }
+  
   const [popupStyle, showPopup] = useState("hide")
 
   const popup = () => {
@@ -53,20 +63,24 @@ function Login() {
         }
       )
       if (response['data']['status']['remarks'] == "Password") {
-        alert(response['data']['status']['message'])
+        // alert(response['data']['status']['message'])
+        return <FeedbackModal fbckIcon={<RiLockPasswordLine size={100} className="fdbk-icon-red"/>} message={(response['data']['status']['message'])} onClose={closePopup}/>
       }
       else if (response['data']['status']['remarks'] == "Account") {
-        alert(response['data']['status']['message'])
+        // alert(response['data']['status']['message'])
+        return <FeedbackModal fbckIcon={<MdOutlineNoAccounts size={100} className="fdbk-icon-red"/>} message={(response['data']['status']['message'])} onClose={closePopup}/>
       } else {
         const role = axios.get('/get_status/' + email).then
           (result => {
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
-              alert("Access denied. Please use the Admin Portal.")
+              // alert("Access denied. Please use the Admin Portal.")
+              return <FeedbackModal fbckIcon={<MdAdminPanelSettings size={100} className="fdbk-icon-red"/>} message="Access denied. Please use the Admin Portal." onClose={closePopup}/>
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student") {
               sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
-              get_data(response['data']['payload']['stud_num'])
-              nav_prof()
+              // get_data(response['data']['payload']['stud_num'])
+              return <FeedbackModal fbckIcon={<BsCheck2Circle size={100} className="fdbk-icon-green"/>} message={(response['data']['payload']['stud_num'])} onClose={nav_prof}/>
+              // nav_prof()
             }
 
           })
@@ -84,6 +98,7 @@ function Login() {
       .then(res => {
         if (res.data == true) {
           alert("Account still not verified.")
+          return <FeedbackModal fbckIcon={<FiAlertTriangle size={100} className="fdbk-icon-red"/>} message="Account still not verified." onClose={closePopup}/>
         }
         else {
           login_true()
