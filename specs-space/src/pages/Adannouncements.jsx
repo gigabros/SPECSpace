@@ -138,7 +138,8 @@ export default function AdAnnouncements() {
                   <input onChange={(e) => handle(e)} value={data.title} type="text" id='title' />
 
                   <label htmlFor="description" className='add-ann-label'>announcement description:</label>
-                  <input onChange={(e) => handle(e)} value={data.description} type="text" id='description' />
+                  {/* <input onChange={(e) => handle(e)} value={data.description} type="text" id='description' /> */}
+                  <textarea onChange={(e) => handle(e)} value={data.description} name="description" id="description" cols="30" rows="10"></textarea>
                   {/* <input type="file" id="img" className='announe-img' /> */}
                   <div className='btn-holder'>
                     <button onClick={post} id="submit" className='submit-btn'>Add</button>

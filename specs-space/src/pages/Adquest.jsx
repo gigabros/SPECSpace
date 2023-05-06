@@ -138,7 +138,8 @@ export default function Adquest() {
                     </div>
                   </div>
                   <label htmlFor="description" className='add-act-label'>activity description:</label>
-                  <input onChange={(e) => handle(e)} value={data.description} type="text" id='description' />
+                  {/* <input onChange={(e) => handle(e)} value={data.description} type="text" id='description' /> */}
+                  <textarea onChange={(e) => handle(e)} value={data.description} name="description" id="description" cols="30" rows="10"></textarea>
                   <div className='btn-holder'>
                     <button onClick={pact} id="submit" className='submit-btn'>Add</button>
                     <button onClick={pact} className='cancel-btn'>Cancel</button>
