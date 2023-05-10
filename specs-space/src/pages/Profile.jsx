@@ -8,6 +8,7 @@ import dp from '../data/dp.jpg'
 import logo1 from '../components/specs_logo.png'
 import { useReducer, useEffect } from 'react';
 import axios from '../api/axios'
+import { useAuth } from '../components/auth';
 
 import phnx1 from '../data/avatar/egg.png'
 import phnx2 from '../data/avatar/hatched-egg.png'

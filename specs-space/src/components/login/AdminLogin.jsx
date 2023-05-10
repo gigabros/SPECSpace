@@ -5,7 +5,7 @@ import SpecsLogo from '../specs_logo.png';
 import sslogo from '../ss_logo.png';
 import axios from "../../api/axios";
 import get_data from "../../api/profdata";
-
+import { useAuth } from "../auth";
 import './login.scss';
 
 
@@ -35,7 +35,7 @@ function Login() {
     setErrmsg('');
   }, [email, password])
 
-
+  const auth =useAuth()
   const userRef = useRef();
   const errRef = useRef();
 
@@ -61,6 +61,8 @@ function Login() {
         const role = axios.get('/get_status/' + email).then
           (result => {
             if (result['data']['payload']['data'][0]['role'] == "Admin") {
+              auth.login("admin")
+              sessionStorage.setItem("stud_num","admin")
               nav_admin()
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student"){

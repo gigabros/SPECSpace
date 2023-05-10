@@ -7,7 +7,7 @@ import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { BsChevronExpand } from 'react-icons/bs'
 import axios from '../api/axios'
 import logo from '../components/specs_logo.png'
-
+import { useAuth } from '../components/auth';
 export default function Guild() {
   // const [readMore, setReadMore] = useState(false);
   const [activity, setActivity] = useState([]);
@@ -29,10 +29,11 @@ export default function Guild() {
         setSubmits(res.data.payload.data)
       })
   }
-
+  const auth = useAuth()
   useEffect(() => {
     posted_activity()
     get_submitted()
+    console.log(auth.user+"this login")
   }, [])
   const get_id = async (id) => {
     sessionStorage.setItem('act_id', id)
