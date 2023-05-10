@@ -72,7 +72,7 @@ function Login() {
               get_data(response['data']['payload']['stud_num'])    
               auth.login(response['data']['payload']['stud_num'])
               // navi(redirectPath,{replace: true})
-              navi('/Student/Activity')
+              navi('/Student/profile')
             }
 
           })
