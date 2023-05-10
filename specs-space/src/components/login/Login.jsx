@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MdOutlineError } from 'react-icons/md';
-import { json, Link, Navigate, useNavigate } from 'react-router-dom';
+import { json, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import SpecsLogo from '../specs_logo.png';
 import sslogo from '../ss_logo.png';
 import axios from "../../api/axios";
 import get_data from "../../api/profdata";
 
 import './login.scss';
+import { useAuth } from "../auth";
 
 
 function Login() {
@@ -42,6 +43,9 @@ function Login() {
   const navi = useNavigate();
   const nav_prof = () => navi('/student/profile')
   const nav_admin = () => navi('/Adannouncements')
+  const auth = useAuth()
+  const location = useLocation()
+  const redirectPath = location.state?.path || '/'
 
   const login_true = async (e) => {
     try {
@@ -65,12 +69,14 @@ function Login() {
             }
             else if (result['data']['payload']['data'][0]['role'] == "Student") {
               sessionStorage.setItem('stud_num', response['data']['payload']['stud_num'])
-              get_data(response['data']['payload']['stud_num'])
-              nav_prof()
+              get_data(response['data']['payload']['stud_num'])    
+              auth.login(response['data']['payload']['stud_num'])
+              // navi(redirectPath,{replace: true})
+              navi('/Student/Activity')
             }
 
           })
-
+          
 
       }
     } catch (err) {

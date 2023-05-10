@@ -20,34 +20,38 @@ import AdLeaderboards from './pages/AdLeaderboards';
 import Adannouncements from './pages/Adannouncements.jsx';
 
 import Layout from './components/Layout';
-
+import { AuthProvider } from './components/auth';
+import { RequireAuth } from './components/RequireAuth';
 function App() {
   return (
-    <Routes >
-      <Route path='/' element={<Layout />}>
-        <Route path="*" element={<Navigate to='/404-Not-Found' />} />
-        <Route path='/404-Not-Found' element={<Catcher/>}/>
-        <Route path='/' element={<Navigate to="/Student/Login" />}/>
-        <Route path='/Student/Login' element={<Login/>}/>
-        <Route path='/Student/Register' element={<Register/>}/>
+    <AuthProvider>
+      <Routes >
+        <Route path='/' element={<Layout />}>
+          <Route path="*" element={<Navigate to='/404-Not-Found' />} />
+          <Route path='/404-Not-Found' element={<Catcher />} />
+          <Route path='/' element={<Navigate to="/Student/Login" />} />
+          <Route path='/Student/Login' element={<Login />} />
+          <Route path='/Student/Register' element={<Register />} />
 
-        <Route path="/Student/Profile" element={<Profile />} />
-        <Route path="/Student/Achievements" element={<Achievements />} />
-        <Route path="/Student/Activity" element={<Guild />} />
-        <Route path="/Student/ViewActivity" element={<ViewActivity />} />
-        <Route path="/Student/Leaderboards" element={<Leaderboards />} />
-        <Route path="/Student/Announcements" element={<Announcements />} />
+          <Route path="/Student/Profile" element={<RequireAuth><Profile /></RequireAuth>} />
+          <Route path="/Student/Achievements" element={<RequireAuth><Achievements /></RequireAuth> } />
+          <Route path="/Student/Activity" element={<RequireAuth><Guild /></RequireAuth>} />
+          <Route path="/Student/ViewActivity" element={<RequireAuth><ViewActivity /></RequireAuth>} />
+          <Route path="/Student/Leaderboards" element={<RequireAuth><Leaderboards /></RequireAuth>} />
+          <Route path="/Student/Announcements" element={<RequireAuth><Announcements /></RequireAuth>} />
 
-        <Route path='/Admin/Login' element={<AdminLogin/>}/>
+          <Route path='/Admin/Login' element={<AdminLogin />} />
 
-        <Route path="/Admin/Adquest" element={<Adquest />} />
-        <Route path="/Admin/Adaccounts" element={<Adaccounts />} />
-        <Route path="/Admin/Submits" element={<Submits />} />
-        <Route path="/Admin/Requests" element={<Requests />} />
-        <Route path="/Admin/Adleaderboards" element={<AdLeaderboards />} />
-        <Route path="/Admin/Adannouncements" element={<Adannouncements />} />
-      </Route>
-    </Routes>
+          <Route path="/Admin/Adquest" element={ <RequireAuth><Adquest /></RequireAuth> } />
+          <Route path="/Admin/Adaccounts" element={<RequireAuth><Adaccounts /></RequireAuth>} />
+          <Route path="/Admin/Submits" element={<RequireAuth><Submits /></RequireAuth>} />
+          <Route path="/Admin/Requests" element={<RequireAuth><Requests /></RequireAuth>} />
+          <Route path="/Admin/Adleaderboards" element={<RequireAuth><AdLeaderboards /></RequireAuth>} />
+          <Route path="/Admin/Adannouncements" element={<RequireAuth><Adannouncements /></RequireAuth>} />
+        </Route>
+      </Routes>
+    </AuthProvider>
+
   );
 }
 
