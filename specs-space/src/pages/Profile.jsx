@@ -235,11 +235,11 @@ export default function Profile() {
               <div className="stats-badge-container">
                 <div className="stats-content">
                   <div className="stats-holder">
-                    <p className="stats-title">PENDING ACTIVITITES</p>
+                    <p className="stats-title">PENDING ACTIVITIES</p>
                     <p className="stats-cnt">{sessionStorage.getItem('submitted')}</p>
                   </div>
                   <div className="stats-holder">
-                    <p className="stats-title">FINISHED ACTIVITITES</p>
+                    <p className="stats-title">FINISHED ACTIVITIES</p>
                     <p className="stats-cnt">{sessionStorage.getItem('finished')}</p>
                   </div>
                 </div>
