@@ -43,7 +43,6 @@ export default function Profile() {
   const profdata = () => {
     axios.get('/profile/' + sessionStorage.getItem('stud_num'))
       .then(res => {
-        console.log(res.data)
         sessionStorage.setItem('first_name', res.data.first_name)
         sessionStorage.setItem('last_name', res.data.last_name)
         sessionStorage.setItem('block', res.data.block)
@@ -53,12 +52,11 @@ export default function Profile() {
       })
     axios.get('/get_finished/' + sessionStorage.getItem('stud_num'))
       .then(finished => {
-        console.log(finished['data']['data'][0]['count(*)'])
         sessionStorage.setItem('finished', finished['data']['data'][0]['count(*)'])
       })
     axios.get('/get_submitted/' + sessionStorage.getItem('stud_num'))
       .then(submitted => {
-        console.log(submitted['data']['payload']['data'][0]['count(*)'])
+
         sessionStorage.setItem('submitted', submitted['data']['payload']['data'][0]['count(*)'])
       })
       

@@ -74,16 +74,18 @@ class Get{
     }
 
     public function get_posts(){
-        $sql = "SELECT * from posts ORDER BY date DESC";
 
-        $result = $this->gm->exec_query($sql);
+        try{
+            $sql = "SELECT * from posts ORDER BY date DESC";
 
-        if($result['code']==200){
-            return $this->gm->response_payload($result,"Success","Successfuly Retrieved Data",$result['code']);
+            $result = $this->gm->exec_query($sql);
+
+            return $result;
+        }catch(\PDOException $e){
+            return $e;
         }
-        else{
-            return $this->gm->response_payload(null,"Failed","Unable to Retrieved Data",$result['code']);
-        }
+        
+
     }
 
     public function select_activity($id){

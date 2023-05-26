@@ -45,7 +45,7 @@ export default function AdAnnouncements() {
       title: data.title,
       message: data.description
     }).then(res => {
-      console.log(res)
+
       alert("Posted Successfuly")
 
       posted_activty()
@@ -66,9 +66,8 @@ export default function AdAnnouncements() {
   const posted_activty = () => {
     axios.get('/get_posts')
       .then(res => {
-        setPosts(res.data.payload.data);
-        console.log(res.data.payload.data)
-        console.log(data)
+        setPosts(res.data.data);
+        console.log(res);
         forceUpdate()
       })
   }
@@ -80,7 +79,6 @@ export default function AdAnnouncements() {
     const delete_now = await axios.post('/delete_post', {
       post_id: id
     }).then(res => {
-      console.log(res)
       posted_activty()
     }).catch(error => {
       console.log(error)

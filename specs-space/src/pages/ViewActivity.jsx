@@ -38,7 +38,6 @@ export default function ViewActivity() {
             .then(res => {
 
                 check = res.data
-                console.log(check)
             })
     }
 
@@ -52,7 +51,7 @@ export default function ViewActivity() {
                 setPoints(res.data.payload.data[0].points)
                 setExp(res.data.payload.data[0].exp)
                 forceUpdate()
-                console.log(res.data.payload.data[0].description)
+
 
             })
     }
@@ -73,7 +72,7 @@ export default function ViewActivity() {
             name: sessionStorage.getItem('name')
         })
             .then(res => {
-                console.log(res)
+
                 alert("Submition Success")
             }).catch(error => {
                 console.log(error)
@@ -102,7 +101,7 @@ export default function ViewActivity() {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(response => {
-            console.log(response.data);
+
             if (response.data == "Submitted Success Fully") {
                 alert("Submitted Successfuly")
             } else if (response.data == "No Files") {

@@ -32,7 +32,6 @@ export default function Requests() {
         axios.get('/get_list_unverified')
             .then(res => {
                 setData(res.data.data)
-                console.log(data)
             })
     }
     useEffect(() => {
@@ -48,17 +47,15 @@ export default function Requests() {
             block: block,
             year: year
         }).then(res => {
-            console.log(res)
             get_data()
         }).catch(error => {
-            console.log(error)
         })
     }
     const reject_verify = async (id) => {
         const verifying = await axios.post('/reject_verify', {
             id: id,
         }).then(res => {
-            console.log(res)
+
             get_data()
         }).catch(error => {
             console.log(error)

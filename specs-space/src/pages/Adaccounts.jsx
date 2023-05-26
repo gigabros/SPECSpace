@@ -33,7 +33,7 @@ export default function Adaccounts() {
   }
   useEffect(() => {
     get_data()
-    console.log(data)
+
   }, [])
 
   return (

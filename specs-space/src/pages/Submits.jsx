@@ -44,7 +44,6 @@ export default function Submits() {
     function handle(e){
         
         setPoints(e.target.value)
-        console.log(points)
     }
     const get_activity = () => {
         axios.get('/select_activity/' + sessionStorage.getItem('act_id'))
@@ -62,7 +61,6 @@ export default function Submits() {
     useEffect(() => {
         get_activity()
         sub_list()
-        console.log(data)
     }, [])
 
     const sub_list = () => {
@@ -70,7 +68,6 @@ export default function Submits() {
             .then(
                 res => {
                     setData(res.data.payload.data)
-                    console.log(res.data.payload.data)
                 }
             )
     }
@@ -117,13 +114,13 @@ export default function Submits() {
 
 
     const navi = useNavigate();
-    const nav_act = () => navi('/Adquest')
+    const nav_act = () => navi('/Admin/Adquest')
 
     const delete_act = async () => {
         const delete_now = await axios.post('/delete_act', {
             act_id: sessionStorage.getItem('act_id')
         }).then(res => {
-            console.log(res)
+
             nav_act()
         }).catch(error => {
             console.log(error)
@@ -136,7 +133,7 @@ export default function Submits() {
             act_id: act_id,
             stud_num: stud_num
         }).then(res => {
-            console.log(res)
+
             sub_list()
         }).catch(error => {
             console.log(error)

@@ -13,9 +13,7 @@ export default function Announcements() {
   const posted_activty = () => {
     axios.get('/get_posts')
       .then(res => {
-        setData(res.data.payload.data);
-        console.log(res.data.payload.data)
-        console.log(data)
+        setData(res.data.data);
         forceUpdate()
       })
   }

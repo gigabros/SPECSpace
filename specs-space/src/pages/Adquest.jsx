@@ -33,7 +33,6 @@ export default function Adquest() {
     axios.get('/activity')
       .then(res => {
         setAcitivities(res.data.payload.data);
-        console.log(activities)
       })
   }
   useEffect(() => {
@@ -59,7 +58,6 @@ export default function Adquest() {
     const newdata = { ...data }
     newdata[e.target.id] = e.target.value
     setData(newdata)
-    console.log(newdata)
   }
 
   const get_id = async (id) => {

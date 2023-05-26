@@ -25,7 +25,6 @@ export default function Guild() {
   const get_submitted = () => {
     axios.get('/get_list_sub/' + sessionStorage.getItem('stud_num'))
       .then(res => {
-        console.log(res.data.payload.data)
         setSubmits(res.data.payload.data)
       })
   }
@@ -33,7 +32,6 @@ export default function Guild() {
   useEffect(() => {
     posted_activity()
     get_submitted()
-    console.log(auth.user+"this login")
   }, [])
   const get_id = async (id) => {
     sessionStorage.setItem('act_id', id)
