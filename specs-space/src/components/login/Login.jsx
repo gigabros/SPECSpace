@@ -123,7 +123,7 @@ function Login() {
               <h1 className="ssform-title">SPECS SPACE</h1>
               <h1 className="login-title">STUDENT LOGIN</h1>
             </div>
-
+            
             <input
               type="text"
               placeholder="Email"

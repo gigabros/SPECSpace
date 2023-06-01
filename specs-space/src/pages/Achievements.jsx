@@ -33,103 +33,97 @@ export default function Achievements() {
   var data = [];
   var finished = sessionStorage.getItem('finished')
 
-  if (sessionStorage.getItem('lvl') <= 5) {
+  if (sessionStorage.getItem('lvl') <= 9) {
     data.push({
       img: lvl1,
       title: "Rookie",
-      description: "lvl 1 and above"
+      description: "lvl 1"
     })
   } else if ( sessionStorage.getItem('lvl') <= 10) {
     data.push({
       img: lvl2,
       title: "Amateur",
-      description: "lvl 10 and above"
+      description: "Reached Lvl 10"
     })
 
   } else if (sessionStorage.getItem('lvl') <= 20) {
     data.push({
       img: lvl3,
       title: "Trained",
-      description: "lvl 20 and above"
+      description: "Reached Lvl 20"
     })
 
   } else if (sessionStorage.getItem('lvl') <= 30) {
     data.push({
       img: lvl4,
       title: "Skilled",
-      description: "lvl 30 and above"
+      description: "Reached Lvl 30"
     })
   } else if ( sessionStorage.getItem('lvl') >= 40) {
     data.push({
       img: lvl5,
       title: "Gladiator",
-      description: "lvl 40 and above"
+      description: "Reached Lvl 40"
     })
   }
 
-  if (finished <= 20) {
+  if (finished > 1 && finished <=19) {
     data.push({
       img: submit1,
       title: "Pioneer",
-      description: "Finish 20 Activity or below"
+      description: "Finish 1 Activity"
     })
-  } else if (finished <= 50) {
+  } else if (finished >= 20 && finished <=99) {
     data.push({
       img: submit2,
       title: "Task Finisher",
-      description: "Finish 50 Activity or below"
+      description: "Finish 20 Activity"
     })
 
-  } else if (finished <= 100) {
+  } else if (finished >= 100 && finished <=149) {
     data.push({
       img: submit3,
       title: "Quest Buster",
-      description: "Finish 100 Activity or below"
+      description: "Finish 100 Activity"
     })
 
-  } else if (finished <= 150) {
+  } else if (finished >= 150 && finished <=299) {
     data.push({
       img: submit4,
       title: "Unstoppable",
-      description: "Finish 150 Activity or below"
-    })
-  } else if (finished <= 300) {
-    data.push({
-      img: submit5,
-      title: "Quest Slayer",
-      description: "Finish 300 Activity or below"
+      description: "Finish 150 Activity"
     })
   } else if (finished >= 300) {
     data.push({
       img: submit5,
       title: "Quest Slayer",
-      description: "Finish 300 Activity or below"
+      description: "Finish 300 Activity"
     })
 
   }
 
 
-  if (sessionStorage.getItem('submitted')) {
+  if (sessionStorage.getItem('submitted') >1 && sessionStorage.getItem('submitted')<=19) {
     data.push({
       img: finish1,
       title: "Iron Will",
-      description: "submitted 10 Activity"
+      description: "Submitted 1 Activity"
     })
-  } else if (sessionStorage.getItem('submitted') <= 20) {
+  } else if (sessionStorage.getItem('submitted') >= 20 && sessionStorage.getItem('submitted') <=49) {
     data.push({
       img: finish2,
       title: "Relentless",
       description: "submitted 20 Activity"
     })
 
-  } else if (sessionStorage.getItem('submitted') <= 50) {
+  } else if (sessionStorage.getItem('submitted') >= 50 && sessionStorage.getItem('submitted') <=99) {
     data.push({
       img: finish3,
       title: "Productive",
       description: "submitted 50 Activity"
     })
 
-  } else if (sessionStorage.getItem('submitted') <= 100) {
+  } else if (sessionStorage.getItem('submitted') >= 100 && sessionStorage.getItem('submitted') <=199) {
     data.push({
       img: finish4,
       title: "Perserverance",
